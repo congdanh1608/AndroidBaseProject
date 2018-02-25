@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "200583018887",
+    "project_id": "baseproject-163808"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:200583018887:android:7bca8eccd005cddd",
+        "android_client_info": {
+          "package_name": "vn.danhtran.sociallogin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "200583018887-ht2ophmk14gv5thhjdcphrareeg450ol.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "vn.danhtran.sociallogin",
+            "certificate_hash": "906fdfdc469d835e0a3b0b3008ece66eb7fcaa84"
+          }
+        },
+        {
+          "client_id": "200583018887-rdauoe0c06b8t4jtpbcnjhcuvvkpabdg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDR30QSM_sbLRNMafuURSLF3EnALc9StHk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

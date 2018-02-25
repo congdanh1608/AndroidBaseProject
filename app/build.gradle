@@ -1,0 +1,82 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+    buildToolsVersion rootProject.ext.android.buildToolsVersion
+    defaultConfig {
+        applicationId rootProject.ext.android.applicationId
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        versionCode rootProject.ext.android.versionCode
+        versionName rootProject.ext.android.versionName
+
+        //support vector drawables for android < 21
+        vectorDrawables.useSupportLibrary = true
+
+        //support multi Dex for large library
+        multiDexEnabled true
+
+        //support render script for android <19
+        renderscriptTargetApi 19
+        renderscriptSupportModeEnabled true
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    //support data binding
+    dataBinding {
+        enabled = true
+    }
+    //increase build speed
+    dexOptions {
+        maxProcessCount 4
+        javaMaxHeapSize "2g"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+//            shrinkResources true
+//            zipAlignEnabled true
+
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.1'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+    /* //Utils code functions
+        implementation project(':utilcode')
+        //Social login
+        implementation project(':social_login')
+        //Glide
+        implementation project(':custom_glide')
+        //Universal image loader
+        implementation project(':custom_universal_image_loader')*/
+    implementation rootProject.ext.dependencies["appcompat-v7"]
+    implementation rootProject.ext.dependencies["design"]
+    implementation rootProject.ext.dependencies["avi"]
+    implementation rootProject.ext.dependencies["multidex"]
+    implementation rootProject.ext.dependencies["dagger2"]
+    annotationProcessor rootProject.ext.dependencies["dagger2-compiler"]
+    implementation rootProject.ext.dependencies["dagger-android"]
+    implementation rootProject.ext.dependencies["dagger-android-support"]
+    annotationProcessor rootProject.ext.dependencies["dagger-android-processor"]
+    implementation rootProject.ext.dependencies["gson"]
+    implementation rootProject.ext.dependencies["retrofit"]
+    implementation rootProject.ext.dependencies["retrofit-converter-gson"]
+    implementation rootProject.ext.dependencies["retrofit-adapter-rxjava2"]
+    implementation rootProject.ext.dependencies["okhttp"]
+    implementation rootProject.ext.dependencies["rxjava"]
+    implementation rootProject.ext.dependencies["rxandroid"]
+    implementation rootProject.ext.dependencies["room_runtime"]
+    annotationProcessor rootProject.ext.dependencies["room_compiler"]
+    implementation rootProject.ext.dependencies["room_rxjava"]
+    implementation rootProject.ext.dependencies["annotation"]
+    implementation rootProject.ext.dependencies["logger"]
+    implementation project(':custom_glide')
+    implementation project(':custom_universal_image_loader')
+}

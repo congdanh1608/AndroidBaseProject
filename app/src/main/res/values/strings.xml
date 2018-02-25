@@ -1,0 +1,6 @@
+<resources>
+    <string translatable="false" name="facebook_app_id">641215556070654</string>
+
+
+    <string name="app_name">AndroidBaseProject</string>
+</resources>
