@@ -1,5 +1,6 @@
 package com.congdanh.androidbaseproject.database.repository;
 
+import com.congdanh.androidbaseproject.database.entity.Address;
 import com.congdanh.androidbaseproject.database.entity.User;
 
 import java.util.List;
@@ -11,7 +12,7 @@ import io.reactivex.Single;
  * Created by congd on 2/25/2018.
  */
 
-public interface UserRepositoryInterface {
+public interface UserAddrRepositoryInterface {
     Single<List<User>> getUsers();
 
     Maybe<User> getUserById(String userId);
@@ -23,4 +24,20 @@ public interface UserRepositoryInterface {
     void deleteUserById(String userId);
 
     void deleteAllUsers();
+
+    Single<Address> getAddresses();
+
+    Maybe<Address> getAddressById(String id);
+
+    void insertAddress(Address... addresses);
+
+    void updateAddress(Address... addresses);
+
+    void deleteAddressById(String id);
+
+    void deleteAddress(Address... addresses);
+
+    void deleteAllAddress();
+
+    Maybe<List<Address>> getAddressForUser(int userId);
 }

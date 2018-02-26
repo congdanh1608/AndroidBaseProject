@@ -1,19 +1,30 @@
 package com.congdanh.androidbaseproject.database.entity;
 
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
+import android.graphics.Bitmap;
 
 /**
  * Created by congd on 2/25/2018.
  */
 @Entity
+//@Entity(tableName = "users")                          --> set name for table
+//@Entity(primaryKeys = {"firstName", "lastName"})      --> using many fields are primaryKey
 public class User {
     @PrimaryKey(autoGenerate = true)
     private int id;
+
+    //    @ColumnInfo(name = "user_name")               --> set field name
     private String username;
     private String fullName;
     private String phone;
-    private String address;
+
+    //Don't want to persist
+    @Ignore
+    private Bitmap avatar;
+    @Ignore
+    private Address address;
 
     public int getId() {
         return id;
@@ -47,11 +58,19 @@ public class User {
         this.phone = phone;
     }
 
-    public String getAddress() {
+    public Bitmap getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(Bitmap avatar) {
+        this.avatar = avatar;
+    }
+
+    public Address getAddress() {
         return address;
     }
 
-    public void setAddress(String address) {
+    public void setAddress(Address address) {
         this.address = address;
     }
 }

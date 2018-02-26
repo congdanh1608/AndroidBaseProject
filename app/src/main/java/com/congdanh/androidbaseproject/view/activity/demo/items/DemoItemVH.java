@@ -1,5 +1,7 @@
 package com.congdanh.androidbaseproject.view.activity.demo.items;
 
+import com.congdanh.androidbaseproject.database.entity.Address;
+
 /**
  * Created by congd on 2/25/2018.
  */
@@ -17,5 +19,13 @@ public class DemoItemVH {
 
     public void setDemoItemData(DemoItemData demoItemData) {
         this.demoItemData = demoItemData;
+    }
+
+    public String getAddress() {
+        if (demoItemData.getUser() != null && demoItemData.getUser().getAddress() != null) {
+            Address address = demoItemData.getUser().getAddress();
+            return address.getHouseNumber() + ", " + address.getStreet() + ", " + address.getCity() + ", " + address.getCountry();
+        }
+        return "";
     }
 }

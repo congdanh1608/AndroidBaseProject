@@ -22,11 +22,9 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<Bindin
     protected List<T> items;
     protected BaseRecyclerListener listener;
     protected final LayoutInflater mLayoutInflater;
-    protected Context context;
 
-
+    //if we use Application Context in getSystemService(), We will get error if we have autolink in textview.
     public BaseRecyclerAdapter(Context context, BaseRecyclerListener listener) {
-        this.context = context;
         this.listener = listener;
         mLayoutInflater =
                 (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);

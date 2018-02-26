@@ -3,9 +3,10 @@ package com.congdanh.androidbaseproject.di.module;
 import android.app.Application;
 import android.arch.persistence.room.Room;
 
+import com.congdanh.androidbaseproject.database.dao.AddressDAO;
 import com.congdanh.androidbaseproject.database.dao.UserDAO;
-import com.congdanh.androidbaseproject.database.db.UserDatabase;
-import com.congdanh.androidbaseproject.database.repository.UserRepository;
+import com.congdanh.androidbaseproject.database.db.UserAddressDatabase;
+import com.congdanh.androidbaseproject.database.repository.UserAddrAddrRepository;
 import com.congdanh.androidbaseproject.di.scope.RoomScope;
 import com.congdanh.androidbaseproject.enums.StaticString;
 
@@ -24,22 +25,32 @@ public class RoomModule {
 
     @Provides
     @RoomScope
-    public UserRepository getUserRepository(UserDAO userDAO, Executor executor) {
-        return new UserRepository(userDAO, executor);
+    //Example to use executor
+//    public UserAddrAddrRepository getUserRepository(UserDAO userDAO, Executor executor) {
+    //Example to use DAO with RxJava
+    public UserAddrAddrRepository getUserRepository(UserDAO userDAO, AddressDAO addressDAO) {
+        return new UserAddrAddrRepository(userDAO, addressDAO);
     }
 
     @RoomScope
     @Provides
-    public UserDAO getUserDAO(UserDatabase userDatabase) {
+    public UserDAO getUserDAO(UserAddressDatabase userDatabase) {
         return userDatabase.userDAO();
     }
 
     @RoomScope
     @Provides
-    public UserDatabase getUserDatabase(Application application) {
+    public AddressDAO getAddressDAO(UserAddressDatabase userDatabase) {
+        return userDatabase.addressDAO();
+    }
+
+
+    @RoomScope
+    @Provides
+    public UserAddressDatabase getUserDatabase(Application application) {
         return Room.databaseBuilder(
                 application.getApplicationContext(),
-                UserDatabase.class,
+                UserAddressDatabase.class,
                 StaticString.DATABASE_NAME.toString())
                 .build();
     }
