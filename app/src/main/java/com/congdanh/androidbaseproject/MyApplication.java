@@ -13,12 +13,13 @@ import com.orhanobut.logger.Logger;
 import vn.danhtran.customuniversalimageloader.FactoryImageLoader;
 
 /**
- * Created by congd on 2/25/2018.
+ * Created by congdanh on 2/25/2018.
  */
 
 public class MyApplication extends MultiDexApplication {
     private static MyApplication myApplication;
     private AppComponent appComponent;
+    private String token;
 
     public MyApplication() {
         super();
@@ -35,6 +36,14 @@ public class MyApplication extends MultiDexApplication {
 
     public AppComponent getAppComponent() {
         return appComponent;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 
     @Override
@@ -91,12 +100,12 @@ public class MyApplication extends MultiDexApplication {
         versionOS = Build.VERSION.SDK_INT;
 
         //language
-        String s = SharePreferences.getInstance().readString(SharePref.LANGUAGE.toString());
+        String s = SharedPrefsHelper.getInstance().readString(SharePref.LANGUAGE.toString());
         if (s != null) lang = s;
         else lang = Locale.getDefault().getLanguage();
 
         //load token
-        session = SharePreferences.getInstance().readObject(Session.class, SharePref.SESSION_LOGIN.toString());
+        session = SharedPrefsHelper.getInstance().readObject(Session.class, SharePref.SESSION_LOGIN.toString());
 
         //secret key
         if (BuildConfig.DEBUG)

@@ -16,7 +16,7 @@ import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 import com.nostra13.universalimageloader.core.process.BitmapProcessor;
 
 /**
- * Created by tamhuynh on 11/18/15.
+ * Created by congdanh on 01/01/2018.
  */
 public class FactoryImageLoader {
     private static final int CPU_COUNT = Runtime.getRuntime().availableProcessors();

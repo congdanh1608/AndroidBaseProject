@@ -4,7 +4,7 @@ package com.congdanh.androidbaseproject.utils;
 import com.congdanh.androidbaseproject.MyApplication;
 
 /**
- * Created by CongDanh on 07/07/2016.
+ * Created by congdanh on 07/07/2016.
  */
 
 //Performance calculate convert dp, px.

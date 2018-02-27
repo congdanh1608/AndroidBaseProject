@@ -11,15 +11,19 @@ import android.util.Log;
 import android.view.View;
 
 import com.congdanh.androidbaseproject.BR;
+import com.congdanh.androidbaseproject.MyApplication;
 import com.congdanh.androidbaseproject.database.entity.Address;
 import com.congdanh.androidbaseproject.database.entity.User;
 import com.congdanh.androidbaseproject.database.repository.UserAddrAddrRepository;
+import com.congdanh.androidbaseproject.di.module.RoomModule;
 import com.congdanh.androidbaseproject.view.activity.demo.items.DemoItemData;
 import com.congdanh.androidbaseproject.view.baserecyclerview.BaseRecyclerListener;
 import com.congdanh.androidbaseproject.view.baserecyclerview.BaseRecyclerViewHandler;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.inject.Inject;
 
 import io.reactivex.Completable;
 import io.reactivex.CompletableObserver;
@@ -31,27 +35,27 @@ import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
 
 /**
- * Created by congd on 2/25/2018.
+ * Created by congdanh on 2/25/2018.
  */
 
 public class DemoActivityPresenter extends BaseRecyclerViewHandler<DemoItemData> implements BaseRecyclerListener {
+    @Inject
+    UserAddrAddrRepository userAddrRepository;
+    @Inject
+    CompositeDisposable compositeDisposable;
+
     private DemoActivity demoActivity;
     private DemoActivityListener demoActivityListener;
-    private UserAddrAddrRepository userAddrRepository;
-    private CompositeDisposable compositeDisposable;
     private Context context;
 
     private String result;
     private String addressId;
 
     public DemoActivityPresenter(DemoActivity demoActivity, SwipeRefreshLayout refreshLayout,
-                                 DemoActivityListener demoActivityListener,
-                                 UserAddrAddrRepository userAddrRepository, CompositeDisposable compositeDisposable) {
+                                 DemoActivityListener demoActivityListener) {
         super(refreshLayout);
         this.demoActivity = demoActivity;
         this.demoActivityListener = demoActivityListener;
-        this.userAddrRepository = userAddrRepository;
-        this.compositeDisposable = compositeDisposable;
 
         init();
     }
@@ -68,6 +72,8 @@ public class DemoActivityPresenter extends BaseRecyclerViewHandler<DemoItemData>
 
     private void init() {
         context = demoActivity.getBaseContext();
+        MyApplication.get(context).getAppComponent().plusRoomComponent(new RoomModule()).inject(this);
+
         adapter = new DemoAdapter(context, items, this);
     }
 

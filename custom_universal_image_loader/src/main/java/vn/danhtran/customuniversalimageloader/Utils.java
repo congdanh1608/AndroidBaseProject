@@ -4,7 +4,7 @@ import android.content.Context;
 import android.net.Uri;
 
 /**
- * Created by SilverWolf on 09/04/2017.
+ * Created by congdanh on 09/04/2017.
  */
 
 public class Utils {

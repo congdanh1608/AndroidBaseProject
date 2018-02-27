@@ -15,7 +15,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.Protocol;
 
 /**
- * Created by danhtran on 17/02/2017.
+ * Created by congdanh on 17/02/2017.
  */
 public class UnsafeOkHttpClient {
     public static OkHttpClient getUnsafeOkHttpClient() {

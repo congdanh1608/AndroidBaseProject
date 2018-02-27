@@ -7,7 +7,7 @@ import android.arch.persistence.room.PrimaryKey;
 import static android.arch.persistence.room.ForeignKey.CASCADE;
 
 /**
- * Created by congd on 2/26/2018.
+ * Created by congdanh on 2/26/2018.
  */
 @Entity(foreignKeys = @ForeignKey(entity = User.class, parentColumns = "id", childColumns = "userId", onDelete = CASCADE))
 public class Address {

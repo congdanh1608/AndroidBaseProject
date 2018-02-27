@@ -16,7 +16,7 @@ import java.util.List;
 
 
 /**
- * Created by SilverWolf on 10/06/2017.
+ * Created by congdanh on 10/06/2017.
  */
 
 public class DemoAdapter extends BaseRecyclerAdapter<DemoItemData> {

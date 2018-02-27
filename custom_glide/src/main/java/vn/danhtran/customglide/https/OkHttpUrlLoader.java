@@ -13,7 +13,7 @@ import java.io.InputStream;
 import okhttp3.OkHttpClient;
 
 /**
- * Created by danhtran on 17/02/2017.
+ * Created by congdanh on 17/02/2017.
  */
 public class OkHttpUrlLoader implements ModelLoader<GlideUrl, InputStream> {
 

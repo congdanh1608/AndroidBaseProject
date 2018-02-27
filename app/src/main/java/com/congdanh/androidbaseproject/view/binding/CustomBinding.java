@@ -25,7 +25,7 @@ import vn.danhtran.customglide.GlideImageLoader;
 
 
 /**
- * Created by vitcon on 2/20/16.
+ * Created by congdanh on 2/20/16.
  */
 public class CustomBinding {
     //size in dp

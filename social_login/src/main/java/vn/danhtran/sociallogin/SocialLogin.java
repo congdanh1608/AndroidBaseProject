@@ -11,7 +11,7 @@ import java.util.Map;
 import vn.danhtran.sociallogin.networks.SocialNetwork;
 
 /**
- * Created by SilverWolf on 04/04/2017.
+ * Created by congdanh on 04/04/2017.
  */
 public class SocialLogin {
     private static SocialLogin instance = null;

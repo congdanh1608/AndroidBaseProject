@@ -5,7 +5,7 @@ import android.content.Context;
 import com.bumptech.glide.load.model.stream.BaseGlideUrlLoader;
 
 /**
- * Created by danhtran on 17/02/2017.
+ * Created by congdanh on 17/02/2017.
  */
 public class CustomImageSizeUrlLoader extends BaseGlideUrlLoader<CustomImageSizeModel> {
     public CustomImageSizeUrlLoader(Context context) {

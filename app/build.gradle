@@ -31,13 +31,47 @@ android {
         maxProcessCount 4
         javaMaxHeapSize "2g"
     }
-    buildTypes {
+    signingConfigs {
+        debug {
+            keyAlias 'androiddebugkey'
+            keyPassword 'android'
+            storeFile file("keystores/debug.keystore")
+            storePassword 'android'
+        }
         release {
+            storeFile file("keystores/keystore-release.jks")
+            storePassword "baseproject"
+            keyAlias "baseProject"
+            keyPassword "baseproject"
+        }
+    }
+    buildTypes {
+        debug {
+            applicationIdSuffix '.debug'
+            debuggable true
+            signingConfig signingConfigs.debug
+        }
+        release {
+            debuggable false
             minifyEnabled false
 //            shrinkResources true
 //            zipAlignEnabled true
-
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+    }
+    productFlavors {
+        dev {
+            flavorDimensions "default"
+            applicationId "com.danhtran.androidbaseproject"
+        }
+        staging {
+            flavorDimensions "default"
+            applicationId "com.danhtran.androidbaseproject"
+        }
+        production {
+            flavorDimensions "default"
+            applicationId "com.danhtran.androidbaseproject"
         }
     }
 }
@@ -48,14 +82,14 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
-    /* //Utils code functions
-        implementation project(':utilcode')
-        //Social login
-        implementation project(':social_login')
-        //Glide
-        implementation project(':custom_glide')
-        //Universal image loader
-        implementation project(':custom_universal_image_loader')*/
+    //Utils code functions
+    implementation project(':utilcode')
+    //Social login
+    implementation project(':social_login')
+    //Glide
+    implementation project(':custom_glide')
+    //Universal image loader
+    implementation project(':custom_universal_image_loader')
     implementation rootProject.ext.dependencies["appcompat-v7"]
     implementation rootProject.ext.dependencies["design"]
     implementation rootProject.ext.dependencies["avi"]
@@ -77,6 +111,7 @@ dependencies {
     implementation rootProject.ext.dependencies["room_rxjava"]
     implementation rootProject.ext.dependencies["annotation"]
     implementation rootProject.ext.dependencies["logger"]
+    implementation rootProject.ext.dependencies["halcyon_logger"]
     implementation project(':custom_glide')
     implementation project(':custom_universal_image_loader')
 }

@@ -8,18 +8,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by SilverWolf on 11/06/2017.
+ * Created by congdanh on 11/06/2017.
  */
 
-public abstract class BaseRecyclerViewHandler<T> extends BaseObservable implements BaseRecyclerListener, SwipeRefreshLayout.OnRefreshListener {
+public abstract class BaseRecyclerViewHandler<T> extends BaseObservable
+        implements BaseRecyclerListener, SwipeRefreshLayout.OnRefreshListener {
     protected SwipeRefreshLayout swipeRefreshLayout;
     protected List<T> items = new ArrayList<>();
     protected BaseRecyclerAdapter<T> adapter;
     protected boolean isRefresh = false;
     protected boolean isLoading = false;
     protected int currentPage = 1;
-    protected int maxPage = 0;                          //use if server return total pages load.
-    protected boolean isLoadMore = false;               //use if server return loadMore ? true : false.
+    protected int maxPage = 0;                          //use if server return total pages load.    //paging loading
+    protected boolean isLoadMore = false;               //use if server return loadMore ? true : false. -> lazy loading
 
     public BaseRecyclerViewHandler(SwipeRefreshLayout swipeRefreshLayout) {
         this.swipeRefreshLayout = swipeRefreshLayout;

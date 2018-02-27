@@ -14,8 +14,9 @@ ext {
             support           : "26.1.0",
             google_play       : "10.2.0",
             room              : "1.1.0-alpha2",
-            retrofit          : "2.2.0",
-            rxjava            : "2.1.0",
+            retrofit          : "2.3.0",
+            rxjava            : "2.1.10",
+            rxandroid         : "2.0.2",
             okhttp            : "3.8.1",
             blockcanary       : "1.2.1",
             leakcanary        : "1.4-beta2",
@@ -23,7 +24,7 @@ ext {
             gson              : "2.7",
             avi               : "2.1.3",
             logger            : "1.15",
-            rxandroid         : "2.0.1",
+            halcyon_logger   : "1.0.2",
             snacky            : "1.0.2",
             material_dialog   : "0.9.4.3",
             smart_location    : "3.3.1",
@@ -39,8 +40,8 @@ ext {
             photoview         : "2.0.0",
             html_textview     : "3.5",
             glide             : "4.6.1",
-            glide_trans       : "3.1.1"
-
+            glide_trans       : "3.1.1",
+            recyclerview_swipe: "1.0.4"
             //            okhttp     : "3.6.0",
     ]
 
@@ -79,7 +80,7 @@ ext {
             "shape-imageview"            : "com.github.siyamed:android-shape-imageview:${dependVersion.shape_imageviews}",
             "photo-picker"               : "me.iwf.photopicker:PhotoPicker:${dependVersion.photo_picker}",
             "bottom_sheet"               : "com.cocosw:bottomsheet:${dependVersion.bottom_sheet}",
-            "recyclerview_swipe"         : "com.loopeer.library:itemtouchhelperextension:${dependVersion.retrofit}",
+            "recyclerview_swipe"         : "com.loopeer.library:itemtouchhelperextension:${dependVersion.recyclerview_swipe}",
 
             //rx
             "rxjava"                     : "io.reactivex.rxjava2:rxjava:${dependVersion.rxjava}",
@@ -118,7 +119,7 @@ ext {
 
             //log
             "logger"                     : "com.orhanobut:logger:${dependVersion.logger}",
-            "okhttp-logging-interceptor" : "com.squareup.okhttp3:logging-interceptor:${dependVersion.okhttp}",
+            "halcyon_logger"            : "com.lhalcyon:okhttp-logger-interceptor:${dependVersion.halcyon_logger}",
 
 //            "fragmentation"              : "me.yokeyword:fragmentation:0.10.4",
 //            "rxpermissions"              : "com.tbruyelle.rxpermissions2:rxpermissions:0.9.3@aar"

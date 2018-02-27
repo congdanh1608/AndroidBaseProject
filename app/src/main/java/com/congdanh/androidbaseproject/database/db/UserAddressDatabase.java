@@ -9,7 +9,7 @@ import com.congdanh.androidbaseproject.database.entity.Address;
 import com.congdanh.androidbaseproject.database.entity.User;
 
 /**
- * Created by congd on 2/25/2018.
+ * Created by congdanh on 2/25/2018.
  */
 @Database(entities = {User.class, Address.class}, version = 1)
 public abstract class UserAddressDatabase extends RoomDatabase {

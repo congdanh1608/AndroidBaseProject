@@ -26,7 +26,7 @@ import vn.danhtran.customglide.rounder.RoundedBitmapDrawableFormat;
 import vn.danhtran.customglide.rounder.RoundedCornersTransformation;
 
 /**
- * Created by danhtran on 17/02/2017.
+ * Created by congdanh on 17/02/2017.
  */
 public class GlideImageLoader implements GlideModule {
 

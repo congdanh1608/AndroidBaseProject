@@ -1,7 +1,7 @@
 package com.congdanh.androidbaseproject.di.module;
 
-import android.app.Application;
 import android.arch.persistence.room.Room;
+import android.content.Context;
 
 import com.congdanh.androidbaseproject.database.dao.AddressDAO;
 import com.congdanh.androidbaseproject.database.dao.UserDAO;
@@ -10,15 +10,12 @@ import com.congdanh.androidbaseproject.database.repository.UserAddrAddrRepositor
 import com.congdanh.androidbaseproject.di.scope.RoomScope;
 import com.congdanh.androidbaseproject.enums.StaticString;
 
-import java.util.concurrent.Executor;
-import java.util.concurrent.Executors;
-
 import dagger.Module;
 import dagger.Provides;
 import io.reactivex.disposables.CompositeDisposable;
 
 /**
- * Created by congd on 2/25/2018.
+ * Created by congdanh on 2/25/2018.
  */
 @Module
 public class RoomModule {
@@ -47,19 +44,19 @@ public class RoomModule {
 
     @RoomScope
     @Provides
-    public UserAddressDatabase getUserDatabase(Application application) {
+    public UserAddressDatabase getUserDatabase(Context context) {
         return Room.databaseBuilder(
-                application.getApplicationContext(),
+                context,
                 UserAddressDatabase.class,
                 StaticString.DATABASE_NAME.toString())
                 .build();
     }
 
-    @RoomScope
+    /*@RoomScope
     @Provides
     public Executor getExecutor() {
         return Executors.newFixedThreadPool(2);
-    }
+    }*/
 
     @RoomScope
     @Provides

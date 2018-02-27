@@ -12,7 +12,7 @@ import com.congdanh.androidbaseproject.databinding.ItemProcessBarBinding;
 import java.util.List;
 
 /**
- * Created by SilverWolf on 10/06/2017.
+ * Created by congdanh on 10/06/2017.
  */
 
 public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<BindingViewHolder> {

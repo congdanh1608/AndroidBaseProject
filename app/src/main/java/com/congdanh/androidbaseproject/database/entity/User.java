@@ -6,7 +6,7 @@ import android.arch.persistence.room.PrimaryKey;
 import android.graphics.Bitmap;
 
 /**
- * Created by congd on 2/25/2018.
+ * Created by congdanh on 2/25/2018.
  */
 @Entity
 //@Entity(tableName = "users")                          --> set name for table
