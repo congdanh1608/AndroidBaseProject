@@ -1,4 +1,4 @@
-package com.congdanh.androidbaseproject.view.activity.demo;
+package com.congdanh.androidbaseproject.view.activity.demo_database;
 
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;

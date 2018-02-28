@@ -2,6 +2,7 @@ package com.congdanh.androidbaseproject;
 
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
+import android.os.Build;
 import android.support.multidex.MultiDexApplication;
 
 import com.congdanh.androidbaseproject.di.component.AppComponent;
@@ -20,6 +21,7 @@ public class MyApplication extends MultiDexApplication {
     private static MyApplication myApplication;
     private AppComponent appComponent;
     private String token;
+    private int versionOS;
 
     public MyApplication() {
         super();
@@ -44,6 +46,14 @@ public class MyApplication extends MultiDexApplication {
 
     public void setToken(String token) {
         this.token = token;
+    }
+
+    public int getVersionOS() {
+        return versionOS;
+    }
+
+    public void setVersionOS(int versionOS) {
+        this.versionOS = versionOS;
     }
 
     @Override
@@ -96,10 +106,10 @@ public class MyApplication extends MultiDexApplication {
                 .build();
         appComponent.inject(this);
 
-       /* //version OS
+        //version OS
         versionOS = Build.VERSION.SDK_INT;
 
-        //language
+        /*//language
         String s = SharedPrefsHelper.getInstance().readString(SharePref.LANGUAGE.toString());
         if (s != null) lang = s;
         else lang = Locale.getDefault().getLanguage();

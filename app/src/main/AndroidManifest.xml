@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.congdanh.androidbaseproject">
 
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <application
         android:name=".MyApplication"
         android:allowBackup="true"
@@ -18,7 +22,8 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".view.activity.demo.DemoActivity"/>
+        <activity android:name=".view.activity.demo_database.DemoActivity" />
+        <activity android:name=".view.activity.demo_permission.Demo1Activity" />
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"

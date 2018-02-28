@@ -8,7 +8,7 @@ import com.congdanh.androidbaseproject.database.dao.UserDAO;
 import com.congdanh.androidbaseproject.database.db.UserAddressDatabase;
 import com.congdanh.androidbaseproject.database.repository.UserAddrAddrRepository;
 import com.congdanh.androidbaseproject.di.scope.RoomScope;
-import com.congdanh.androidbaseproject.enums.StaticString;
+import com.congdanh.androidbaseproject.enums.StringConstants;
 
 import dagger.Module;
 import dagger.Provides;
@@ -48,7 +48,7 @@ public class RoomModule {
         return Room.databaseBuilder(
                 context,
                 UserAddressDatabase.class,
-                StaticString.DATABASE_NAME.toString())
+                StringConstants.DATABASE_NAME.toString())
                 .build();
     }
 

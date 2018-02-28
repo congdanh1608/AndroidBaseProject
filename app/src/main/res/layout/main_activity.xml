@@ -19,10 +19,19 @@
             android:text="Hello World!" />
 
         <Button
+            android:id="@+id/btnDatabase"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="@{presenter.onClickListener()}"
-            android:text="DemoActivity" />
+            android:onClick="@{presenter.onClickListener(0)}"
+            android:text="Database Activity" />
+
+        <Button
+            android:id="@+id/btnPermission"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btnDatabase"
+            android:onClick="@{presenter.onClickListener(1)}"
+            android:text="Permission Activity" />
 
     </RelativeLayout>
 </layout>

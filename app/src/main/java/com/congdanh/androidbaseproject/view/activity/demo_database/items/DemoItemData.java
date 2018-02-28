@@ -1,4 +1,4 @@
-package com.congdanh.androidbaseproject.view.activity.demo.items;
+package com.congdanh.androidbaseproject.view.activity.demo_database.items;
 
 import com.congdanh.androidbaseproject.database.entity.User;
 

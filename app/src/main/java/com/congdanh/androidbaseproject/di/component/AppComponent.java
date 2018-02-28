@@ -17,7 +17,9 @@ import dagger.Component;
 @Singleton
 @Component(modules = {AppModule.class, NetworkModule.class, ServiceManager.class, ShareprefsModule.class})
 public interface AppComponent {
+    //inject where you want to inject to get providers.
     void inject(MyApplication myApplication);
 
+    //for subComponent
     RoomComponent plusRoomComponent(RoomModule roomModule);
 }

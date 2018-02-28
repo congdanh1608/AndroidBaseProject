@@ -8,7 +8,7 @@ import com.congdanh.androidbaseproject.MyApplication;
  */
 
 //Performance calculate convert dp, px.
-public class DimensionUtils {
+public class SizeUtils {
     private static boolean isInitialised = false;
     private static float pixelsPerOneDp;
 

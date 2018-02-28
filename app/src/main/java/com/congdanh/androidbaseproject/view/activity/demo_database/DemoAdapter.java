@@ -1,4 +1,4 @@
-package com.congdanh.androidbaseproject.view.activity.demo;
+package com.congdanh.androidbaseproject.view.activity.demo_database;
 
 import android.content.Context;
 import android.databinding.DataBindingUtil;
@@ -6,8 +6,8 @@ import android.view.ViewGroup;
 
 import com.congdanh.androidbaseproject.R;
 import com.congdanh.androidbaseproject.databinding.DemoItemBinding;
-import com.congdanh.androidbaseproject.view.activity.demo.items.DemoItemData;
-import com.congdanh.androidbaseproject.view.activity.demo.items.DemoItemVH;
+import com.congdanh.androidbaseproject.view.activity.demo_database.items.DemoItemData;
+import com.congdanh.androidbaseproject.view.activity.demo_database.items.DemoItemVH;
 import com.congdanh.androidbaseproject.view.baserecyclerview.BaseRecyclerAdapter;
 import com.congdanh.androidbaseproject.view.baserecyclerview.BaseRecyclerListener;
 import com.congdanh.androidbaseproject.view.baserecyclerview.BindingViewHolder;

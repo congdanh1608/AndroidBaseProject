@@ -13,7 +13,6 @@
             <option value="$PROJECT_DIR$/custom_universal_image_loader" />
             <option value="$PROJECT_DIR$/snacky" />
             <option value="$PROJECT_DIR$/social_login" />
-            <option value="$PROJECT_DIR$/utilcode" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

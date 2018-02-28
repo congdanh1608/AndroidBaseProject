@@ -2,8 +2,7 @@ package com.congdanh.androidbaseproject.di.component;
 
 import com.congdanh.androidbaseproject.di.module.RoomModule;
 import com.congdanh.androidbaseproject.di.scope.RoomScope;
-import com.congdanh.androidbaseproject.view.activity.demo.DemoActivity;
-import com.congdanh.androidbaseproject.view.activity.demo.DemoActivityPresenter;
+import com.congdanh.androidbaseproject.view.activity.demo_database.DemoActivityPresenter;
 
 import dagger.Subcomponent;
 

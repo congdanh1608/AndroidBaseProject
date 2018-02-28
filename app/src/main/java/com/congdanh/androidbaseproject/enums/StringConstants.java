@@ -7,7 +7,7 @@ import com.congdanh.androidbaseproject.MyApplication;
  * Created by congdanh on 09/04/2017.
  */
 
-public enum StaticString {
+public enum StringConstants {
     DEFAULT(""),
 
     DATABASE_NAME("base_project");
@@ -16,7 +16,7 @@ public enum StaticString {
 
     private final String value;
 
-    private StaticString(String value) {
+    private StringConstants(String value) {
         this.value = value;
     }
 

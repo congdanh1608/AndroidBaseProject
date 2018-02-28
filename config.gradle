@@ -24,7 +24,7 @@ ext {
             gson              : "2.7",
             avi               : "2.1.3",
             logger            : "1.15",
-            halcyon_logger   : "1.0.2",
+            halcyon_logger    : "1.0.2",
             snacky            : "1.0.2",
             material_dialog   : "0.9.4.3",
             smart_location    : "3.3.1",
@@ -41,7 +41,8 @@ ext {
             html_textview     : "3.5",
             glide             : "4.6.1",
             glide_trans       : "3.1.1",
-            recyclerview_swipe: "1.0.4"
+            recyclerview_swipe: "1.0.4",
+            dexter            : "4.2.0"
             //            okhttp     : "3.6.0",
     ]
 
@@ -67,8 +68,10 @@ ext {
 //            "annotation"                 : "org.glassfish:javax.annotation:${dependVersion.annotation}",
             "annotation"                 : "org.jetbrains:annotations-java5:${dependVersion.annotation}",
 
+            //permisson
+            "dexter"                     : "com.karumi:dexter:${dependVersion.dexter}",
+
             //ui
-            "design"                     : "com.android.support:design:${dependVersion.support}",
             "avi"                        : "com.wang.avi:library:${dependVersion.avi}",
             "material-calendarview"      : "com.prolificinteractive:material-calendarview:{$dependVersion.calendarview}",
             "materialsearchview"         : "com.miguelcatalan:materialsearchview:{$dependVersion.materialsearchview}",
@@ -119,7 +122,7 @@ ext {
 
             //log
             "logger"                     : "com.orhanobut:logger:${dependVersion.logger}",
-            "halcyon_logger"            : "com.lhalcyon:okhttp-logger-interceptor:${dependVersion.halcyon_logger}",
+            "halcyon_logger"             : "com.lhalcyon:okhttp-logger-interceptor:${dependVersion.halcyon_logger}",
 
 //            "fragmentation"              : "me.yokeyword:fragmentation:0.10.4",
 //            "rxpermissions"              : "com.tbruyelle.rxpermissions2:rxpermissions:0.9.3@aar"

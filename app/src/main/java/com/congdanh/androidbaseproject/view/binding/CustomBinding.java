@@ -17,7 +17,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 
-import com.congdanh.androidbaseproject.utils.DimensionUtils;
+import com.congdanh.androidbaseproject.utils.SizeUtils;
 import com.congdanh.androidbaseproject.view.customview.DividerItemDecoration;
 import com.congdanh.androidbaseproject.view.customview.SpacesItemDecoration;
 
@@ -31,8 +31,8 @@ public class CustomBinding {
     //size in dp
     @BindingAdapter({"bind:absParams", "bind:absWidth", "bind:absHeight"})
     public static void absParams(ImageView imageView, boolean absParams, int width, int height) {
-        width = DimensionUtils.dpToPx(width);
-        height = DimensionUtils.dpToPx(height);
+        width = SizeUtils.dpToPx(width);
+        height = SizeUtils.dpToPx(height);
         AbsListView.LayoutParams layoutParams = new AbsListView.LayoutParams(width, height);
         imageView.setLayoutParams(layoutParams);
     }
@@ -40,8 +40,8 @@ public class CustomBinding {
     //size in dp
     @BindingAdapter({"bind:linearParams", "bind:linearWidth", "bind:linearHeight"})
     public static void linearParams(ImageView imageView, boolean linearParams, int width, int height) {
-        width = DimensionUtils.dpToPx(width);
-        height = DimensionUtils.dpToPx(height);
+        width = SizeUtils.dpToPx(width);
+        height = SizeUtils.dpToPx(height);
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(width, height);
         imageView.setLayoutParams(layoutParams);
     }
@@ -49,8 +49,8 @@ public class CustomBinding {
     //size in dp
     @BindingAdapter({"bind:relativeParams", "bind:relativeWidth", "bind:relativeHeight"})
     public static void relativeParams(ImageView imageView, boolean relativeParams, int width, int height) {
-        width = DimensionUtils.dpToPx(width);
-        height = DimensionUtils.dpToPx(height);
+        width = SizeUtils.dpToPx(width);
+        height = SizeUtils.dpToPx(height);
         RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(width, height);
         imageView.setLayoutParams(layoutParams);
     }
@@ -67,8 +67,8 @@ public class CustomBinding {
     @BindingAdapter({"bind:setImage", "bind:width", "bind:height"})
     public static void setImage(ImageView imageView, String url, int width, int height) {
         //set default value
-        width = DimensionUtils.dpToPx(width);
-        height = DimensionUtils.dpToPx(height);
+        width = SizeUtils.dpToPx(width);
+        height = SizeUtils.dpToPx(height);
         if (url != null) {
             GlideImageLoader.getInstance().displayImage(url, imageView, width, height);
         }
@@ -78,8 +78,8 @@ public class CustomBinding {
     @BindingAdapter({"bind:setImage", "bind:width", "bind:height", "bind:isCircle"})
     public static void setImage(ImageView imageView, String url, int width, int height, boolean isCircle) {
         //set default value
-        width = DimensionUtils.dpToPx(width);
-        height = DimensionUtils.dpToPx(height);
+        width = SizeUtils.dpToPx(width);
+        height = SizeUtils.dpToPx(height);
         if (url != null) {
             if (isCircle)
                 GlideImageLoader.getInstance().displayImageCircle(url, imageView, width, height);
@@ -91,8 +91,8 @@ public class CustomBinding {
     @BindingAdapter({"bind:setImage", "bind:width", "bind:height", "bind:isCircle", "bind:borderSize"})
     public static void setImage(ImageView imageView, String url, int width, int height, boolean isCircle, int borderSize) {
         //set default value
-        width = DimensionUtils.dpToPx(width);
-        height = DimensionUtils.dpToPx(height);
+        width = SizeUtils.dpToPx(width);
+        height = SizeUtils.dpToPx(height);
         if (url != null) {
             if (isCircle)
                 GlideImageLoader.getInstance().displayImageCircle(url, imageView, width, height, borderSize);
@@ -111,7 +111,7 @@ public class CustomBinding {
     @BindingAdapter("bind:heightOfView")
     public static void heightOfView(View view, int height) {
         ViewGroup.LayoutParams layoutParams = view.getLayoutParams();
-        layoutParams.height = DimensionUtils.dpToPx(height);
+        layoutParams.height = SizeUtils.dpToPx(height);
         view.setLayoutParams(layoutParams);
     }
 

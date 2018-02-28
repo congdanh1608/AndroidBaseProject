@@ -1,4 +1,4 @@
-package com.congdanh.androidbaseproject.view.activity.demo;
+package com.congdanh.androidbaseproject.view.activity.demo_database;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -16,7 +16,7 @@ import com.congdanh.androidbaseproject.database.entity.Address;
 import com.congdanh.androidbaseproject.database.entity.User;
 import com.congdanh.androidbaseproject.database.repository.UserAddrAddrRepository;
 import com.congdanh.androidbaseproject.di.module.RoomModule;
-import com.congdanh.androidbaseproject.view.activity.demo.items.DemoItemData;
+import com.congdanh.androidbaseproject.view.activity.demo_database.items.DemoItemData;
 import com.congdanh.androidbaseproject.view.baserecyclerview.BaseRecyclerListener;
 import com.congdanh.androidbaseproject.view.baserecyclerview.BaseRecyclerViewHandler;
 

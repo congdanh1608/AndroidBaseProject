@@ -83,7 +83,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
     //Utils code functions
-    implementation project(':utilcode')
+//    implementation project(':utilcode')
     //Social login
     implementation project(':social_login')
     //Glide
@@ -112,6 +112,5 @@ dependencies {
     implementation rootProject.ext.dependencies["annotation"]
     implementation rootProject.ext.dependencies["logger"]
     implementation rootProject.ext.dependencies["halcyon_logger"]
-    implementation project(':custom_glide')
-    implementation project(':custom_universal_image_loader')
+    implementation rootProject.ext.dependencies["dexter"]
 }
