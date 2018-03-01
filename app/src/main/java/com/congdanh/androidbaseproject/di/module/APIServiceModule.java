@@ -1,7 +1,7 @@
 package com.congdanh.androidbaseproject.di.module;
 
 import com.congdanh.androidbaseproject.serviceAPI.apiconfig.APIServer;
-import com.congdanh.androidbaseproject.serviceAPI.apiservice.MovieManager;
+import com.congdanh.androidbaseproject.serviceAPI.apiservice.MovieService;
 
 import javax.inject.Singleton;
 
@@ -12,10 +12,10 @@ import dagger.Provides;
  * Created by congdanh on 2/27/2018.
  */
 @Module
-public class ServiceManager {
+public class APIServiceModule {
     @Provides
     @Singleton
-    MovieManager getMovieManager(APIServer apiServer) {
-        return new MovieManager(apiServer);
+    MovieService getMovieService(APIServer apiServer) {
+        return new MovieService(apiServer);
     }
 }

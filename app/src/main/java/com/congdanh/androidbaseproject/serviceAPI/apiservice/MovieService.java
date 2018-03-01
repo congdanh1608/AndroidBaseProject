@@ -13,10 +13,10 @@ import io.reactivex.schedulers.Schedulers;
  * Created by congd on 2/20/2018.
  */
 
-public class MovieManager {
+public class MovieService {
     private APIServer apiServer;
 
-    public MovieManager(APIServer apiServer) {
+    public MovieService(APIServer apiServer) {
         this.apiServer = apiServer;
     }
 
