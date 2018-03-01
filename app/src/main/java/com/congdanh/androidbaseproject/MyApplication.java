@@ -1,15 +1,23 @@
 package com.congdanh.androidbaseproject;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.os.Build;
 import android.support.multidex.MultiDexApplication;
 
+import com.congdanh.androidbaseproject.di.component.ActivityComponentBuilder;
 import com.congdanh.androidbaseproject.di.component.AppComponent;
 import com.congdanh.androidbaseproject.di.component.DaggerAppComponent;
+import com.congdanh.androidbaseproject.di.component.HasActivitySubcomponentBuilders;
 import com.congdanh.androidbaseproject.di.module.AppModule;
 import com.orhanobut.logger.LogLevel;
 import com.orhanobut.logger.Logger;
+
+import java.util.Map;
+
+import javax.inject.Inject;
+import javax.inject.Provider;
 
 import vn.danhtran.customuniversalimageloader.FactoryImageLoader;
 
@@ -17,7 +25,10 @@ import vn.danhtran.customuniversalimageloader.FactoryImageLoader;
  * Created by congdanh on 2/25/2018.
  */
 
-public class MyApplication extends MultiDexApplication {
+public class MyApplication extends MultiDexApplication implements HasActivitySubcomponentBuilders {
+    @Inject
+    Map<Class<? extends Activity>, Provider<ActivityComponentBuilder>> activityComponentBuilders;
+
     private static MyApplication myApplication;
     private AppComponent appComponent;
     private String token;
@@ -32,8 +43,12 @@ public class MyApplication extends MultiDexApplication {
         return myApplication;
     }
 
-    public static MyApplication get(Context context) {
-        return (MyApplication) context.getApplicationContext();
+//    public static MyApplication get(Context context) {
+//        return (MyApplication) context.getApplicationContext();
+//    }
+
+    public static HasActivitySubcomponentBuilders get(Context context) {
+        return ((HasActivitySubcomponentBuilders) context.getApplicationContext());
     }
 
     public AppComponent getAppComponent() {
@@ -120,5 +135,10 @@ public class MyApplication extends MultiDexApplication {
         //secret key
         if (BuildConfig.DEBUG)
             generalSecretKey();*/
+    }
+
+    @Override
+    public ActivityComponentBuilder getActivityComponentBuilder(Class<? extends Activity> activityClass) {
+        return activityComponentBuilders.get(activityClass).get();
     }
 }

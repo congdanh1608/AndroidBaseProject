@@ -24,6 +24,7 @@
 
         <activity android:name=".view.activity.demo_database.DemoActivity" />
         <activity android:name=".view.activity.demo_permission.Demo1Activity" />
+        <activity android:name=".view.activity.demo_dagger.DaggerActivity" />
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"

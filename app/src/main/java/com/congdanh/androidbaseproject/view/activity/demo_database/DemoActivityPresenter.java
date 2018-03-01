@@ -72,7 +72,7 @@ public class DemoActivityPresenter extends BaseRecyclerViewHandler<DemoItemData>
 
     private void init() {
         context = demoActivity.getBaseContext();
-        MyApplication.get(context).getAppComponent().plusRoomComponent(new RoomModule()).inject(this);
+        MyApplication.Instance().getAppComponent().plusRoomComponent(new RoomModule()).inject(this);
 
         adapter = new DemoAdapter(context, items, this);
     }

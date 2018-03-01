@@ -6,7 +6,6 @@ import android.net.Uri;
 import android.provider.MediaStore;
 import android.provider.Settings;
 
-import com.blankj.utilcode.util.AppUtils;
 import com.congdanh.androidbaseproject.MyApplication;
 
 /**
@@ -36,7 +35,7 @@ public class Utils {
     }
 
     public static void goToPlayStore(Activity activity) {
-        final String appPackageName = AppUtils.getAppPackageName(MyApplication.Instance().getApplicationContext()); // getPackageName() from Context or Activity object
+        final String appPackageName = MyApplication.Instance().getPackageName(); // getPackageName() from Context or Activity object
         try {
             activity.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + appPackageName)));
         } catch (android.content.ActivityNotFoundException anfe) {
@@ -45,7 +44,7 @@ public class Utils {
     }
 
     private static String getUrlApp() {
-        final String appPackageName = AppUtils.getAppPackageName(MyApplication.Instance().getApplicationContext()); // getPackageName() from Context or Activity object
+        final String appPackageName = MyApplication.Instance().getPackageName(); // getPackageName() from Context or Activity object
         return "https://play.google.com/store/apps/details?id=" + appPackageName;
     }
 
