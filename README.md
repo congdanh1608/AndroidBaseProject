@@ -91,7 +91,7 @@ androidbaseproject/app/src/main/java/com/congdanh/androidbaseproject/
 
 ### Recommendation
 
-If you are going to develop a big application, we recommend to create one package for each functionality (screen).
+If you are going to develop a big application, I recommend to create one package for each functionality (screen).
 
 ### Base Project Architectures
 
