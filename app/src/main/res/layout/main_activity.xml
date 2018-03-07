@@ -40,5 +40,13 @@
             android:layout_below="@+id/btnPermission"
             android:onClick="@{presenter.onClickListener(2)}"
             android:text="Dagger Activity" />
+
+        <Button
+            android:id="@+id/btnMap"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btnDagger"
+            android:onClick="@{presenter.onClickListener(3)}"
+            android:text="Map Activity" />
     </RelativeLayout>
 </layout>

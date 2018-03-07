@@ -2,6 +2,7 @@ package vn.danhtran.customuniversalimageloader;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -22,6 +23,11 @@ public class FactoryImageLoader {
     private static final int CPU_COUNT = Runtime.getRuntime().availableProcessors();
     public static String TAG = "FactoryImageLoader";
     private double ratio = 1f;
+
+    private static final String DRAWABLE_RESOURCE = "drawable://";
+    private static final String ANDROID_RESOURCE = "android.resource://";
+    private static final String FOREWARD_SLASH = "/";
+
 
     private static FactoryImageLoader instance;
 
@@ -99,6 +105,10 @@ public class FactoryImageLoader {
         return ImageLoader.getInstance().loadImageSync(Utils.drawableToUri(context, drawable));
     }
 
+    public Bitmap getBitmap(int drawable) {
+        return ImageLoader.getInstance().loadImageSync(drawableToUri(drawable));
+    }
+
     public void getBitmap(String url, final LoadCompleteListener listener) {
         ImageLoader.getInstance().loadImage(url, new ImageLoadingListener() {
             @Override
@@ -120,6 +130,15 @@ public class FactoryImageLoader {
             }
         });
     }
+
+   /* public static Uri resourceIdToUri(Context context, int resourceId) {
+        return Uri.parse(ANDROID_RESOURCE + context.getPackageName() + FOREWARD_SLASH + resourceId);
+    }*/
+
+    public static String drawableToUri(int resourceId) {
+        return DRAWABLE_RESOURCE + resourceId;
+    }
+
 
     public interface LoadCompleteListener {
         void onLoadComplete(Bitmap bitmap);

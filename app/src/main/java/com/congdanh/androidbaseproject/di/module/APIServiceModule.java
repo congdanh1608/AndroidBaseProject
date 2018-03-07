@@ -1,8 +1,10 @@
 package com.congdanh.androidbaseproject.di.module;
 
 import com.congdanh.androidbaseproject.serviceAPI.apiconfig.APIServer;
+import com.congdanh.androidbaseproject.serviceAPI.apiservice.MapService;
 import com.congdanh.androidbaseproject.serviceAPI.apiservice.MovieService;
 
+import javax.inject.Named;
 import javax.inject.Singleton;
 
 import dagger.Module;
@@ -15,7 +17,13 @@ import dagger.Provides;
 public class APIServiceModule {
     @Provides
     @Singleton
-    MovieService getMovieService(APIServer apiServer) {
+    MovieService getMovieService(@Named("server") APIServer apiServer) {
         return new MovieService(apiServer);
+    }
+
+    @Provides
+    @Singleton
+    MapService getMapService(@Named("map") APIServer apiServer) {
+        return new MapService(apiServer);
     }
 }

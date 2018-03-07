@@ -1,5 +1,7 @@
 <resources>
-    <string translatable="false" name="facebook_app_id">641215556070654</string>
+    <string name="facebook_app_id" translatable="false">641215556070654</string>
+    <string name="key_google_app" translatable="false">AIzaSyAFzr11o68WxSKBaYfSO_rAECqA4Q1k--g</string>
+    <string name="key_google_web" translatable="false">AIzaSyBKtw7XHD7G_UCtr0wysXRY5edmsd7KZr0</string>
 
 
     <string name="app_name">AndroidBaseProject</string>

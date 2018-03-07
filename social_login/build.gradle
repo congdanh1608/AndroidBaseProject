@@ -23,8 +23,8 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
     implementation rootProject.ext.dependencies["appcompat-v7"]
-    compile 'com.facebook.android:facebook-android-sdk:4.20.0'
+    compile 'com.facebook.android:facebook-android-sdk:4.26.0'
     implementation rootProject.ext.dependencies["google_auth"]
 }
 
-apply plugin: 'com.google.gms.google-services'
+//apply plugin: 'com.google.gms.google-services'

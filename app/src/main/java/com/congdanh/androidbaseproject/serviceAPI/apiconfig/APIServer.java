@@ -1,9 +1,11 @@
 package com.congdanh.androidbaseproject.serviceAPI.apiconfig;
 
+import com.congdanh.androidbaseproject.appmodel.MapReponse;
 import com.congdanh.androidbaseproject.appmodel.Movie;
 import com.google.gson.JsonElement;
 
 import java.util.List;
+import java.util.Map;
 
 import io.reactivex.Observable;
 import retrofit2.Call;
@@ -14,6 +16,7 @@ import retrofit2.http.Headers;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
+import retrofit2.http.QueryMap;
 
 /**
  * Created by SilverWolf on 11/04/2017.
@@ -66,4 +69,8 @@ public interface APIServer {
     @Headers(header)
     @POST("{api}/{sub}")
     Observable<List<Movie>> getMovies();
+
+    @Headers(header)
+    @GET("json")
+    Observable<MapReponse> getMapDirection(@QueryMap Map<String, Object> options);
 }

@@ -15,10 +15,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 
+import com.blankj.utilcode.util.FragmentUtils;
 import com.congdanh.androidbaseproject.MyApplication;
 import com.congdanh.androidbaseproject.R;
 import com.congdanh.androidbaseproject.di.component.HasActivitySubcomponentBuilders;
 import com.congdanh.androidbaseproject.view.activity.main.MainActivity;
+
 
 /**
  * Created by congdanh on 2/26/2018.
@@ -28,6 +30,8 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity implements
     private View progressLayout;
     protected ViewDataBinding binding;
     protected FragmentManager mFragmentManager;
+    private String curFragment;
+    ;
 
     public abstract int setLayout();
 
@@ -63,11 +67,11 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity implements
         if (xml != 0 && binding == null) {
             binding = DataBindingUtil.setContentView(this, xml);
         }
-        //set progress layout
-        progressLayout = setProgressLayout();
         //init
         initFragmentManager();
         initUI();
+        //set progress layout
+        progressLayout = setProgressLayout();
         initListener();
         initData();
     }
@@ -87,7 +91,10 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity implements
 
     @Override
     public void onBackStackChanged() {
-
+        if (mFragmentManager.getBackStackEntryCount() >= 1) {
+            curFragment = mFragmentManager.getBackStackEntryAt(
+                    mFragmentManager.getBackStackEntryCount() - 1).getName();
+        }
     }
 
     @Override
@@ -195,5 +202,33 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity implements
             }
         }
         return null;
+    }
+
+    public void addMyFragment(String tag, Object data, String title) {
+        Fragment fragMain = mFragmentManager.findFragmentByTag(tag);
+        boolean isPass = !tag.equals(curFragment);
+        //except fragment movie + tvshow -> b/c i can open that fragment in similar.
+        if (curFragment != null) {
+            fragMain = null;
+            isPass = true;
+        }
+        if (isPass) {
+            //check in backstack -> get fragment from backstack
+            if (fragMain != null) {
+                mFragmentManager.popBackStack(tag, 0);
+                return;
+            }
+            //add new fragment
+           /* if (tag.equals(MapFragment.class.getName())) {
+                fragMain = MapFragment.instance();
+            } else if (tag.equals(MapPickFragment.class.getName())) {
+                fragMain = MapPickFragment.instance();
+            }*/
+
+
+            if (fragMain != null) {
+                FragmentUtils.replaceFragment(mFragmentManager, fragMain, R.id.content_fragment, true);
+            }
+        }
     }
 }

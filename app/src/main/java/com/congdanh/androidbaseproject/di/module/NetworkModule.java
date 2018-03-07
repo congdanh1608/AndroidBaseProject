@@ -34,15 +34,36 @@ public class NetworkModule {
 
     @Provides
     @Singleton
-    public APIServer getAPIServer(Retrofit retrofit) {
+    @Named("server")
+    public APIServer getAPIServer(@Named("server") Retrofit retrofit) {
+        return retrofit.create(APIServer.class);
+    }
+
+    @Provides
+    @Singleton
+    @Named("map")
+    public APIServer getAPIServerMap(@Named("map") Retrofit retrofit) {
         return retrofit.create(APIServer.class);
     }
 
     @Singleton
+    @Named("server")
     @Provides
     public Retrofit getRetrofit(@Named("non_cached") OkHttpClient okHttpClient) {
         return new Retrofit.Builder()
                 .baseUrl(APIConfig.domainAPI)
+                .client(okHttpClient)
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+    }
+
+    @Singleton
+    @Named("map")
+    @Provides
+    public Retrofit getRetrofitMAP(@Named("non_cached") OkHttpClient okHttpClient) {
+        return new Retrofit.Builder()
+                .baseUrl(APIConfig.domainMap)
                 .client(okHttpClient)
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())

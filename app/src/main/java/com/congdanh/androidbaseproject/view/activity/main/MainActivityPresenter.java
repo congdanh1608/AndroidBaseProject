@@ -5,6 +5,7 @@ import android.view.View;
 
 import com.congdanh.androidbaseproject.view.activity.demo_dagger.DaggerActivity;
 import com.congdanh.androidbaseproject.view.activity.demo_database.DemoActivity;
+import com.congdanh.androidbaseproject.view.activity.demo_map.MapActivity;
 import com.congdanh.androidbaseproject.view.activity.demo_permission.Demo1Activity;
 
 /**
@@ -33,6 +34,9 @@ public class MainActivityPresenter {
                         break;
                     case 2:
                         activity = DaggerActivity.class;
+                        break;
+                    case 3:
+                        activity = MapActivity.class;
                         break;
                 }
                 Intent intent = new Intent(mainActivity, activity);

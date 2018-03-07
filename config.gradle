@@ -27,7 +27,6 @@ ext {
             halcyon_logger    : "1.0.2",
             snacky            : "1.0.2",
             material_dialog   : "0.9.4.3",
-            smart_location    : "3.3.1",
             shape_imageview   : "0.9.3@aar",
             photo_picker      : "0.9.5@aar",
             bottom_sheet      : "1.3.0@aar",
@@ -42,7 +41,8 @@ ext {
             glide             : "4.6.1",
             glide_trans       : "3.1.1",
             recyclerview_swipe: "1.0.4",
-            dexter            : "4.2.0"
+            dexter            : "4.2.0",
+            shape_imageviews  : "0.9.+@aar"
             //            okhttp     : "3.6.0",
     ]
 

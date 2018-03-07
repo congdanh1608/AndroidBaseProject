@@ -7,6 +7,7 @@ import com.congdanh.androidbaseproject.di.module.NetworkModule;
 import com.congdanh.androidbaseproject.di.module.RoomModule;
 import com.congdanh.androidbaseproject.di.module.APIServiceModule;
 import com.congdanh.androidbaseproject.di.module.ShareprefsModule;
+import com.congdanh.androidbaseproject.view.fragment.map.MapFragmentPresenter;
 
 import javax.inject.Singleton;
 
@@ -28,6 +29,7 @@ import dagger.Component;
 public interface AppComponent {
     //inject where you want to inject to get providers.
     void inject(MyApplication myApplication);
+    void inject(MapFragmentPresenter mapFragmentPresenter);
 
     //for subComponent
     RoomComponent plusRoomComponent(RoomModule roomModule);

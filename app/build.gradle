@@ -82,10 +82,10 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
-    //Utils code functions
-//    implementation project(':utilcode')
+//    Utils code functions
+    implementation project(':utilcode')
     //Social login
-    implementation project(':social_login')
+//    implementation project(':social_login')
     //Glide
     implementation project(':custom_glide')
     //Universal image loader
@@ -113,4 +113,13 @@ dependencies {
     implementation rootProject.ext.dependencies["logger"]
     implementation rootProject.ext.dependencies["halcyon_logger"]
     implementation rootProject.ext.dependencies["dexter"]
+    implementation rootProject.ext.dependencies["shape-imageview"]
+
+    //demo map
+    implementation 'com.google.android.gms:play-services-maps:11.8.0'
+//    implementation 'com.google.android.gms:play-services-gcm:11.8.0'
+    implementation 'com.google.android.gms:play-services-location:11.8.0'
+    compile('io.nlopez.smartlocation:library:3.3.3') {             //smart get location
+        transitive = false
+    }
 }

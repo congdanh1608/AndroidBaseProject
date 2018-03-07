@@ -8,6 +8,7 @@
       <module fileurl="file://$PROJECT_DIR$/custom_universal_image_loader/custom_universal_image_loader.iml" filepath="$PROJECT_DIR$/custom_universal_image_loader/custom_universal_image_loader.iml" />
       <module fileurl="file://$PROJECT_DIR$/snacky/snacky.iml" filepath="$PROJECT_DIR$/snacky/snacky.iml" />
       <module fileurl="file://$PROJECT_DIR$/social_login/social_login.iml" filepath="$PROJECT_DIR$/social_login/social_login.iml" />
+      <module fileurl="file://$PROJECT_DIR$/utilcode/utilcode.iml" filepath="$PROJECT_DIR$/utilcode/utilcode.iml" />
     </modules>
   </component>
 </project>

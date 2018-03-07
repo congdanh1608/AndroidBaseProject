@@ -47,8 +47,8 @@ public abstract class BaseFragment extends Fragment {
         if (xml != 0 && binding == null) {
             binding = DataBindingUtil.inflate(inflater, xml, container, false);
             rootView = binding.getRoot();
-            progressLayout = setProgressLayout();
             initUI();
+            progressLayout = setProgressLayout();
         }
         setHasOptionsMenu(true);
         return rootView;
