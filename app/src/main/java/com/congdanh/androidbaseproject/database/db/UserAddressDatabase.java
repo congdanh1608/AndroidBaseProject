@@ -11,7 +11,7 @@ import com.congdanh.androidbaseproject.database.entity.User;
 /**
  * Created by congdanh on 2/25/2018.
  */
-@Database(entities = {User.class, Address.class}, version = 1)
+@Database(entities = {User.class, Address.class}, version = 1, exportSchema = false)
 public abstract class UserAddressDatabase extends RoomDatabase {
     public abstract UserDAO userDAO();
 

@@ -4,7 +4,6 @@ import android.view.View;
 
 import com.congdanh.androidbaseproject.R;
 import com.congdanh.androidbaseproject.databinding.Demo1ActivityBinding;
-import com.congdanh.androidbaseproject.di.component.HasActivitySubcomponentBuilders;
 import com.congdanh.androidbaseproject.view.activity.BaseAppCompatActivity;
 
 /**
@@ -23,11 +22,6 @@ public class Demo1Activity extends BaseAppCompatActivity {
     @Override
     public View setProgressLayout() {
         return null;
-    }
-
-    @Override
-    protected void injectMembers(HasActivitySubcomponentBuilders hasActivitySubcomponentBuilders) {
-
     }
 
     @Override

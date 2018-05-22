@@ -9,7 +9,7 @@
 
         <!--module glide option-->
         <meta-data
-            android:name="vn.danhtran.customglide.GlideImageLoader"
+            android:name="vn.danhtran.customglide.GlideHelper"
             android:value="GlideModule" />
     </application>
 

@@ -1,6 +1,7 @@
 package com.congdanh.androidbaseproject.enums;
 
-import com.congdanh.androidbaseproject.utils.EnumUtils;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by danhtran on 09/03/2017.
@@ -8,9 +9,10 @@ import com.congdanh.androidbaseproject.utils.EnumUtils;
 public enum RequestCode {
     DEFAULT(0),
 
-    RC_GG_SIGN_IN(9989);
+    MENU_TOP(9989);
 
     private int value;
+    private static Map map = new HashMap<>();
 
     private RequestCode(int value) {
         this.value = value;
@@ -20,7 +22,13 @@ public enum RequestCode {
         return value;
     }
 
-    public static RequestCode fromValue(int value) {
-        return EnumUtils.valueOf(RequestCode.class, value);
+    static {
+        for (RequestCode requestCode : RequestCode.values()) {
+            map.put(requestCode.value, requestCode);
+        }
+    }
+
+    public static RequestCode valueOf(int code) {
+        return (RequestCode) map.get(code);
     }
 }

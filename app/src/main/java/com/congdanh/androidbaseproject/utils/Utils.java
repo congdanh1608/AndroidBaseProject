@@ -66,4 +66,11 @@ public class Utils {
 
         activity.startActivity(Intent.createChooser(intent, activity.getString(R.string.send_email)));
     }*/
+
+    public static void exitApp(Activity activity) {
+        Intent intent = new Intent(Intent.ACTION_MAIN);
+        intent.addCategory(Intent.CATEGORY_HOME);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        activity.startActivity(intent);
+    }
 }

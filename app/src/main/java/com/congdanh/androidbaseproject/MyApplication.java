@@ -1,34 +1,21 @@
 package com.congdanh.androidbaseproject;
 
-import android.app.Activity;
-import android.content.Context;
-import android.content.pm.ApplicationInfo;
 import android.os.Build;
+import android.support.annotation.Nullable;
 import android.support.multidex.MultiDexApplication;
 
-import com.congdanh.androidbaseproject.di.component.ActivityComponentBuilder;
 import com.congdanh.androidbaseproject.di.component.AppComponent;
 import com.congdanh.androidbaseproject.di.component.DaggerAppComponent;
-import com.congdanh.androidbaseproject.di.component.HasActivitySubcomponentBuilders;
 import com.congdanh.androidbaseproject.di.module.AppModule;
-import com.orhanobut.logger.LogLevel;
+import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.Logger;
 
-import java.util.Map;
-
-import javax.inject.Inject;
-import javax.inject.Provider;
-
-import vn.danhtran.customuniversalimageloader.FactoryImageLoader;
 
 /**
  * Created by congdanh on 2/25/2018.
  */
 
-public class MyApplication extends MultiDexApplication implements HasActivitySubcomponentBuilders {
-    @Inject
-    Map<Class<? extends Activity>, Provider<ActivityComponentBuilder>> activityComponentBuilders;
-
+public class MyApplication extends MultiDexApplication {
     private static MyApplication myApplication;
     private AppComponent appComponent;
     private String token;
@@ -46,10 +33,6 @@ public class MyApplication extends MultiDexApplication implements HasActivitySub
 //    public static MyApplication get(Context context) {
 //        return (MyApplication) context.getApplicationContext();
 //    }
-
-    public static HasActivitySubcomponentBuilders get(Context context) {
-        return ((HasActivitySubcomponentBuilders) context.getApplicationContext());
-    }
 
     public AppComponent getAppComponent() {
         return appComponent;
@@ -80,7 +63,6 @@ public class MyApplication extends MultiDexApplication implements HasActivitySub
 
     private void initSDK() {
 //        initFacebook();
-        initFactoryImage();
 //        initFont();
 //        initFabric();
         initLogger();
@@ -90,10 +72,6 @@ public class MyApplication extends MultiDexApplication implements HasActivitySub
         FacebookSdk.sdkInitialize(getApplicationContext());
         AppEventsLogger.activateApp(this);
     }*/
-
-    private void initFactoryImage() {
-        FactoryImageLoader.getInstance().initImageLoaderNoBackgroundUniversal(this);
-    }
 
     //init fonts for app
     /*private void initFont() {
@@ -109,10 +87,12 @@ public class MyApplication extends MultiDexApplication implements HasActivitySub
     }*/
 
     private void initLogger() {
-        if ((0 != (getApplicationInfo().flags &= ApplicationInfo.FLAG_DEBUGGABLE)))
-            Logger.init(); // for debug, print all log
-        else
-            Logger.init().logLevel(LogLevel.NONE); // for release, remove all log
+        Logger.addLogAdapter(new AndroidLogAdapter() {
+            @Override
+            public boolean isLoggable(int priority, @Nullable String tag) {
+                return BuildConfig.DEBUG;
+            }
+        });
     }
 
     private void initData() {
@@ -135,10 +115,5 @@ public class MyApplication extends MultiDexApplication implements HasActivitySub
         //secret key
         if (BuildConfig.DEBUG)
             generalSecretKey();*/
-    }
-
-    @Override
-    public ActivityComponentBuilder getActivityComponentBuilder(Class<? extends Activity> activityClass) {
-        return activityComponentBuilders.get(activityClass).get();
     }
 }
