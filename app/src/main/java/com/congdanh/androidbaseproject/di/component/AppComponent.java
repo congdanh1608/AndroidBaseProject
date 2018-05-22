@@ -1,11 +1,10 @@
 package com.congdanh.androidbaseproject.di.component;
 
 import com.congdanh.androidbaseproject.MyApplication;
-import com.congdanh.androidbaseproject.di.module.ActivityBindingModule;
+import com.congdanh.androidbaseproject.di.module.APIServiceModule;
 import com.congdanh.androidbaseproject.di.module.AppModule;
 import com.congdanh.androidbaseproject.di.module.NetworkModule;
 import com.congdanh.androidbaseproject.di.module.RoomModule;
-import com.congdanh.androidbaseproject.di.module.APIServiceModule;
 import com.congdanh.androidbaseproject.di.module.ShareprefsModule;
 
 import javax.inject.Singleton;
@@ -22,7 +21,6 @@ import dagger.Component;
                 NetworkModule.class,
                 APIServiceModule.class,
                 ShareprefsModule.class,
-                ActivityBindingModule.class
         }
 )
 public interface AppComponent {

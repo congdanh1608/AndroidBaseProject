@@ -138,5 +138,5 @@ dependencies {
     implementation "com.karumi:dexter:4.2.0"
 
     //Snackbar
-    compile 'com.github.matecode:Snacky:1.0.3'
+    implementation 'com.github.matecode:Snacky:1.0.3'
 }

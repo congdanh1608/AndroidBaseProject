@@ -15,9 +15,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 
-import com.congdanh.androidbaseproject.MyApplication;
 import com.congdanh.androidbaseproject.R;
-import com.congdanh.androidbaseproject.di.component.HasActivitySubcomponentBuilders;
 import com.congdanh.androidbaseproject.view.activity.main.MainActivity;
 
 /**
@@ -48,16 +46,9 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity implements
         return mFragmentManager;
     }
 
-    protected void setupActivityComponent() {
-        injectMembers(MyApplication.get(this));
-    }
-
-    protected abstract void injectMembers(HasActivitySubcomponentBuilders hasActivitySubcomponentBuilders);
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setupActivityComponent();
         //binding layout
         int xml = setLayout();
         if (xml != 0 && binding == null) {
