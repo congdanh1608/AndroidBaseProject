@@ -44,13 +44,13 @@ public abstract class BaseFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         int xml = setLayout();
-        if (xml != 0 && binding == null) {
+        if (xml != 0) {
             binding = DataBindingUtil.inflate(inflater, xml, container, false);
             rootView = binding.getRoot();
             progressLayout = setProgressLayout();
             initUI();
+            setHasOptionsMenu(true);
         }
-        setHasOptionsMenu(true);
         return rootView;
     }
 

@@ -4,9 +4,11 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.Menu;
@@ -14,9 +16,13 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Toast;
 
 import com.congdanh.androidbaseproject.R;
+import com.congdanh.androidbaseproject.utils.Utils;
 import com.congdanh.androidbaseproject.view.activity.main.MainActivity;
+import com.congdanh.androidbaseproject.view.fragment.BaseFragment;
+import com.orhanobut.logger.Logger;
 
 /**
  * Created by congdanh on 2/26/2018.
@@ -26,6 +32,7 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity implements
     private View progressLayout;
     protected ViewDataBinding binding;
     protected FragmentManager mFragmentManager;
+    private int backButtonCount = 0;
 
     public abstract int setLayout();
 
@@ -123,14 +130,71 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity implements
 
     }
 
+    //register receiver in here
+    private void registerReceiver() {
+
+    }
+
     private void initFragmentManager() {
         mFragmentManager = getSupportFragmentManager();
         mFragmentManager.addOnBackStackChangedListener(this);
     }
 
-    //register receiver in here
-    private void registerReceiver() {
+    private void exitApp() {
+        //check exit app
+        if (backButtonCount >= 1) {
+            Utils.exitApp(this);
+        } else {
+            Toast.makeText(this, R.string.message_close_app, Toast.LENGTH_SHORT).show();
+            backButtonCount++;
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    backButtonCount = 0;
+                }
+            }, 3 * 1000);
+        }
+    }
 
+    public void setFragment(String tag, Object data) {
+        setFragment(tag, data, true);
+    }
+
+    public void setFragment(String tag, Object data, boolean isAddBackstack) {
+        Boolean fragmentPopped = mFragmentManager.popBackStackImmediate(tag, 0);
+        if (!fragmentPopped) {
+            BaseFragment fragment = getFragment(tag, data);
+            if (fragment != null) {
+                FragmentTransaction transaction = mFragmentManager.beginTransaction();
+                transaction.replace(R.id.content_fragment, fragment, tag);
+                if (isAddBackstack)
+                    transaction.addToBackStack(tag);
+                transaction.commit();
+            } else Logger.e("Forgot add fragment into base activity!");
+        }
+    }
+
+    private BaseFragment getFragment(String tag, Object data) {
+        /*if (LocationsFragment.class.getName().equals(tag)) {
+            return LocationsFragment.instance();
+        }*/
+        return null;
+    }
+
+    public void startActivity(String tag, Bundle bundle) {
+        Intent intent = null;
+        if (!TextUtils.isEmpty(tag)) {
+            if (tag.equals(MainActivity.class.getName())) {
+                intent = MainActivity.instance(this);
+            }
+        }
+
+        if (intent != null) {
+            if (bundle != null) {
+                intent.putExtras(bundle);
+            }
+            startActivity(intent);
+        }
     }
 
     //show progress layout
