@@ -10,8 +10,6 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/custom_glide" />
-            <option value="$PROJECT_DIR$/custom_universal_image_loader" />
-            <option value="$PROJECT_DIR$/snacky" />
             <option value="$PROJECT_DIR$/social_login" />
           </set>
         </option>
