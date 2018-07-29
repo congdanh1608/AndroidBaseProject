@@ -1,7 +1,7 @@
 # AndroidBaseProject
 Android Base Project
 
-Base project was built implements the Dagger2 and Data Binding with MVP pattern.
+Base project was built implements the Dagger2 and Data Binding with MVP pattern (custom between MVP and MVVM).
 It has several managers classes that encapsulate features that are usually used in a common project, most using inversion control to decouple the implementation.
 
 This project has the most common setttings applied. The main idea is to start any new Android project by cloning this one.
@@ -34,8 +34,8 @@ Database library provides an abstraction layer over SQLite to allow fluent datab
 - [Glide](https://github.com/bumptech/glide)
 Fast and efficient open source media management and image loading framework.
 
-- [Universal Image Loader](https://github.com/nostra13/Android-Universal-Image-Loader)
-UIL aims to provide a powerful, flexible and highly customizable instrument for image loading, caching and displaying.
+- [Social login](https://github.com/congdanh1608/AndroidBaseProject/tree/master/social_login)
+Authentication with google and facebook faster and easier.
 
 ### Package Structure
 ```
@@ -78,8 +78,6 @@ androidbaseproject/app/src/main/java/com/congdanh/androidbaseproject/
     │    │   ...
     └─── baserecyclerview
     │    │   ...
-    └─── binding
-    │    │   ...
     └─── customadapter
     │    │   ...
     └─── customview
@@ -97,7 +95,7 @@ If you are going to develop a big application, I recommend to create one package
 
 There is a branch with the following architectures:
 
-- MVP + Dagger2 + Data binding
+- MVP + Data binding
 
 - Room + Dagger2 + RxJava/RxAndroid
 
