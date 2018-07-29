@@ -5,6 +5,7 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:name=".MyApplication"
@@ -24,7 +25,6 @@
 
         <activity android:name=".view.activity.demo_database.DemoActivity" />
         <activity android:name=".view.activity.demo_permission.Demo1Activity" />
-        <activity android:name=".view.activity.demo_dagger.DaggerActivity" />
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
