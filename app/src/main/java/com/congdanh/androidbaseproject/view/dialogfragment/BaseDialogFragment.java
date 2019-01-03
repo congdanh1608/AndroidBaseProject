@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.RelativeLayout;
 
 /**
  * Created by congdanh on 5/29/15.
@@ -48,6 +49,9 @@ public abstract class BaseDialogFragment extends DialogFragment {
 
         switch (setTypeScreen()) {
             case MATCH_PARENT:
+                final RelativeLayout root = new RelativeLayout(getActivity());
+                root.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+                dialog.getWindow().setContentView(root);
                 dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
                 break;
             case WRAP_CONTENT:

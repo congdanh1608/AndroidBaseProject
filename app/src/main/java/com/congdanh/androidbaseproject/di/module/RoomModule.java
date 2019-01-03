@@ -41,7 +41,6 @@ public class RoomModule {
         return userDatabase.addressDAO();
     }
 
-
     @RoomScope
     @Provides
     public UserAddressDatabase getUserDatabase(Context context) {

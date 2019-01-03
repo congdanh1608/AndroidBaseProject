@@ -18,6 +18,7 @@ import java.util.List;
 public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<BindingViewHolder> {
     protected final int VISIBLE_THRESHOLD = 1;
     protected final int VIEW_PROG = 0;
+    protected final int VIEW_ITEM = 1;
     protected boolean isMoreLoading = false;
     protected List<T> items;
     protected BaseRecyclerListener listener;
@@ -85,5 +86,14 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<Bindin
             super(v);
             itemProcessBarBinding = DataBindingUtil.bind(v.getRootView());
         }
+    }
+
+
+    @Override
+    public int getItemViewType(int position) {
+        if (items.get(position) == null) {
+            return VIEW_PROG;
+        } else
+            return VIEW_ITEM;
     }
 }

@@ -78,6 +78,6 @@ public class ScreenUtils {
 
     public static int getHeightScreenInDP() {
         getScreenSize();
-        return SizeUtils.pxToDp(DEVICE_WIDTH);
+        return SizeUtils.pxToDp(DEVICE_HEIGHT);
     }
 }

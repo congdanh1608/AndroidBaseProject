@@ -61,13 +61,15 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity implements
         if (xml != 0 && binding == null) {
             binding = DataBindingUtil.setContentView(this, xml);
         }
-        //set progress layout
-        progressLayout = setProgressLayout();
         //init
         initFragmentManager();
         initUI();
-        initListener();
+
+        //set progress layout
+        progressLayout = setProgressLayout();
+
         initData();
+        initListener();
     }
 
     @Override
