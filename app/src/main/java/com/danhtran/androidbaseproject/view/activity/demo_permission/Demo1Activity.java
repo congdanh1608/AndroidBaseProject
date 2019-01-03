@@ -1,7 +1,5 @@
 package com.danhtran.androidbaseproject.view.activity.demo_permission;
 
-import android.view.View;
-
 import com.danhtran.androidbaseproject.R;
 import com.danhtran.androidbaseproject.databinding.Demo1ActivityBinding;
 import com.danhtran.androidbaseproject.view.activity.BaseAppCompatActivity;
@@ -17,11 +15,6 @@ public class Demo1Activity extends BaseAppCompatActivity {
     @Override
     public int setLayout() {
         return R.layout.demo_1_activity;
-    }
-
-    @Override
-    public View setProgressLayout() {
-        return null;
     }
 
     @Override

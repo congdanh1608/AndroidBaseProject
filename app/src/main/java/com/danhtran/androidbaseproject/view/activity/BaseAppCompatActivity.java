@@ -1,9 +1,12 @@
 package com.danhtran.androidbaseproject.view.activity;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -13,18 +16,25 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.danhtran.androidbaseproject.R;
 import com.danhtran.androidbaseproject.utils.Utils;
+import com.danhtran.androidbaseproject.utils.ViewUtils;
 import com.danhtran.androidbaseproject.view.activity.main.MainActivity;
 import com.danhtran.androidbaseproject.view.fragment.BaseFragment;
 import com.orhanobut.logger.Logger;
+
+import java.util.Collection;
+import java.util.LinkedHashSet;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
@@ -33,10 +43,18 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
  */
 
 public abstract class BaseAppCompatActivity extends AppCompatActivity implements FragmentManager.OnBackStackChangedListener {
+
     private View progressLayout;
     protected ViewDataBinding binding;
     protected FragmentManager mFragmentManager;
     private int backButtonCount = 0;
+
+    private Dialog progressDialog;
+    protected Collection<Dialog> setOfDialogs = new LinkedHashSet<>();
+
+    public void addDialog(Dialog dialog) {
+        setOfDialogs.add(dialog);
+    }
 
     /**
      * set layout for this activity
@@ -44,13 +62,6 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity implements
      * @return init
      */
     public abstract int setLayout();
-
-    /**
-     * set progress layout for this activity
-     *
-     * @return view
-     */
-    public abstract View setProgressLayout();
 
     /**
      * Set handler + execute view binding
@@ -95,12 +106,15 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity implements
             binding = DataBindingUtil.setContentView(this, xml);
         }
 
+        //init progress dialog
+        createProgressDialog();
+
         //init
         initFragmentManager();
         initUI();
 
-        //set progress layout
-        progressLayout = setProgressLayout();
+        //hide keyboard
+        ViewUtils.addKeyboardEvents(this, binding.getRoot(), binding.getRoot());
 
         //check and load intent params
         if (getIntent() != null && getIntent().getExtras() != null) {
@@ -113,7 +127,6 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity implements
 
     @Override
     protected void attachBaseContext(Context newBase) {
-        super.attachBaseContext(newBase);
         //attach base context for calligraphy font
         super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
@@ -135,6 +148,17 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity implements
     protected void onPause() {
         super.onPause();
         unRegisterReceiver();
+    }
+
+    @Override
+    protected void onDestroy() {
+        ViewUtils.removeKeyboardEvents(binding.getRoot());
+
+        for (Dialog dialog : setOfDialogs) {
+            dialog.dismiss();
+        }
+
+        super.onDestroy();
     }
 
     @Override
@@ -166,7 +190,9 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity implements
 
     }
 
-    //load passed params
+    /**
+     * load passed params
+     */
     protected void loadPassedParamsIfNeeded(@NonNull Bundle extras) {
 
     }
@@ -339,20 +365,42 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity implements
         overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);
     }
 
+    //region Show Background Progress
+    private void createProgressDialog() {
+        progressDialog = new Dialog(this);
+        LayoutInflater inflater = this.getLayoutInflater();
+        View dialogView = inflater.inflate(R.layout.process_dialog, null);
+        //show view
+        View view = dialogView.findViewById(R.id.progressBar);
+        view.setVisibility(View.VISIBLE);
+
+        progressDialog.setContentView(dialogView);
+        progressDialog.setCancelable(false);
+
+        Window dialogWindow = progressDialog.getWindow();
+        if (dialogWindow != null) {
+            dialogWindow.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+            dialogWindow.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            dialogWindow.clearFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
+        }
+
+        addDialog(progressDialog);
+    }
+
     /**
      * Show progress layout
      */
     public void showProgress() {
-        if (progressLayout != null)
-            progressLayout.setVisibility(View.VISIBLE);
+        if (progressDialog != null)
+            progressDialog.show();
     }
 
     /**
      * Hide progress layout
      */
     public void hideProgress() {
-        if (progressLayout != null)
-            progressLayout.setVisibility(View.GONE);
+        if (progressDialog != null)
+            progressDialog.hide();
     }
 
     /**

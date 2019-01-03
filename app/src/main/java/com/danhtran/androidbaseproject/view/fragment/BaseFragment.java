@@ -16,6 +16,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.danhtran.androidbaseproject.utils.ViewUtils;
 import com.danhtran.androidbaseproject.view.activity.BaseAppCompatActivity;
 
 /**
@@ -23,10 +24,7 @@ import com.danhtran.androidbaseproject.view.activity.BaseAppCompatActivity;
  */
 public abstract class BaseFragment extends Fragment {
 
-    protected View rootView;
     protected ViewDataBinding binding;
-
-    private View progressLayout;
 
     /**
      * set layout for this activity
@@ -34,13 +32,6 @@ public abstract class BaseFragment extends Fragment {
      * @return init
      */
     public abstract int setLayout();
-
-    /**
-     * set progress layout for this activity
-     *
-     * @return view
-     */
-    public abstract View setProgressLayout();
 
     /**
      * Set handler + execute view binding
@@ -57,6 +48,9 @@ public abstract class BaseFragment extends Fragment {
      */
     public abstract void initListener();
 
+    /**
+     * change local config
+     */
     public abstract void onConfigurationChanged();
 
     @Override
@@ -64,20 +58,35 @@ public abstract class BaseFragment extends Fragment {
         int xml = setLayout();
         if (xml != 0) {
             binding = DataBindingUtil.inflate(inflater, xml, container, false);
-            rootView = binding.getRoot();
+
             initUI();
-            progressLayout = setProgressLayout();
+
+            //hide keyboard after click outside of edit text
+            getRootView().setClickable(true);
+            getRootView().setFocusableInTouchMode(true);
+            ViewUtils.addKeyboardEvents(getActivity(), binding.getRoot(), binding.getRoot());
+
+            //enable options menu
             setHasOptionsMenu(true);
+
+            if (getArguments() != null) {
+                loadPassedParamsIfNeeded(getArguments());
+            }
         }
-        return rootView;
+        return binding.getRoot();
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
         initListener();
         initData();
+    }
+
+    @Override
+    public void onDestroy() {
+        ViewUtils.removeKeyboardEvents(getRootView());
+        super.onDestroy();
     }
 
     @Override
@@ -105,36 +114,70 @@ public abstract class BaseFragment extends Fragment {
         super.onActivityResult(requestCode, resultCode, data);
     }
 
+    /**
+     * load passed params
+     */
+    protected void loadPassedParamsIfNeeded(@NonNull Bundle extras) {
 
+    }
+
+    /**
+     * Show progress layout
+     */
     public void showProgress() {
-        if (progressLayout != null)
-            progressLayout.setVisibility(View.VISIBLE);
+        if (getBaseActivity() != null) {
+            getBaseActivity().hideProgress();
+        }
     }
 
+    /**
+     * Hide progress layout
+     */
     public void hideProgress() {
-        if (progressLayout != null)
-            progressLayout.setVisibility(View.GONE);
+        if (getBaseActivity() != null) {
+            getBaseActivity().hideProgress();
+        }
     }
 
-    public void onBackPressed(int timeDelay) {
-        if (timeDelay < 0) timeDelay = 0;
+    /**
+     * Back pressed with delay time
+     *
+     * @param delayTime delay time
+     */
+    public void onBackPressed(int delayTime) {
+        if (delayTime < 0) delayTime = 0;
         final Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
                 onBackPressed();
             }
-        }, timeDelay);
+        }, delayTime);
     }
 
+    /**
+     * Back pressed
+     */
     public void onBackPressed() {
-        getActivity().onBackPressed();
+        if (getActivity() != null) {
+            getActivity().onBackPressed();
+        }
     }
 
+    /**
+     * Get root view
+     *
+     * @return root view
+     */
     public View getRootView() {
-        return rootView;
+        return binding.getRoot();
     }
 
+    /**
+     * Get base activity if it is exits.
+     *
+     * @return BaseAppCompatActivity
+     */
     public BaseAppCompatActivity getBaseActivity() {
         if (getActivity() instanceof BaseAppCompatActivity)
             return (BaseAppCompatActivity) getActivity();
