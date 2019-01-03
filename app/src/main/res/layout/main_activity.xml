@@ -6,7 +6,7 @@
 
         <variable
             name="presenter"
-            type="com.congdanh.androidbaseproject.view.activity.main.MainActivityPresenter" />
+            type="com.danhtran.androidbaseproject.view.activity.main.MainActivityPresenter" />
     </data>
 
     <RelativeLayout

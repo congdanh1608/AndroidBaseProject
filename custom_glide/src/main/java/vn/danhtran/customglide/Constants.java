@@ -1,7 +1,7 @@
 package vn.danhtran.customglide;
 
 /**
- * Created by congdanh on 28/12/2016.
+ * Created by SilverWolf on 28/12/2016.
  */
 public class Constants {
     private static final int MAX_HEAP_SIZE = (int) Runtime.getRuntime().maxMemory();

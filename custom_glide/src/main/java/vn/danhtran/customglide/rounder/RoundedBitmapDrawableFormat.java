@@ -9,7 +9,7 @@ import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 
 /**
- * Created by congdanh on 21/06/2017.
+ * Created by SilverWolf on 21/06/2017.
  */
 
 public class RoundedBitmapDrawableFormat {

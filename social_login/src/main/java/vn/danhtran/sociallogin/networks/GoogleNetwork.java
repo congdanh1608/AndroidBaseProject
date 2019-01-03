@@ -27,7 +27,7 @@ import vn.danhtran.sociallogin.MyAccessToken;
 import vn.danhtran.sociallogin.listener.SocialLoginListener;
 
 /**
- * Created by congdanh on 04/04/2017.
+ * Created by SilverWolf on 04/04/2017.
  */
 public class GoogleNetwork extends SocialNetwork implements GoogleApiClient.OnConnectionFailedListener, GoogleApiClient.ConnectionCallbacks {
 

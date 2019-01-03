@@ -18,7 +18,7 @@ import com.bumptech.glide.load.resource.bitmap.BitmapResource;
 import java.security.MessageDigest;
 
 /**
- * Created by congdanh on 17/02/2017.
+ * Created by SilverWolf on 17/02/2017.
  */
 public class RoundedCornersTransformation implements Transformation<Bitmap> {
     public enum CornerType {

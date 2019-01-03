@@ -8,7 +8,7 @@ import android.support.v8.renderscript.RenderScript;
 import android.support.v8.renderscript.ScriptIntrinsicBlur;
 
 /**
- * Created by danh.tran on 21/07/17.
+ * Created by SilverWolf on 21/07/17.
  */
 
 public class BlurBuilder {
