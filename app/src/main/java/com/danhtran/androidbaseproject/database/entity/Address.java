@@ -2,14 +2,17 @@ package com.danhtran.androidbaseproject.database.entity;
 
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.ForeignKey;
+import android.arch.persistence.room.Index;
 import android.arch.persistence.room.PrimaryKey;
+
+import org.jetbrains.annotations.NotNull;
 
 import static android.arch.persistence.room.ForeignKey.CASCADE;
 
 /**
  * Created by SilverWolf on 2/26/2018.
  */
-@Entity(foreignKeys = @ForeignKey(entity = User.class, parentColumns = "id", childColumns = "userId", onDelete = CASCADE))
+@Entity(foreignKeys = @ForeignKey(entity = User.class, parentColumns = "id", childColumns = "userId", onDelete = CASCADE, onUpdate = CASCADE))
 public class Address {
     @PrimaryKey(autoGenerate = true)
     private int id;

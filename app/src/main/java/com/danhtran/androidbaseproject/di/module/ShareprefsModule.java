@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
-import com.danhtran.androidbaseproject.sharepreferences.SharedPrefsHelper;
+import com.danhtran.androidbaseproject.database.sharepreferences.SharedPrefsHelper;
 
 import javax.inject.Singleton;
 

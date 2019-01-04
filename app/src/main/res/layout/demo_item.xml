@@ -5,7 +5,7 @@
 
         <variable
             name="handler"
-            type="com.danhtran.androidbaseproject.view.activity.demo_database.items.DemoItemVH">
+            type="com.danhtran.androidbaseproject.ui.activity.demo_database.items.DemoItemVH">
 
         </variable>
     </data>

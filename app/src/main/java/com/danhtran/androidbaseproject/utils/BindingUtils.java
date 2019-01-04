@@ -1,7 +1,6 @@
 
 package com.danhtran.androidbaseproject.utils;
 
-import android.app.Activity;
 import android.content.Context;
 import android.databinding.BindingAdapter;
 import android.support.v7.widget.GridLayoutManager;
@@ -9,15 +8,14 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.AbsListView;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
-import com.danhtran.androidbaseproject.view.customview.DividerItemDecoration;
-import com.danhtran.androidbaseproject.view.customview.SpacesItemDecoration;
+import com.danhtran.androidbaseproject.ui.customview.DividerItemDecoration;
+import com.danhtran.androidbaseproject.ui.customview.SpacesItemDecoration;
 
 import vn.danhtran.customglide.GlideHelper;
 
@@ -178,18 +176,14 @@ public class BindingUtils {
 
     @BindingAdapter("hideKeyboadLostFocus")
     public static void closeKeyboard(EditText editText, boolean id) {
+        final Context context = editText.getContext();
         editText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 if (!hasFocus) {
-                    hideKeyboard(v);
+                    ViewUtils.hideSoftKeyboard(context, v);
                 }
             }
         });
-    }
-
-    static private void hideKeyboard(View view) {
-        InputMethodManager inputMethodManager = (InputMethodManager) view.getContext().getSystemService(Activity.INPUT_METHOD_SERVICE);
-        inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 }

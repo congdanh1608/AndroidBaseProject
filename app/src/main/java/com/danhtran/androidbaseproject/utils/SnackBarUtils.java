@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.view.View;
 
-import com.danhtran.androidbaseproject.enums.SnackbarType;
+import com.danhtran.androidbaseproject.extras.enums.SnackBarType;
 
 import de.mateware.snacky.Snacky;
 
@@ -14,98 +14,129 @@ import de.mateware.snacky.Snacky;
  */
 
 public class SnackBarUtils {
-    public static void showSnackBar(View view, int text, int textColor, boolean isCenterText, SnackbarType snackbarType) {
-        showSnackBar(view, view.getContext().getString(text), textColor, isCenterText, snackbarType);
-    }
-
-    //use view
-    public static void showSnackBar(View view, String text, int textColor, boolean isCenterText, SnackbarType snackbarType) {
-        Snacky.Builder builder = Snacky.builder();
-        builder.setView(view)
-                .setText(text)
-                .setTextColor(DeprecatedUtils.getResourceColor(textColor))
-                .setDuration(Snacky.LENGTH_SHORT);
-        if (isCenterText) builder.centerText();
-        setTypeTemplate(builder, snackbarType);
-        builder.build().show();
-    }
-
-    public static void showSnackBar(Activity activity, int text, int textColor, boolean isCenterText, SnackbarType snackbarType) {
-        showSnackBar(activity, activity.getString(text), textColor, isCenterText, snackbarType);
-    }
-
-    //use activity
-    public static void showSnackBar(Activity activity, String text, int textColor, boolean isCenterText, SnackbarType snackbarType) {
-        Snacky.Builder builder = Snacky.builder();
-        builder.setActivity(activity)
-                .setText(text)
-                .setTextColor(DeprecatedUtils.getResourceColor(textColor))
-                .setDuration(Snacky.LENGTH_SHORT);
-        if (isCenterText) builder.centerText();
-        setTypeTemplate(builder, snackbarType);
-        builder.build().show();
-    }
-
-    public static void showSnackBarWithAction(View view, int text, int textColor, int actionText, int actionColor,
-                                              View.OnClickListener onClickListener, SnackbarType snackbarType) {
+    /**
+     * Show Snack Bar
+     *
+     * @param view         view
+     * @param text         int message
+     * @param textColor    int message color
+     * @param isCenterText is center message text
+     * @param snackBarType type of snack bar
+     */
+    public static void showSnackBar(View view, int text, int textColor, boolean isCenterText, SnackBarType snackBarType) {
         Context context = view.getContext();
-        showSnackBarWithAction(view, context.getString(text), textColor, context.getString(actionColor),
-                actionColor, onClickListener, snackbarType);
-    }
-
-    //add action text
-    public static void showSnackBarWithAction(View view, String text, int textColor, String actionText, int actionColor,
-                                              View.OnClickListener onClickListener, SnackbarType snackbarType) {
         Snacky.Builder builder = Snacky.builder();
         builder.setView(view)
-                .setText(text)
+                .setText(context.getString(text))
+                .setTextColor(DeprecatedUtils.getResourceColor(textColor))
+                .setDuration(Snacky.LENGTH_SHORT);
+        if (isCenterText) builder.centerText();
+        setTypeTemplate(builder, snackBarType);
+        builder.build().show();
+    }
+
+    /**
+     * Show Snack Bar
+     *
+     * @param activity     activity
+     * @param text         int message
+     * @param textColor    int message color
+     * @param isCenterText is center message text
+     * @param snackBarType type of snack bar
+     */
+    public static void showSnackBar(Activity activity, int text, int textColor, boolean isCenterText, SnackBarType snackBarType) {
+        Context context = activity.getBaseContext();
+        Snacky.Builder builder = Snacky.builder();
+        builder.setActivity(activity)
+                .setText(context.getString(text))
+                .setTextColor(DeprecatedUtils.getResourceColor(textColor))
+                .setDuration(Snacky.LENGTH_SHORT);
+        if (isCenterText) builder.centerText();
+        setTypeTemplate(builder, snackBarType);
+        builder.build().show();
+    }
+
+    /**
+     * Show Snack bar with action
+     *
+     * @param view            view
+     * @param text            int message
+     * @param textColor       int message color
+     * @param actionText      int action message
+     * @param actionColor     int action color
+     * @param onClickListener listener for action click event
+     * @param snackBarType    snack type
+     */
+    public static void showSnackBarWithAction(View view, int text, int textColor, int actionText, int actionColor,
+                                              View.OnClickListener onClickListener, SnackBarType snackBarType) {
+        Context context = view.getContext();
+        Snacky.Builder builder = Snacky.builder();
+        builder.setView(view)
+                .setText(context.getString(text))
                 .setTextColor(DeprecatedUtils.getResourceColor(textColor))
                 .setActionText(actionText)
                 .setActionTextColor(actionColor)
                 .setActionClickListener(onClickListener)
                 .setDuration(Snacky.LENGTH_SHORT);
-        setTypeTemplate(builder, snackbarType);
+        setTypeTemplate(builder, snackBarType);
         builder.build().show();
     }
 
+    /**
+     * Show Snack bar with action
+     *
+     * @param activity        activity
+     * @param text            int message
+     * @param textColor       int message color
+     * @param actionText      int action message
+     * @param actionColor     int action color
+     * @param onClickListener listener for action click event
+     * @param snackBarType    snack type
+     */
     public static void showSnackBarWithAction(Activity activity, int text, int textColor, int actionText, int actionColor,
-                                              View.OnClickListener onClickListener, SnackbarType snackbarType) {
-        showSnackBarWithAction(activity, activity.getString(text), textColor, activity.getString(actionText),
-                actionColor, onClickListener, snackbarType);
-    }
-
-    public static void showSnackBarWithAction(Activity activity, String text, int textColor, String actionText, int actionColor,
-                                              View.OnClickListener onClickListener, SnackbarType snackbarType) {
+                                              View.OnClickListener onClickListener, SnackBarType snackBarType) {
+        Context context = activity.getBaseContext();
         Snacky.Builder builder = Snacky.builder();
         builder.setActivity(activity)
-                .setText(text)
+                .setText(context.getString(text))
                 .setTextColor(DeprecatedUtils.getResourceColor(textColor))
-                .setActionText(actionText)
+                .setActionText(context.getString(actionText))
                 .setActionTextColor(actionColor)
                 .setActionClickListener(onClickListener)
                 .setDuration(Snacky.LENGTH_SHORT);
-        setTypeTemplate(builder, snackbarType);
+        setTypeTemplate(builder, snackBarType);
         builder.build().show();
     }
 
-    public static void showSnackBarWithActionIndenfinite(Activity activity, int text, int textColor, int actionText, int actionColor,
-                                                         View.OnClickListener onClickListener, SnackbarType snackbarType) {
+    /**
+     * Show indenfinite snack bar with action
+     *
+     * @param activity        activity
+     * @param text            int message
+     * @param textColor       int message color
+     * @param actionText      int action message
+     * @param actionColor     int action color
+     * @param onClickListener listener for action click event
+     * @param snackBarType    snack bar type
+     */
+    public static void showIndenfiniteSnackBarWithAction(Activity activity, int text, int textColor, int actionText, int actionColor,
+                                                         View.OnClickListener onClickListener, SnackBarType snackBarType) {
+        Context context = activity.getBaseContext();
         Snacky.Builder builder = Snacky.builder();
         builder.setActivity(activity)
-                .setText(text)
+                .setText(context.getString(text))
                 .setTextColor(DeprecatedUtils.getResourceColor(textColor))
-                .setActionText(actionText)
+                .setActionText(context.getString(actionText))
                 .setActionTextColor(actionColor)
                 .setActionClickListener(onClickListener)
                 .setDuration(Snacky.LENGTH_INDEFINITE);
-        setTypeTemplate(builder, snackbarType);
+        setTypeTemplate(builder, snackBarType);
         builder.build().show();
     }
 
-
     //set template for snackbar
-    private static void setTypeTemplate(Snacky.Builder builder, SnackbarType snackbarType) {
-        switch (snackbarType) {
+    private static void setTypeTemplate(Snacky.Builder builder, SnackBarType snackBarType) {
+        switch (snackBarType) {
             case ERROR:
                 builder.error();
                 break;

@@ -4,7 +4,7 @@ buildscript {
 
     //base version
     ext.compileSdkVersion = 28
-    ext.applicationId = "com.danhtran.travelhiit"
+    ext.applicationId = "com.danhtran.androidbaseproject"
     ext.minSdkVersion = 19
     ext.targetSdkVersion = 28
     ext.versionCode = 1

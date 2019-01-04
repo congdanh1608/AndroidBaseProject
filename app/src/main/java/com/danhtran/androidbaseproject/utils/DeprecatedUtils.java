@@ -12,7 +12,6 @@ import android.text.TextUtils;
 import android.view.ViewTreeObserver;
 import android.widget.RelativeLayout;
 
-
 import com.danhtran.androidbaseproject.MyApplication;
 
 import java.util.Locale;
@@ -22,10 +21,11 @@ import java.util.Locale;
  * Created by SilverWolf on 15/10/2016.
  */
 public class DeprecatedUtils {
+    private final static int SDK_VERSION = Build.VERSION.SDK_INT;
 
     public static int getResourceColor(int resource) {
         Context context = MyApplication.Instance().getApplicationContext();
-        if (MyApplication.Instance().getVersionOS() >= Build.VERSION_CODES.LOLLIPOP) {
+        if (SDK_VERSION >= Build.VERSION_CODES.LOLLIPOP) {
             return ContextCompat.getColor(context, resource);
         } else {
             return context.getResources().getColor(resource);
@@ -34,7 +34,7 @@ public class DeprecatedUtils {
 
     public static Drawable getResourceDrawable(int resource) {
         Context context = MyApplication.Instance().getApplicationContext();
-        if (MyApplication.Instance().getVersionOS() >= Build.VERSION_CODES.LOLLIPOP) {
+        if (SDK_VERSION >= Build.VERSION_CODES.LOLLIPOP) {
             return context.getResources().getDrawable(resource, context.getTheme());
         } else {
             return context.getResources().getDrawable(resource);
@@ -42,7 +42,7 @@ public class DeprecatedUtils {
     }
 
     public static void setLocale(Configuration configuration, Locale myLocale) {
-        if (MyApplication.Instance().getVersionOS() >= Build.VERSION_CODES.N) {
+        if (SDK_VERSION >= Build.VERSION_CODES.N) {
             configuration.setLocale(myLocale);
         } else {
             configuration.locale = myLocale;
@@ -50,7 +50,7 @@ public class DeprecatedUtils {
     }
 
     public static Locale getLocale(Resources resources) {
-        if (MyApplication.Instance().getVersionOS() >= Build.VERSION_CODES.N) {
+        if (SDK_VERSION >= Build.VERSION_CODES.N) {
             return resources.getConfiguration().getLocales().get(0);
         } else {
             //noinspection deprecation
@@ -59,7 +59,7 @@ public class DeprecatedUtils {
     }
 
     public static void removeOnGlobalLayoutListener(ViewTreeObserver obs, ViewTreeObserver.OnGlobalLayoutListener onGlobalLayoutListener) {
-        if (MyApplication.Instance().getVersionOS() >= Build.VERSION_CODES.JELLY_BEAN) {
+        if (SDK_VERSION >= Build.VERSION_CODES.JELLY_BEAN) {
             obs.removeOnGlobalLayoutListener(onGlobalLayoutListener);
         } else {
             obs.removeGlobalOnLayoutListener(onGlobalLayoutListener);
@@ -69,7 +69,7 @@ public class DeprecatedUtils {
     public static Spanned fromHtml(String text) {
         Spanned result = null;
         if (!TextUtils.isEmpty(text)) {
-            if (MyApplication.Instance().getVersionOS() >= Build.VERSION_CODES.N) {
+            if (SDK_VERSION >= Build.VERSION_CODES.N) {
                 result = Html.fromHtml(text, Html.FROM_HTML_MODE_LEGACY);
             } else {
                 result = Html.fromHtml(text);
@@ -81,7 +81,7 @@ public class DeprecatedUtils {
     public static String toHtml(Spanned text) {
         String result = "";
         if (!TextUtils.isEmpty(text)) {
-            if (MyApplication.Instance().getVersionOS() >= Build.VERSION_CODES.N) {
+            if (SDK_VERSION >= Build.VERSION_CODES.N) {
                 result = Html.toHtml(text, Html.FROM_HTML_MODE_LEGACY);
             } else {
                 result = Html.toHtml(text);
@@ -92,7 +92,7 @@ public class DeprecatedUtils {
 
     //get resource vector or png
     public static int getImageVector(int resourceVector, int resourcePNG) {
-        if (MyApplication.Instance().getVersionOS() >= Build.VERSION_CODES.LOLLIPOP) {     //use vector
+        if (SDK_VERSION >= Build.VERSION_CODES.LOLLIPOP) {     //use vector
             return resourceVector;
         } else {                                                         //use png
             return resourcePNG;
@@ -104,7 +104,7 @@ public class DeprecatedUtils {
     }
 
     public static void removeRule(RelativeLayout.LayoutParams layoutParams, int verb) {
-        if (MyApplication.Instance().getVersionOS() >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+        if (SDK_VERSION >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
             layoutParams.removeRule(verb);
         } else {
             layoutParams.addRule(verb, 0);

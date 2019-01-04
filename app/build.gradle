@@ -51,7 +51,6 @@ android {
     }
     buildTypes {
         debug {
-            applicationIdSuffix '.debug'
             debuggable true
             signingConfig signingConfigs.debug
         }
@@ -66,16 +65,22 @@ android {
     }
     productFlavors {
         dev {
+            resValue 'string', 'domainAPI', 'https://animeloversapp.com:3000/api/'
+            resValue 'string', 'facebookAppId', '641215556070654'
+
             flavorDimensions "default"
-            applicationId "com.danhtran.androidbaseproject"
         }
         staging {
+            resValue 'string', 'domainAPI', 'https://animeloversapp.com:3000/api/'
+            resValue 'string', 'facebookAppId', '641215556070654'
+
             flavorDimensions "default"
-            applicationId "com.danhtran.androidbaseproject"
         }
         production {
+            resValue 'string', 'domainAPI', 'https://animeloversapp.com:3000/api/'
+            resValue 'string', 'facebookAppId', '641215556070654'
+
             flavorDimensions "default"
-            applicationId "com.danhtran.androidbaseproject"
         }
     }
 }
@@ -152,4 +157,13 @@ dependencies {
 
     //Calligraphy font
     implementation 'uk.co.chrisjenx:calligraphy:2.3.0'
+
+    //time
+    compile 'org.ocpsoft.prettytime:prettytime:4.0.1.Final'
+
+    /**
+     * Resizer for image
+     * more info: https://github.com/hkk595/Resizer
+     */
+    implementation 'com.github.hkk595:Resizer:v1.5'
 }

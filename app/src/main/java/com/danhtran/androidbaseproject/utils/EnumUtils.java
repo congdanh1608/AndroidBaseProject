@@ -1,5 +1,7 @@
 package com.danhtran.androidbaseproject.utils;
 
+import java.util.Map;
+
 /**
  * Created by SilverWolf on 29/11/2016.
  */
@@ -25,6 +27,14 @@ public class EnumUtils {
         return enumConstants[0];
     }
 
+    /**
+     * Get enum from string value
+     *
+     * @param enumType enum
+     * @param value    value
+     * @param <T>      type of enum
+     * @return enum
+     */
     public static <T extends Enum<T>> T valueOf(final Class<T> enumType, final String value) {
         final T[] enumConstants = enumType.getEnumConstants();
         if (enumConstants == null) {
@@ -38,16 +48,18 @@ public class EnumUtils {
         return enumConstants[0];
     }
 
-    public static <T extends Enum<T>> T valueOf(final Class<T> enumType, final int value) {
-        final T[] enumConstants = enumType.getEnumConstants();
-        if (enumConstants == null) {
-            return null;
+    /**
+     * Get enum from value
+     *
+     * @param value value
+     * @param map   map of enum
+     * @param <T>   Type of enum
+     * @return enum
+     */
+    public static <T extends Enum<T>> T valueOf(int value, Map<Integer, T> map) {
+        if (map.get(value) != null) {
+            return map.get(value);
         }
-        for (final T enumConstant : enumConstants) {
-            if (Integer.valueOf(enumConstant.toString()) == value) {
-                return enumConstant;
-            }
-        }
-        return enumConstants[0];
+        return map.get(0);
     }
 }

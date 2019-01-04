@@ -1,12 +1,13 @@
 package com.danhtran.androidbaseproject;
 
-import android.os.Build;
 import android.support.annotation.Nullable;
 import android.support.multidex.MultiDexApplication;
 
 import com.danhtran.androidbaseproject.di.component.AppComponent;
 import com.danhtran.androidbaseproject.di.component.DaggerAppComponent;
 import com.danhtran.androidbaseproject.di.module.AppModule;
+import com.danhtran.androidbaseproject.utils.Utils;
+import com.evernote.android.state.StateSaver;
 import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.Logger;
 
@@ -21,7 +22,6 @@ public class MyApplication extends MultiDexApplication {
     private static MyApplication myApplication;
     private AppComponent appComponent;
     private String token;
-    private int versionOS;
 
     public MyApplication() {
         super();
@@ -48,14 +48,6 @@ public class MyApplication extends MultiDexApplication {
         this.token = token;
     }
 
-    public int getVersionOS() {
-        return versionOS;
-    }
-
-    public void setVersionOS(int versionOS) {
-        this.versionOS = versionOS;
-    }
-
     @Override
     public void onCreate() {
         super.onCreate();
@@ -65,10 +57,10 @@ public class MyApplication extends MultiDexApplication {
 
     private void initSDK() {
 //        initFacebook();
-        initFont();
+//        initFont();
 //        initFabric();
         initLogger();
-        initEvernoteState();
+//        initEvernoteState();
     }
 
     /*private void initFacebook() {
@@ -99,7 +91,7 @@ public class MyApplication extends MultiDexApplication {
     }
 
     private void initEvernoteState() {
-//        StateSaver.setEnabledForAllActivitiesAndSupportFragments(this, true);
+        StateSaver.setEnabledForAllActivitiesAndSupportFragments(this, true);
     }
 
     private void initData() {
@@ -108,19 +100,17 @@ public class MyApplication extends MultiDexApplication {
                 .build();
         appComponent.inject(this);
 
-        //version OS
-        versionOS = Build.VERSION.SDK_INT;
-
-        /*//language
-        String s = SharedPrefsHelper.getInstance().readString(SharePref.LANGUAGE.toString());
-        if (s != null) lang = s;
-        else lang = Locale.getDefault().getLanguage();
+        //language
+//        String s = SharedPrefsHelper.getInstance().readString(SharePref.LANGUAGE.toString());
+//        if (s != null) lang = s;
+//        else lang = Locale.getDefault().getLanguage();
 
         //load token
-        session = SharedPrefsHelper.getInstance().readObject(Session.class, SharePref.SESSION_LOGIN.toString());
+//        session = SharedPrefsHelper.getInstance().readObject(Session.class, SharePref.SESSION_LOGIN.toString());
 
         //secret key
-        if (BuildConfig.DEBUG)
-            generalSecretKey();*/
+        if (BuildConfig.DEBUG) {
+            Utils.generalSHAKey(this);
+        }
     }
 }

@@ -18,6 +18,12 @@ public class SizeUtils {
         isInitialised = true;
     }
 
+    /**
+     * Convert PX to DP
+     *
+     * @param px px
+     * @return dp
+     */
     public static int pxToDp(int px) {
         if (!isInitialised) {
             initialise();
@@ -25,6 +31,12 @@ public class SizeUtils {
         return (int) (px / pixelsPerOneDp);
     }
 
+    /**
+     * Convert DP to PX
+     *
+     * @param dp dp
+     * @return px
+     */
     public static int dpToPx(int dp) {
         if (!isInitialised) {
             initialise();

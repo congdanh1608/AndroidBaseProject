@@ -14,68 +14,91 @@ import com.danhtran.androidbaseproject.MyApplication;
  */
 
 public class ScreenUtils {
+    private final static int SDK_VERSION = Build.VERSION.SDK_INT;
     private static int DEVICE_WIDTH = 0;
     private static int DEVICE_HEIGHT = 0;
 
-    public static void getScreenSize() {
+    private static void getScreenSize() {
         if (DEVICE_WIDTH != 0 && DEVICE_HEIGHT != 0) {
             return;
         }
-        Display display = ((WindowManager) MyApplication.Instance().getApplicationContext()
-                .getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay();
 
-        DisplayMetrics metrics = new DisplayMetrics();
-        display.getMetrics(metrics);
-        int widthPixels = metrics.widthPixels;
-        int heightPixels = metrics.heightPixels;
+        WindowManager windowManager = ((WindowManager) MyApplication.Instance().getApplicationContext().getSystemService(Context.WINDOW_SERVICE));
+        if (windowManager != null) {
+            Display display = windowManager.getDefaultDisplay();
 
-        if (MyApplication.Instance().getVersionOS() >= Build.VERSION_CODES.ICE_CREAM_SANDWICH &&
-                MyApplication.Instance().getVersionOS() < Build.VERSION_CODES.JELLY_BEAN_MR1) {
-            try {
-                widthPixels = (Integer) Display.class.getMethod("getWidth")
-                        .invoke(display);
-                heightPixels = (Integer) Display.class.getMethod("getHeight")
-                        .invoke(display);
+            DisplayMetrics metrics = new DisplayMetrics();
+            display.getMetrics(metrics);
+            int widthPixels = metrics.widthPixels;
+            int heightPixels = metrics.heightPixels;
 
-            } catch (Exception ignored) {
-                ignored.printStackTrace();
+            if (SDK_VERSION >= Build.VERSION_CODES.ICE_CREAM_SANDWICH &&
+                    SDK_VERSION < Build.VERSION_CODES.JELLY_BEAN_MR1) {
+                try {
+                    widthPixels = (Integer) Display.class.getMethod("getWidth")
+                            .invoke(display);
+                    heightPixels = (Integer) Display.class.getMethod("getHeight")
+                            .invoke(display);
+
+                } catch (Exception exp) {
+                    exp.printStackTrace();
+                }
             }
-        }
-        // includes window decorations (statusbar bar/menu bar)
-        else if (MyApplication.Instance().getVersionOS() >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-            try {
-                Point realSize = new Point();
-                Display.class.getMethod("getSize", Point.class).invoke(display,
-                        realSize);
-                widthPixels = realSize.x;
-                heightPixels = realSize.y;
-            } catch (Exception ignored) {
-                ignored.printStackTrace();
+            // includes window decorations (statusbar bar/menu bar)
+            else if (SDK_VERSION >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+                try {
+                    Point realSize = new Point();
+                    Display.class.getMethod("getSize", Point.class).invoke(display,
+                            realSize);
+                    widthPixels = realSize.x;
+                    heightPixels = realSize.y;
+                } catch (Exception exp) {
+                    exp.printStackTrace();
+                }
+            } else {
+                widthPixels = display.getWidth();
+                heightPixels = display.getHeight();
             }
-        } else {
-            widthPixels = display.getWidth();
-            heightPixels = display.getHeight();
+            DEVICE_WIDTH = widthPixels;
+            DEVICE_HEIGHT = heightPixels;
         }
-        DEVICE_WIDTH = widthPixels;
-        DEVICE_HEIGHT = heightPixels;
-
     }
 
+    /**
+     * Get width of screen in PX
+     *
+     * @return width
+     */
     public static int getWidthScreenInPX() {
         getScreenSize();
         return DEVICE_WIDTH;
     }
 
+    /**
+     * Get height of screen in PX
+     *
+     * @return height
+     */
     public static int getHeightScreenInPX() {
         getScreenSize();
         return DEVICE_HEIGHT;
     }
 
+    /**
+     * Get width of screen in DP
+     *
+     * @return width
+     */
     public static int getWidthScreenInDP() {
         getScreenSize();
         return SizeUtils.pxToDp(DEVICE_WIDTH);
     }
 
+    /**
+     * Get height of screen in DP
+     *
+     * @return height
+     */
     public static int getHeightScreenInDP() {
         getScreenSize();
         return SizeUtils.pxToDp(DEVICE_HEIGHT);

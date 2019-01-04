@@ -1,8 +1,11 @@
 package com.danhtran.androidbaseproject.di.module;
 
+import android.content.Context;
+
+import com.danhtran.androidbaseproject.BuildConfig;
 import com.danhtran.androidbaseproject.MyApplication;
-import com.danhtran.androidbaseproject.enums.Header;
-import com.danhtran.androidbaseproject.serviceAPI.apiconfig.APIConfig;
+import com.danhtran.androidbaseproject.R;
+import com.danhtran.androidbaseproject.extras.enums.Header;
 import com.danhtran.androidbaseproject.serviceAPI.apiconfig.APIServer;
 import com.halcyon.logger.HttpLogInterceptor;
 import com.halcyon.logger.ILogger;
@@ -40,9 +43,9 @@ public class NetworkModule {
 
     @Singleton
     @Provides
-    public Retrofit getRetrofit(@Named("non_cached") OkHttpClient okHttpClient) {
+    public Retrofit getRetrofit(@Named("non_cached") OkHttpClient okHttpClient, Context context) {
         return new Retrofit.Builder()
-                .baseUrl(APIConfig.domainAPI)
+                .baseUrl(context.getString(R.string.domainAPI))
                 .client(okHttpClient)
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
@@ -57,6 +60,7 @@ public class NetworkModule {
                 .addInterceptor(interceptor)
                 .connectTimeout(REQUEST_TIMEOUT, TimeUnit.SECONDS)
                 .readTimeout(READ_TIMEOUT, TimeUnit.SECONDS)
+                //for test
 //                .addInterceptor(chain -> {
 //                    Request newRequest  = chain.request().newBuilder()
 //                            .addHeader("Authorization", "Bearer " + "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1OGY0MTUwOGI3ZWZhNzUwMTFhMDA4YWMiLCJ1c2VyRW1haWwiOiJjaGFyYWN0ZXIyQGFuaW1lbG92ZXJzYXBwLmNvbSIsInVzZXJDcmVhdGVkRGF0ZSI6IjIwMTctMDQtMTdUMDE6MDY6MTYuMDQ3WiIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE0OTI0MTU2MzEsImV4cCI6MTQ5NzU5OTYzMX0.BkDMHojXxBZjziDaxb72RrayFR3ZYctaKn51fn6WhHE")
@@ -101,7 +105,7 @@ public class NetworkModule {
     @Provides
     @Singleton
     Cache provideCache(MyApplication myApplication) {
-        int cacheSize = 10 * 1024 * 1024; // 10 MiB
+        int cacheSize = 10 * 1024 * 1024; // 10 MiB for cache
         return new Cache(myApplication.getCacheDir(), cacheSize);
     }
 
@@ -111,7 +115,9 @@ public class NetworkModule {
         return new HttpLogInterceptor(new ILogger() {
             @Override
             public void log(String msg) {
-                Logger.d(msg);
+                if (BuildConfig.DEBUG) {
+                    Logger.d(msg);
+                }
             }
         });
     }
