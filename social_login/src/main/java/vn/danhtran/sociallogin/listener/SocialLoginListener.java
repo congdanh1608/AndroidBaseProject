@@ -3,7 +3,7 @@ package vn.danhtran.sociallogin.listener;
 import vn.danhtran.sociallogin.networks.SocialNetwork;
 
 /**
- * Created by congdanh on 05/04/2017.
+ * Created by SilverWolf on 05/04/2017.
  */
 public interface SocialLoginListener {
     void onSuccess(SocialNetwork socialNetwork);

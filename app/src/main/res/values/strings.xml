@@ -1,9 +1,4 @@
 <resources>
-    <string translatable="false" name="facebook_app_id">641215556070654</string>
-
-
-    <string name="app_name">AndroidBaseProject</string>
-
     <string name="message_close_app">Press the back button once again to close the application.</string>
 
 </resources>

@@ -12,7 +12,7 @@ import com.bumptech.glide.load.engine.cache.MemorySizeCalculator;
 import com.bumptech.glide.module.AppGlideModule;
 
 /**
- * Created by congdanh on 4/10/2018.
+ * Created by SilverWolf on 4/10/2018.
  */
 
 @GlideModule
