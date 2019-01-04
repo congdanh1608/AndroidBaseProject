@@ -4,6 +4,7 @@
     package="vn.danhtran.customglide">
 
     <application
+        android:allowBackup="true"
         android:supportsRtl="true">
 
         <!--module glide option-->

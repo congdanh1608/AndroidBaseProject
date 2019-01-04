@@ -10,12 +10,15 @@ import android.net.Uri;
 import android.provider.MediaStore;
 import android.provider.Settings;
 import android.util.Base64;
+import android.util.Log;
 
 import com.danhtran.androidbaseproject.MyApplication;
 import com.orhanobut.logger.Logger;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+
+import static android.support.constraint.Constraints.TAG;
 
 /**
  * Created by SilverWolf on 17/06/2017.
@@ -110,19 +113,21 @@ public class Utils {
     }
 
     public static void generalSHAKey(Context context) {
-        MessageDigest md = null;
         try {
-            PackageInfo info = context.getPackageManager().getPackageInfo(
-                    context.getPackageName(),
-                    PackageManager.GET_SIGNATURES);
+            //by facebook sdk
+            /*FacebookSdk.sdkInitialize(getApplicationContext());
+            Log.d("AppLog", "key:" + FacebookSdk.getApplicationSignature(this));*/
+            //or without facebook sdk
+            PackageInfo info = context.getPackageManager().getPackageInfo(context.getPackageName(), PackageManager.GET_SIGNATURES);
             for (Signature signature : info.signatures) {
-                md = MessageDigest.getInstance("SHA");
+                MessageDigest md = MessageDigest.getInstance("SHA");
                 md.update(signature.toByteArray());
+                String hashKey = new String(Base64.encode(md.digest(), 0));
+                Logger.d("SHA KEY = " + hashKey);
             }
-
-        } catch (NoSuchAlgorithmException | PackageManager.NameNotFoundException e) {
-            e.printStackTrace();
+        } catch (Exception e) {
+            Logger.e(e.getMessage());
         }
-        Logger.i("SHA KEY = ", Base64.encodeToString(md != null ? md.digest() : new byte[0], Base64.DEFAULT));
+
     }
 }

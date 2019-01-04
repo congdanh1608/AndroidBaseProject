@@ -1,5 +1,9 @@
 apply plugin: 'com.android.application'
 
+def keystorePropertiesFile = rootProject.file("app/keystores/keystore.properties")
+def keystoreProperties = new Properties()
+keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
     defaultConfig {
@@ -44,15 +48,17 @@ android {
         }
         release {
             storeFile file("keystores/keystore-release.jks")
-            storePassword "baseproject"
-            keyAlias "baseProject"
-            keyPassword "baseproject"
+            keyAlias keystoreProperties['keyAlias']
+            keyPassword keystoreProperties['keyPassword']
+            storeFile file(keystoreProperties['storeFile'])
+            storePassword keystoreProperties['storePassword']
         }
     }
     buildTypes {
         debug {
             debuggable true
             signingConfig signingConfigs.debug
+            resValue 'string', 'app_name', 'BaseProject-Debug'
         }
         release {
             debuggable false
@@ -61,6 +67,7 @@ android {
 //            zipAlignEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.release
+            resValue 'string', 'app_name', 'BaseProject'
         }
     }
     productFlavors {
@@ -161,9 +168,6 @@ dependencies {
     //time
     compile 'org.ocpsoft.prettytime:prettytime:4.0.1.Final'
 
-    /**
-     * Resizer for image
-     * more info: https://github.com/hkk595/Resizer
-     */
+    //Resizer for image
     implementation 'com.github.hkk595:Resizer:v1.5'
 }

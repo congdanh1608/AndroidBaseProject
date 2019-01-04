@@ -109,8 +109,6 @@ public class MyApplication extends MultiDexApplication {
 //        session = SharedPrefsHelper.getInstance().readObject(Session.class, SharePref.SESSION_LOGIN.toString());
 
         //secret key
-        if (BuildConfig.DEBUG) {
-            Utils.generalSHAKey(this);
-        }
+//        Utils.generalSHAKey(this);
     }
 }
