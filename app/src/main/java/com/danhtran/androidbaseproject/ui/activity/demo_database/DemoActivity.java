@@ -9,7 +9,7 @@ import com.danhtran.androidbaseproject.R;
 import com.danhtran.androidbaseproject.databinding.ActivityDemoBinding;
 
 /**
- * Created by SilverWolf on 2/25/2018.
+ * Created by danhtran on 2/25/2018.
  */
 
 public class DemoActivity extends AppCompatActivity implements DemoActivityListener {

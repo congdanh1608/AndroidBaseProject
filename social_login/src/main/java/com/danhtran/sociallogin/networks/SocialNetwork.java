@@ -1,12 +1,12 @@
-package vn.danhtran.sociallogin.networks;
+package com.danhtran.sociallogin.networks;
 
 import android.content.Intent;
 
-import vn.danhtran.sociallogin.MyAccessToken;
-import vn.danhtran.sociallogin.listener.SocialLoginListener;
+import com.danhtran.sociallogin.MyAccessToken;
+import com.danhtran.sociallogin.listener.SocialLoginListener;
 
 /**
- * Created by SilverWolf on 04/04/2017.
+ * Created by danhtran on 04/04/2017.
  */
 public abstract class SocialNetwork {
     public static final String SHARED_PREFS_NAME = "vn_danhtran_sociallogin";

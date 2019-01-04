@@ -1,7 +1,7 @@
 package com.danhtran.androidbaseproject.serviceAPI.apiconfig;
 
 /**
- * Created by SilverWolf on 1/31/16.
+ * Created by danhtran on 1/31/16.
  */
 public class APIConfig {
 

@@ -1,4 +1,4 @@
-package vn.danhtran.customglide.rounder;
+package com.danhtran.customglide.rounder;
 
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -9,7 +9,7 @@ import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 
 /**
- * Created by SilverWolf on 21/06/2017.
+ * Created by danhtran on 21/06/2017.
  */
 
 public class RoundedBitmapDrawableFormat {

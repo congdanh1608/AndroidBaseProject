@@ -4,7 +4,7 @@ import com.danhtran.androidbaseproject.MyApplication;
 import com.danhtran.androidbaseproject.utils.EnumUtils;
 
 /**
- * Created by SilverWolf on 09/04/2017.
+ * Created by danhtran on 09/04/2017.
  */
 
 public enum SharePrefs {

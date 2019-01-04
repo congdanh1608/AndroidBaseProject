@@ -1,4 +1,4 @@
-package vn.danhtran.customglide.rounder;
+package com.danhtran.customglide.rounder;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -18,7 +18,7 @@ import com.bumptech.glide.load.resource.bitmap.BitmapResource;
 import java.security.MessageDigest;
 
 /**
- * Created by SilverWolf on 17/02/2017.
+ * Created by danhtran on 17/02/2017.
  */
 public class RoundedCornersTransformation implements Transformation<Bitmap> {
     public enum CornerType {

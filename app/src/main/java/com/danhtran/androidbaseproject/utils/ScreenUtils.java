@@ -10,7 +10,7 @@ import android.view.WindowManager;
 import com.danhtran.androidbaseproject.MyApplication;
 
 /**
- * Created by SilverWolf on 2/28/2018.
+ * Created by danhtran on 2/28/2018.
  */
 
 public class ScreenUtils {

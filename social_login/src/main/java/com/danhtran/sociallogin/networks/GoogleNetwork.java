@@ -1,4 +1,4 @@
-package vn.danhtran.sociallogin.networks;
+package com.danhtran.sociallogin.networks;
 
 import android.app.Activity;
 import android.content.Context;
@@ -9,6 +9,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
 
+import com.danhtran.sociallogin.listener.SocialLoginListener;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
@@ -23,11 +24,10 @@ import com.google.android.gms.common.api.Scope;
 
 import java.lang.ref.WeakReference;
 
-import vn.danhtran.sociallogin.MyAccessToken;
-import vn.danhtran.sociallogin.listener.SocialLoginListener;
+import com.danhtran.sociallogin.MyAccessToken;
 
 /**
- * Created by SilverWolf on 04/04/2017.
+ * Created by danhtran on 04/04/2017.
  */
 public class GoogleNetwork extends SocialNetwork implements GoogleApiClient.OnConnectionFailedListener, GoogleApiClient.ConnectionCallbacks {
 

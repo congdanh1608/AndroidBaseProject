@@ -1,4 +1,4 @@
-package vn.danhtran.customglide;
+package com.danhtran.customglide;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -12,7 +12,7 @@ import com.bumptech.glide.load.engine.cache.MemorySizeCalculator;
 import com.bumptech.glide.module.AppGlideModule;
 
 /**
- * Created by SilverWolf on 4/10/2018.
+ * Created by danhtran on 4/10/2018.
  */
 
 @GlideModule

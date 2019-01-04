@@ -21,7 +21,7 @@ import java.security.NoSuchAlgorithmException;
 import static android.support.constraint.Constraints.TAG;
 
 /**
- * Created by SilverWolf on 17/06/2017.
+ * Created by danhtran on 17/06/2017.
  */
 
 public class Utils {

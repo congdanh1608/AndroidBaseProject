@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by SilverWolf on 11/06/2017.
+ * Created by danhtran on 11/06/2017.
  */
 
 public abstract class BaseRecyclerViewPresenter<T> extends BaseObservable

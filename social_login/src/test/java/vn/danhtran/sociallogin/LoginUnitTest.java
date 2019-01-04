@@ -1,5 +1,7 @@
 package vn.danhtran.sociallogin;
 
+import com.danhtran.sociallogin.SocialLogin;
+
 import org.junit.Before;
 import org.junit.Test;
 

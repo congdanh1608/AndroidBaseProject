@@ -1,4 +1,4 @@
-package vn.danhtran.customglide;
+package com.danhtran.customglide;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -11,15 +11,17 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.target.BitmapImageViewTarget;
+import com.danhtran.customglide.rounder.RoundedCornersTransformation;
 
 import java.io.File;
 
-import vn.danhtran.customglide.blur.BlurBuilder;
-import vn.danhtran.customglide.rounder.RoundedBitmapDrawableFormat;
-import vn.danhtran.customglide.rounder.RoundedCornersTransformation;
+import vn.danhtran.customglide.R;
+
+import com.danhtran.customglide.blur.BlurBuilder;
+import com.danhtran.customglide.rounder.RoundedBitmapDrawableFormat;
 
 /**
- * Created by SilverWolf on 17/02/2017.
+ * Created by danhtran on 17/02/2017.
  */
 
 public class GlideHelper {

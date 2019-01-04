@@ -15,7 +15,7 @@ import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 
 
 /**
- * Created by SilverWolf on 2/25/2018.
+ * Created by danhtran on 2/25/2018.
  */
 
 public class MyApplication extends MultiDexApplication {

@@ -39,7 +39,7 @@ import java.util.LinkedHashSet;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 /**
- * Created by SilverWolf on 2/26/2018.
+ * Created by danhtran on 2/26/2018.
  */
 
 public abstract class BaseAppCompatActivity extends AppCompatActivity implements FragmentManager.OnBackStackChangedListener {

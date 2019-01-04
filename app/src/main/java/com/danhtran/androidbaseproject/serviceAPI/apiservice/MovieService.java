@@ -10,7 +10,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
 /**
- * Created by SilverWolf on 2/20/2018.
+ * Created by danhtran on 2/20/2018.
  */
 
 public class MovieService {

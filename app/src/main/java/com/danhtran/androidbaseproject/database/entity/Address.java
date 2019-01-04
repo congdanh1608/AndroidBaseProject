@@ -10,7 +10,7 @@ import org.jetbrains.annotations.NotNull;
 import static android.arch.persistence.room.ForeignKey.CASCADE;
 
 /**
- * Created by SilverWolf on 2/26/2018.
+ * Created by danhtran on 2/26/2018.
  */
 @Entity(foreignKeys = @ForeignKey(entity = User.class, parentColumns = "id", childColumns = "userId", onDelete = CASCADE, onUpdate = CASCADE))
 public class Address {

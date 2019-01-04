@@ -9,7 +9,7 @@ import dagger.Module;
 import dagger.Provides;
 
 /**
- * Created by SilverWolf on 2/27/2018.
+ * Created by danhtran on 2/27/2018.
  */
 @Module
 public class APIServiceModule {

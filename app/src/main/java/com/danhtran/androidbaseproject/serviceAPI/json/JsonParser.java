@@ -20,7 +20,7 @@ import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 /**
- * Created by SilverWolf on 13/04/2017.
+ * Created by danhtran on 13/04/2017.
  */
 
 public class JsonParser {

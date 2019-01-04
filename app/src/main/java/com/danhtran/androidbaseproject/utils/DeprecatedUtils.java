@@ -18,7 +18,7 @@ import java.util.Locale;
 
 
 /**
- * Created by SilverWolf on 15/10/2016.
+ * Created by danhtran on 15/10/2016.
  */
 public class DeprecatedUtils {
     private final static int SDK_VERSION = Build.VERSION.SDK_INT;

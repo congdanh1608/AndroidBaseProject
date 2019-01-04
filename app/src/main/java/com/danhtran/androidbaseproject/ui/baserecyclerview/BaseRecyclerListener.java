@@ -1,7 +1,7 @@
 package com.danhtran.androidbaseproject.ui.baserecyclerview;
 
 /**
- * Created by SilverWolf on 11/06/2017.
+ * Created by danhtran on 11/06/2017.
  */
 
 public interface BaseRecyclerListener {

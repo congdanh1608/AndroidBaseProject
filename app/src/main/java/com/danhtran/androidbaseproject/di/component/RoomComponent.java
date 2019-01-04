@@ -7,7 +7,7 @@ import com.danhtran.androidbaseproject.ui.activity.demo_database.DemoActivityPre
 import dagger.Subcomponent;
 
 /**
- * Created by SilverWolf on 2/25/2018.
+ * Created by danhtran on 2/25/2018.
  */
 @RoomScope
 @Subcomponent(modules = RoomModule.class)

@@ -3,7 +3,7 @@ package com.danhtran.androidbaseproject.utils;
 import java.util.Map;
 
 /**
- * Created by SilverWolf on 29/11/2016.
+ * Created by danhtran on 29/11/2016.
  */
 
 //Default return first ENUM -> Default("")  --> to void crash for some function

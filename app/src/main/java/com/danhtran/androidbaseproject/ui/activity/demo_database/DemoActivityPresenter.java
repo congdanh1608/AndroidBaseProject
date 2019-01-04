@@ -35,7 +35,7 @@ import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
 
 /**
- * Created by SilverWolf on 2/25/2018.
+ * Created by danhtran on 2/25/2018.
  */
 
 public class DemoActivityPresenter extends BaseRecyclerViewPresenter<DemoItemData> implements BaseRecyclerListener {

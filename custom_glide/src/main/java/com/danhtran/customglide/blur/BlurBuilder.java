@@ -1,4 +1,4 @@
-package vn.danhtran.customglide.blur;
+package com.danhtran.customglide.blur;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -8,7 +8,7 @@ import android.support.v8.renderscript.RenderScript;
 import android.support.v8.renderscript.ScriptIntrinsicBlur;
 
 /**
- * Created by SilverWolf on 21/07/17.
+ * Created by danhtran on 21/07/17.
  */
 
 public class BlurBuilder {

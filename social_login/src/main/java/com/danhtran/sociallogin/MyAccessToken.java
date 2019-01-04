@@ -1,7 +1,7 @@
-package vn.danhtran.sociallogin;
+package com.danhtran.sociallogin;
 
 /**
- * Created by SilverWolf on 04/04/2017.
+ * Created by danhtran on 04/04/2017.
  */
 public class MyAccessToken {
 

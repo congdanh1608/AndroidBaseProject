@@ -7,7 +7,7 @@ import com.google.gson.Gson;
 import java.io.Serializable;
 
 /**
- * Created by SilverWolf on 19/05/2016.
+ * Created by danhtran on 19/05/2016.
  */
 public class SharedPrefsHelper {
     private SharedPreferences sharedPreferences;

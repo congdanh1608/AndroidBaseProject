@@ -7,7 +7,7 @@ import com.danhtran.androidbaseproject.ui.activity.demo_database.DemoActivity;
 import com.danhtran.androidbaseproject.ui.activity.demo_permission.Demo1Activity;
 
 /**
- * Created by SilverWolf on 2/25/2018.
+ * Created by danhtran on 2/25/2018.
  */
 
 public class MainActivityPresenter {

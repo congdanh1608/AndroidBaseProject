@@ -1,6 +1,8 @@
-package vn.danhtran.sociallogin;
+package com.danhtran.sociallogin;
 
 import android.content.Intent;
+
+import com.danhtran.sociallogin.networks.SocialNetwork;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -8,10 +10,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import vn.danhtran.sociallogin.networks.SocialNetwork;
-
 /**
- * Created by SilverWolf on 04/04/2017.
+ * Created by danhtran on 04/04/2017.
  */
 public class SocialLogin {
     private static SocialLogin instance = null;

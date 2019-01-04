@@ -1,4 +1,4 @@
-package vn.danhtran.sociallogin.networks;
+package com.danhtran.sociallogin.networks;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -14,11 +14,11 @@ import com.facebook.login.LoginResult;
 import java.lang.ref.WeakReference;
 import java.util.List;
 
-import vn.danhtran.sociallogin.MyAccessToken;
-import vn.danhtran.sociallogin.listener.SocialLoginListener;
+import com.danhtran.sociallogin.MyAccessToken;
+import com.danhtran.sociallogin.listener.SocialLoginListener;
 
 /**
- * Created by SilverWolf on 04/04/2017.
+ * Created by danhtran on 04/04/2017.
  */
 public class FacebookNetwork extends SocialNetwork {
     private CallbackManager callbackManager;

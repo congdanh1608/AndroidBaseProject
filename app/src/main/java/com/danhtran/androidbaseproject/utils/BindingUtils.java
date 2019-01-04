@@ -17,11 +17,11 @@ import android.widget.RelativeLayout;
 import com.danhtran.androidbaseproject.ui.customview.DividerItemDecoration;
 import com.danhtran.androidbaseproject.ui.customview.SpacesItemDecoration;
 
-import vn.danhtran.customglide.GlideHelper;
+import com.danhtran.customglide.GlideHelper;
 
 
 /**
- * Created by SilverWolf on 2/20/16.
+ * Created by danhtran on 2/20/16.
  */
 public class BindingUtils {
     //size in dp

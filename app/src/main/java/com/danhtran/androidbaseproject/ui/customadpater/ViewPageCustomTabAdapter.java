@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by SilverWolf on 18/05/2016.
+ * Created by danhtran on 18/05/2016.
  */
 public class ViewPageCustomTabAdapter extends FragmentStatePagerAdapter {
     private final List<Fragment> mFragmentList = new ArrayList<>();

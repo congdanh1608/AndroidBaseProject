@@ -4,7 +4,7 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * Created by SilverWolf on 2/11/2018.
+ * Created by danhtran on 2/11/2018.
  */
 
 public class Movie {

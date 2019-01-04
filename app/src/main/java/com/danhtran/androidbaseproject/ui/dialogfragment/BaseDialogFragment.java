@@ -17,7 +17,7 @@ import android.view.Window;
 import android.widget.RelativeLayout;
 
 /**
- * Created by SilverWolf on 5/29/15.
+ * Created by danhtran on 5/29/15.
  */
 public abstract class BaseDialogFragment extends DialogFragment {
     protected View rootView;

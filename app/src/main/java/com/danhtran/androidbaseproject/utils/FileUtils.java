@@ -14,7 +14,7 @@ import io.reactivex.schedulers.Schedulers;
 import me.echodev.resizer.Resizer;
 
 /**
- * Created by SilverWolf on 1/4/2019.
+ * Created by danhtran on 1/4/2019.
  */
 public class FileUtils {
     private static final int IMAGE_QUALITY = 80;

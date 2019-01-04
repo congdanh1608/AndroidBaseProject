@@ -5,7 +5,7 @@ import com.danhtran.androidbaseproject.databinding.ActivityDemo1Binding;
 import com.danhtran.androidbaseproject.ui.activity.BaseAppCompatActivity;
 
 /**
- * Created by SilverWolf on 2/28/2018.
+ * Created by danhtran on 2/28/2018.
  */
 
 public class Demo1Activity extends BaseAppCompatActivity {

@@ -10,7 +10,7 @@ import de.mateware.snacky.Snacky;
 
 
 /**
- * Created by SilverWolf on 04/08/2017.
+ * Created by danhtran on 04/08/2017.
  */
 
 public class SnackBarUtils {

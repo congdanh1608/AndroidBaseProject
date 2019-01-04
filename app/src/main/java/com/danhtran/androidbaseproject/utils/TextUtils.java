@@ -3,7 +3,7 @@ package com.danhtran.androidbaseproject.utils;
 import java.text.DecimalFormat;
 
 /**
- * Created by SilverWolf on 1/4/2019.
+ * Created by danhtran on 1/4/2019.
  */
 public class TextUtils {
     public static String formatDecimal(double value) {

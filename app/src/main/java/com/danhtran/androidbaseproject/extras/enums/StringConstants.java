@@ -4,7 +4,7 @@ package com.danhtran.androidbaseproject.extras.enums;
 import com.danhtran.androidbaseproject.MyApplication;
 
 /**
- * Created by SilverWolf on 09/04/2017.
+ * Created by danhtran on 09/04/2017.
  */
 
 public enum StringConstants {

@@ -21,7 +21,7 @@ import com.karumi.dexter.listener.single.PermissionListener;
 import java.util.List;
 
 /**
- * Created by SilverWolf on 2/28/2018.
+ * Created by danhtran on 2/28/2018.
  */
 
 public class Demo1Presenter {

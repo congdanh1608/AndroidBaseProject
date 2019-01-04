@@ -1,7 +1,7 @@
 package com.danhtran.androidbaseproject.extras.enums;
 
 /**
- * Created by SilverWolf on 09/04/2017.
+ * Created by danhtran on 09/04/2017.
  */
 
 public class Header {

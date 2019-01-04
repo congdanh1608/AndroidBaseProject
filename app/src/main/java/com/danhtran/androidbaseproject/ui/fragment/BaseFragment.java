@@ -20,7 +20,7 @@ import com.danhtran.androidbaseproject.utils.ViewUtils;
 import com.danhtran.androidbaseproject.ui.activity.BaseAppCompatActivity;
 
 /**
- * Created by SilverWolf on 2/12/17.
+ * Created by danhtran on 2/12/17.
  */
 public abstract class BaseFragment extends Fragment {
 

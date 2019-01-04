@@ -15,7 +15,7 @@ import dagger.Provides;
 import io.reactivex.disposables.CompositeDisposable;
 
 /**
- * Created by SilverWolf on 2/25/2018.
+ * Created by danhtran on 2/25/2018.
  */
 @Module
 public class RoomModule {
