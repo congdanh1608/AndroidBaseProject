@@ -13,7 +13,7 @@ public enum SnackBarType {
     NORMAL(3),
     WARNING(4);
 
-    private static Map map = new HashMap<>();
+    private static Map<Integer, SnackBarType> map = new HashMap<>();
     private int value;
 
     SnackBarType(int value) {

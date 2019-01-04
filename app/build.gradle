@@ -166,7 +166,7 @@ dependencies {
     implementation 'uk.co.chrisjenx:calligraphy:2.3.0'
 
     //time
-    compile 'org.ocpsoft.prettytime:prettytime:4.0.1.Final'
+    implementation 'org.ocpsoft.prettytime:prettytime:4.0.1.Final'
 
     //Resizer for image
     implementation 'com.github.hkk595:Resizer:v1.5'
