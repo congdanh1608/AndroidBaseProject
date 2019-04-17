@@ -126,7 +126,7 @@ public abstract class BaseFragment extends Fragment {
      */
     public void showProgress() {
         if (getBaseActivity() != null) {
-            getBaseActivity().hideProgress();
+            getBaseActivity().showProgress();
         }
     }
 

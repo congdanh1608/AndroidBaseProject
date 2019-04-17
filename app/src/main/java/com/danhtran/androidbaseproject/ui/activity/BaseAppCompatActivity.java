@@ -27,10 +27,9 @@ import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.danhtran.androidbaseproject.R;
-import com.danhtran.androidbaseproject.utils.Utils;
-import com.danhtran.androidbaseproject.utils.ViewUtils;
 import com.danhtran.androidbaseproject.ui.activity.main.MainActivity;
 import com.danhtran.androidbaseproject.ui.fragment.BaseFragment;
+import com.danhtran.androidbaseproject.utils.ViewUtils;
 import com.orhanobut.logger.Logger;
 
 import java.util.Collection;
@@ -44,7 +43,6 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public abstract class BaseAppCompatActivity extends AppCompatActivity implements FragmentManager.OnBackStackChangedListener {
 
-    private View progressLayout;
     protected ViewDataBinding binding;
     protected FragmentManager mFragmentManager;
     private int backButtonCount = 0;
@@ -221,7 +219,7 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity implements
     private void exitApp() {
         //check exit app
         if (backButtonCount >= 1) {
-            Utils.exitApp(this);
+            finish();
         } else {
             Toast.makeText(this, R.string.message_close_app, Toast.LENGTH_SHORT).show();
             backButtonCount++;
@@ -257,6 +255,7 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity implements
             BaseFragment fragment = getFragment(tag, data);
             if (fragment != null) {
                 FragmentTransaction transaction = mFragmentManager.beginTransaction();
+                transaction.setCustomAnimations(R.anim.slide_from_right, R.anim.slide_to_left, R.anim.slide_from_left, R.anim.slide_to_right);
                 transaction.replace(R.id.content_fragment, fragment, tag);
                 if (isAddBackStack)
                     transaction.addToBackStack(tag);
@@ -267,20 +266,20 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity implements
 
     //get fragment by tag and data
     private BaseFragment getFragment(String tag, Object data) {
-        /*if (LocationsFragment.class.getName().equals(tag)) {
-            return LocationsFragment.instance();
-        }*/
+        /*if (Fragment1.class.getName().equals(tag)) {
+            return new Fragment1();
+        } */
         return null;
     }
 
     /**
-     * start activity without finish previous activity
+     * start activity and finish current activity
      *
      * @param tag    tag name
      * @param bundle bundle
      */
     public void startActivity(String tag, Bundle bundle) {
-        startActivity(tag, bundle, false);
+        startActivity(tag, bundle, true);
     }
 
     /**
@@ -289,14 +288,14 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity implements
      * @param tag    tag name
      * @param bundle bundle
      */
-    public void startActivityAndClearTop(String tag, Bundle bundle) {
+    public void startActivityAsRoot(String tag, Bundle bundle) {
         Intent intent = getIntentActivity(tag);
 
         if (intent != null) {
             if (bundle != null) {
                 intent.putExtras(bundle);
             }
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
         }
     }
@@ -322,7 +321,12 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity implements
         }
     }
 
-    //get intent of activity by tag
+    /**
+     * get intent of activity by tag
+     *
+     * @param tag tag is tag of activity contain the intent
+     * @return intent
+     */
     private Intent getIntentActivity(String tag) {
         Intent intent = null;
         if (!TextUtils.isEmpty(tag)) {

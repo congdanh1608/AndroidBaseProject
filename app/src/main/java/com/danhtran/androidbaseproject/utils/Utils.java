@@ -10,15 +10,11 @@ import android.net.Uri;
 import android.provider.MediaStore;
 import android.provider.Settings;
 import android.util.Base64;
-import android.util.Log;
 
 import com.danhtran.androidbaseproject.MyApplication;
 import com.orhanobut.logger.Logger;
 
 import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-
-import static android.support.constraint.Constraints.TAG;
 
 /**
  * Created by danhtran on 17/06/2017.
@@ -99,18 +95,6 @@ public class Utils {
 
         activity.startActivity(Intent.createChooser(intent, activity.getString(R.string.send_email)));
     }*/
-
-    /**
-     * Exit app
-     *
-     * @param activity activity
-     */
-    public static void exitApp(Activity activity) {
-        Intent intent = new Intent(Intent.ACTION_MAIN);
-        intent.addCategory(Intent.CATEGORY_HOME);
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        activity.startActivity(intent);
-    }
 
     public static void generalSHAKey(Context context) {
         try {

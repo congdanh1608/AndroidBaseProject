@@ -4,7 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Bitmap;
 
-import com.danhtran.androidbaseproject.extras.listener.ResultListener;
+import com.danhtran.androidbaseproject.extras.listener.SingleResultListener;
 
 import java.io.File;
 
@@ -30,7 +30,7 @@ public class FileUtils {
      * @param imageFile image file
      */
     @SuppressLint("CheckResult")
-    public static void convertImageToSmallSize(Context context, String generalId, File imageFile, final ResultListener<File> listener) {
+    public static void convertImageToSmallSize(Context context, String generalId, File imageFile, final SingleResultListener<File> listener) {
         String imageNameWithoutExt = generalId + "_small";
 
         new Resizer(context)

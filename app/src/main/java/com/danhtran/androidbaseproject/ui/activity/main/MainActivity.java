@@ -8,8 +8,9 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.danhtran.androidbaseproject.R;
 import com.danhtran.androidbaseproject.databinding.ActivityMainBinding;
+import com.danhtran.androidbaseproject.ui.activity.BaseAppCompatActivity;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseAppCompatActivity {
     ActivityMainBinding activityMainBinding;
 
     public static Intent instance(Activity activity) {
@@ -17,12 +18,25 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        MainActivityPresenter mainActivityPresenter = new MainActivityPresenter(this);
+    public int setLayout() {
+        return R.layout.activity_main;
+    }
 
-        activityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+    @Override
+    public void initUI() {
+        activityMainBinding = (ActivityMainBinding) binding;
+        MainActivityPresenter mainActivityPresenter = new MainActivityPresenter(this);
         activityMainBinding.setPresenter(mainActivityPresenter);
         activityMainBinding.executePendingBindings();
+    }
+
+    @Override
+    public void initData() {
+
+    }
+
+    @Override
+    public void initListener() {
+
     }
 }
