@@ -17,8 +17,8 @@ import com.danhtran.androidbaseproject.database.entity.User;
 import com.danhtran.androidbaseproject.database.repository.UserAddrAddrRepository;
 import com.danhtran.androidbaseproject.di.module.RoomModule;
 import com.danhtran.androidbaseproject.ui.activity.demo_database.items.DemoItemData;
-import com.danhtran.androidbaseproject.ui.baserecyclerview.BaseRecyclerListener;
-import com.danhtran.androidbaseproject.ui.baserecyclerview.BaseRecyclerViewPresenter;
+import com.danhtran.androidbaseproject.ui.base_recyclerview.BaseRecyclerListener;
+import com.danhtran.androidbaseproject.ui.base_recyclerview.BaseRecyclerViewPresenter;
 
 import java.util.ArrayList;
 import java.util.List;

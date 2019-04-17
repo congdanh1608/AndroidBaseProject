@@ -8,9 +8,9 @@ import com.danhtran.androidbaseproject.R;
 import com.danhtran.androidbaseproject.databinding.DemoItemBinding;
 import com.danhtran.androidbaseproject.ui.activity.demo_database.items.DemoItemData;
 import com.danhtran.androidbaseproject.ui.activity.demo_database.items.DemoItemVH;
-import com.danhtran.androidbaseproject.ui.baserecyclerview.BaseRecyclerAdapter;
-import com.danhtran.androidbaseproject.ui.baserecyclerview.BaseRecyclerListener;
-import com.danhtran.androidbaseproject.ui.baserecyclerview.BindingViewHolder;
+import com.danhtran.androidbaseproject.ui.base_recyclerview.BaseRecyclerAdapter;
+import com.danhtran.androidbaseproject.ui.base_recyclerview.BaseRecyclerListener;
+import com.danhtran.androidbaseproject.ui.base_recyclerview.BindingViewHolder;
 
 import java.util.List;
 

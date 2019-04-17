@@ -1,4 +1,4 @@
-package com.danhtran.androidbaseproject.ui.baserecyclerview;
+package com.danhtran.androidbaseproject.ui.base_recyclerview;
 
 /**
  * Created by danhtran on 11/06/2017.
