@@ -6,7 +6,6 @@ import android.support.multidex.MultiDexApplication;
 import com.danhtran.androidbaseproject.di.component.AppComponent;
 import com.danhtran.androidbaseproject.di.component.DaggerAppComponent;
 import com.danhtran.androidbaseproject.di.module.AppModule;
-import com.danhtran.androidbaseproject.utils.Utils;
 import com.evernote.android.state.StateSaver;
 import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.Logger;
