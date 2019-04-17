@@ -1,4 +1,4 @@
-package com.danhtran.androidbaseproject.ui.dialogfragment;
+package com.danhtran.androidbaseproject.ui.dialog_fragment;
 
 import android.app.Dialog;
 import android.content.res.Configuration;

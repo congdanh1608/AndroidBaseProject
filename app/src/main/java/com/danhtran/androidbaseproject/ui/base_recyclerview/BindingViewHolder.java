@@ -1,4 +1,4 @@
-package com.danhtran.androidbaseproject.ui.baserecyclerview;
+package com.danhtran.androidbaseproject.ui.base_recyclerview;
 
 import android.databinding.ViewDataBinding;
 import android.support.v7.widget.RecyclerView;

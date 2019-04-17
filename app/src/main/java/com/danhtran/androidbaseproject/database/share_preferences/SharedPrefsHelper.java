@@ -1,4 +1,4 @@
-package com.danhtran.androidbaseproject.database.sharepreferences;
+package com.danhtran.androidbaseproject.database.share_preferences;
 
 import android.content.SharedPreferences;
 

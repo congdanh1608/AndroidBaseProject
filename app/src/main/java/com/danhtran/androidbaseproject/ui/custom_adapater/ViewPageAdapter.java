@@ -1,4 +1,4 @@
-package com.danhtran.androidbaseproject.ui.customadpater;
+package com.danhtran.androidbaseproject.ui.custom_adapater;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
