@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:bind="http://schemas.android.com/apk/res-auto">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
 
@@ -17,22 +16,7 @@
             android:id="@+id/content_fragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:visibility="gone" />
-
-        <ImageView
-            android:id="@+id/imv"
-            android:layout_width="300dp"
-            android:layout_height="150dp"
-            android:layout_centerHorizontal="true"
-            bind:height="@{150}"
-            bind:setImage="@{presenter.image}"
-            bind:width="@{300}" />
-
-        <Button
-            android:text="Button"
-            android:onClick="@{presenter.onClickListener(1)}"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:visibility="visible" />
 
     </RelativeLayout>
 </layout>
