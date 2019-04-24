@@ -31,6 +31,6 @@ public enum SnackBarType {
     }
 
     public static SnackBarType fromValue(int code) {
-        return (SnackBarType) map.get(code);
+        return map.get(code);
     }
 }
