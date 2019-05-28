@@ -6,10 +6,10 @@ import com.danhtran.androidbaseproject.database.entity.Address;
  * Created by danhtran on 2/25/2018.
  */
 
-public class DemoItemVH {
+public class DemoItemPresenter {
     private DemoItemData demoItemData;
 
-    public DemoItemVH(DemoItemData demoItemData) {
+    public DemoItemPresenter(DemoItemData demoItemData) {
         this.demoItemData = demoItemData;
     }
 

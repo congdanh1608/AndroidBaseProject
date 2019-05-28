@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import com.danhtran.androidbaseproject.R;
 import com.danhtran.androidbaseproject.databinding.DemoItemBinding;
 import com.danhtran.androidbaseproject.ui.activity.demo_database.items.DemoItemData;
-import com.danhtran.androidbaseproject.ui.activity.demo_database.items.DemoItemVH;
+import com.danhtran.androidbaseproject.ui.activity.demo_database.items.DemoItemPresenter;
 import com.danhtran.androidbaseproject.ui.base_recyclerview.BaseRecyclerAdapter;
 import com.danhtran.androidbaseproject.ui.base_recyclerview.BaseRecyclerListener;
 import com.danhtran.androidbaseproject.ui.base_recyclerview.BindingViewHolder;
@@ -43,8 +43,8 @@ public class DemoAdapter extends BaseRecyclerAdapter<DemoItemData> {
         super.onBindViewHolder(holder, position);
         if (getItemViewType(position) != VIEW_PROG) {
             DemoItemBinding binding = (DemoItemBinding) holder.getBinding();
-            DemoItemVH itemVM = new DemoItemVH(items.get(position));
-            binding.setHandler(itemVM);
+            DemoItemPresenter itemVM = new DemoItemPresenter(items.get(position));
+            binding.setPresenter(itemVM);
             binding.executePendingBindings();
         }
     }

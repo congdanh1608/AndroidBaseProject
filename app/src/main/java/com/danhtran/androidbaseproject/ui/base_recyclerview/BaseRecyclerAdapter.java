@@ -79,16 +79,6 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<Bindin
         isMoreLoading = moreLoading;
     }
 
-    private static class ProgressViewHolder extends RecyclerView.ViewHolder {
-        ItemProcessBarBinding itemProcessBarBinding;
-
-        ProgressViewHolder(View v) {
-            super(v);
-            itemProcessBarBinding = DataBindingUtil.bind(v.getRootView());
-        }
-    }
-
-
     @Override
     public int getItemViewType(int position) {
         if (items.get(position) == null) {
