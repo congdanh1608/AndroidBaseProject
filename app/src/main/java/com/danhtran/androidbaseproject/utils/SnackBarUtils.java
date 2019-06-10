@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.view.View;
 
+import com.danhtran.androidbaseproject.R;
 import com.danhtran.androidbaseproject.extras.enums.SnackBarType;
 
 import de.mateware.snacky.Snacky;
@@ -49,6 +50,26 @@ public class SnackBarUtils {
         Snacky.Builder builder = Snacky.builder();
         builder.setActivity(activity)
                 .setText(context.getString(text))
+                .setTextColor(DeprecatedUtils.getResourceColor(textColor))
+                .setDuration(Snacky.LENGTH_SHORT);
+        if (isCenterText) builder.centerText();
+        setTypeTemplate(builder, snackBarType);
+        builder.build().show();
+    }
+
+    /**
+     * Show Snack Bar
+     *
+     * @param activity     Activity
+     * @param text         String message
+     * @param textColor    int message color
+     * @param isCenterText is center message text
+     * @param snackBarType type of snack bar
+     */
+    public static void showSnackBar(Activity activity, String text, int textColor, boolean isCenterText, SnackBarType snackBarType) {
+        Snacky.Builder builder = Snacky.builder();
+        builder.setActivity(activity)
+                .setText(text)
                 .setTextColor(DeprecatedUtils.getResourceColor(textColor))
                 .setDuration(Snacky.LENGTH_SHORT);
         if (isCenterText) builder.centerText();
@@ -132,6 +153,27 @@ public class SnackBarUtils {
                 .setDuration(Snacky.LENGTH_INDEFINITE);
         setTypeTemplate(builder, snackBarType);
         builder.build().show();
+    }
+
+
+    /**
+     * Show general error message
+     *
+     * @param context context
+     * @param message message text
+     */
+    public static void showGeneralError(Context context, String message) {
+        showSnackBar((Activity) context, message, R.color.colorWhite, true, SnackBarType.ERROR);
+    }
+
+    /**
+     * Show general notify message
+     *
+     * @param context context
+     * @param message message text
+     */
+    public static void showGeneralNotify(Context context, String message) {
+        showSnackBar((Activity) context, message, R.color.colorWhite, true, SnackBarType.INFO);
     }
 
     //set template for snackbar

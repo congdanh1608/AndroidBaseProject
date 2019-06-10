@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+import com.android.build.OutputFile
 
 def keystorePropertiesFile = rootProject.file("app/keystores/keystore.properties")
 def keystoreProperties = new Properties()
@@ -89,6 +90,48 @@ android {
 
             flavorDimensions "default"
         }
+    }
+
+    //split build by abi
+    /*splits {
+        // Configures multiple APKs based on ABI.
+        abi {
+            enable true                 // Enables building multiple APKs per ABI.
+            reset()
+            // Resets the list of ABIs that Gradle should create APKs for to none.
+
+            // Specifies a list of ABIs that Gradle should create APKs for.
+            //x86 (optional, very limited number of devices, like Asus Zenfone 2, Genym otion/ Android emulator)
+            //x86_64 (optional, very limited number of devices, like Asus Zenfone 2, Genymotion/ Android emulator)
+            include "armeabi-v7a", "arm64-v8a", "x86", "x86_64"
+            universalApk false
+            // Specifies that we do not want to generate a universal APK that includes all ABIs.
+        }
+    }*/
+
+    //split version code by abi
+    applicationVariants.all {
+        variant ->
+            variant.outputs.each {
+                output ->
+                    //get app name
+                    def appName
+                    if (project.hasProperty("applicationName")) {
+                        appName = applicationName
+                    } else {
+                        appName = parent.name
+                    }
+                    //get abi
+                    def abiFilter = output.getFilter(OutputFile.ABI)
+                    def abiMultiplier = 0
+                    if (abiFilter != null) {
+                        abiMultiplier = rootProject.ext.versionCodes.get(abiFilter)
+                        output.outputFileName = "${appName}-${variant.productFlavors[0].name}-${abiFilter}-${rootProject.ext.versionName}.apk"
+                    } else {
+                        output.outputFileName = "${appName}-${variant.productFlavors[0].name}-${rootProject.ext.versionName}.apk"
+                    }
+                    output.versionCodeOverride = abiMultiplier * 1000 + android.defaultConfig.versionCode
+            }
     }
 }
 

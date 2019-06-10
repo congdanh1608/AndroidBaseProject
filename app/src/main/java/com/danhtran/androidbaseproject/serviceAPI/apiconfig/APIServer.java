@@ -1,6 +1,7 @@
 package com.danhtran.androidbaseproject.serviceAPI.apiconfig;
 
 import com.danhtran.androidbaseproject.appmodel.Movie;
+import com.danhtran.androidbaseproject.serviceAPI.model.ResponseModel;
 import com.google.gson.JsonElement;
 
 import java.util.List;
@@ -65,5 +66,5 @@ public interface APIServer {
 
     @Headers(header)
     @POST("{api}/{sub}")
-    Observable<List<Movie>> getMovies();
+    Observable<ResponseModel<List<Movie>>> getMovies();
 }
