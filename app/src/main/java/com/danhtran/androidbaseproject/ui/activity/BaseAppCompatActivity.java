@@ -149,7 +149,9 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity implements
 
     @Override
     protected void onDestroy() {
-        ViewUtils.removeKeyboardEvents(binding.getRoot());
+        if (binding != null) {
+            ViewUtils.removeKeyboardEvents(binding.getRoot());
+        }
 
         for (Dialog dialog : setOfDialogs) {
             dialog.dismiss();

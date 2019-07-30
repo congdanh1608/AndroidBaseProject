@@ -23,7 +23,7 @@ public class DemoAdapter extends BaseRecyclerAdapter<DemoItemData> {
     private final int VIEW_ITEM = 1;
 
     public DemoAdapter(Context context, List<DemoItemData> items, BaseRecyclerListener listener) {
-        super(context, listener);
+        super(items, context, listener);
         this.items = items;
     }
 

@@ -11,8 +11,8 @@ android {
         applicationId rootProject.ext.applicationId
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode rootProject.ext.versionCode
-        versionName rootProject.ext.versionName
+        versionCode generateVersionCode()
+        versionName generateVersionName()
 
         //support vector drawables for android < 21
         vectorDrawables.useSupportLibrary = true
@@ -126,13 +126,21 @@ android {
                     def abiMultiplier = 0
                     if (abiFilter != null) {
                         abiMultiplier = rootProject.ext.versionCodes.get(abiFilter)
-                        output.outputFileName = "${appName}-${variant.productFlavors[0].name}-${abiFilter}-${rootProject.ext.versionName}.apk"
+                        output.outputFileName = "${appName}-${variant.productFlavors[0].name}-${abiFilter}-${generateVersionName()}.apk"
                     } else {
-                        output.outputFileName = "${appName}-${variant.productFlavors[0].name}-${rootProject.ext.versionName}.apk"
+                        output.outputFileName = "${appName}-${variant.productFlavors[0].name}-${generateVersionName()}.apk"
                     }
                     output.versionCodeOverride = abiMultiplier * 1000 + android.defaultConfig.versionCode
             }
     }
+}
+
+private Integer generateVersionCode() {
+    return rootProject.ext.minSdkVersion * 10000000 + rootProject.ext.versionMajor * 10000 + rootProject.ext.versionMinor * 100 + rootProject.ext.versionPatch
+}
+
+private String generateVersionName() {
+    return  "${rootProject.ext.versionMajor}.${rootProject.ext.versionMinor}.${rootProject.ext.versionPatch}"
 }
 
 dependencies {

@@ -66,9 +66,13 @@ public abstract class BaseDialogFragment extends DialogFragment {
         int xml = setLayout();
         if (xml != 0 && binding == null) {
             binding = DataBindingUtil.inflate(inflater, xml, container, false);
+            initUI();
             rootView = binding.getRoot();
             progressLayout = setProgressLayout();
-            initUI();
+
+            if (getArguments() != null) {
+                loadPassedParamsIfNeeded(getArguments());
+            }
         }
         return rootView;
     }
@@ -84,6 +88,13 @@ public abstract class BaseDialogFragment extends DialogFragment {
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
         onConfigurationChanged();
+    }
+
+    /**
+     * load passed params
+     */
+    protected void loadPassedParamsIfNeeded(@NonNull Bundle extras) {
+
     }
 
     public void showProgress() {

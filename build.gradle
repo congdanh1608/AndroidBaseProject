@@ -10,8 +10,12 @@ buildscript {
     ext.versionCode = 1
     ext.versionName = "1.0.0"
 
+    ext.versionMajor = 1
+    ext.versionMinor = 2
+    ext.versionPatch = 3
+
     //libraries version
-    ext.gradle_version = '3.4.0'
+    ext.gradle_version = '3.4.1'
     ext.google_service_version = '3.3.1'
     ext.google_play_service_version = '16.0.0'
     ext.support_version = '28.0.0'

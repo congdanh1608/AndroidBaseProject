@@ -30,10 +30,6 @@
 
         <activity android:name="com.danhtran.androidbaseproject.ui.activity.demo_database.DemoActivity" />
         <activity android:name="com.danhtran.androidbaseproject.ui.activity.demo_permission.Demo1Activity" />
-
-        <meta-data
-            android:name="com.facebook.sdk.ApplicationId"
-            android:value="@string/facebookAppId" />
     </application>
 
 </manifest>
