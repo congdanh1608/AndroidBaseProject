@@ -183,4 +183,13 @@ public abstract class BaseFragment extends Fragment {
             return (BaseAppCompatActivity) getActivity();
         return null;
     }
+
+    /**
+     * Set title for appbar
+     *
+     * @param title title
+     */
+    public void setTitle(int title) {
+        getBaseActivity().setTitle(title);
+    }
 }

@@ -2,12 +2,12 @@ package com.danhtran.androidbaseproject.serviceAPI.apiservice;
 
 import com.danhtran.androidbaseproject.appmodel.Movie;
 import com.danhtran.androidbaseproject.serviceAPI.apiconfig.APIServer;
+import com.danhtran.androidbaseproject.serviceAPI.extras.RxScheduler;
+import com.danhtran.androidbaseproject.serviceAPI.model.ResponseModel;
 
 import java.util.List;
 
 import io.reactivex.Observable;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.schedulers.Schedulers;
 
 /**
  * Created by danhtran on 2/20/2018.
@@ -20,9 +20,8 @@ public class MovieService {
         this.apiServer = apiServer;
     }
 
-    public Observable<List<Movie>> getUsersRepositories() {
+    public Observable<ResponseModel<List<Movie>>> getUsersRepositories() {
         return apiServer.getMovies()
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread());
+                .compose(RxScheduler.<ResponseModel<List<Movie>>>applyIoSchedulers());
     }
 }

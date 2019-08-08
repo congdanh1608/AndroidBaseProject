@@ -1,4 +1,4 @@
-package com.danhtran.androidbaseproject.serviceAPI.json;
+package com.danhtran.androidbaseproject.serviceAPI.extras;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

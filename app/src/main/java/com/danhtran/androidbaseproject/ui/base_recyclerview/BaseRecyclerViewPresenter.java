@@ -88,6 +88,11 @@ public abstract class BaseRecyclerViewPresenter<T> extends BaseObservable
         adapter.notifyDataSetChanged();
     }
 
+    protected void deleteItem(int position) {
+        this.items.remove(position);
+        adapter.notifyItemRemoved(position);
+    }
+
     @Override
     public void onLoadMore(int position) {
         if ((currentPage < maxPage || isLoadMore) && !isLoading) {
@@ -101,12 +106,6 @@ public abstract class BaseRecyclerViewPresenter<T> extends BaseObservable
         }
     }
 
-
-    @Override
-    public <T> void onClickItem(T item) {
-
-    }
-
     @Override
     public void onRefresh() {
         currentPage = 1;
@@ -116,5 +115,10 @@ public abstract class BaseRecyclerViewPresenter<T> extends BaseObservable
             swipeRefreshLayout.setRefreshing(true);
         isRefresh = true;
         loadData();
+    }
+
+    @Override
+    public <T> void onClickItem(T item) {
+
     }
 }

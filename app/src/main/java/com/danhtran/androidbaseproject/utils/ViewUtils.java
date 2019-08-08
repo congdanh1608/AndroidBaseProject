@@ -11,6 +11,8 @@ import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
+import com.danhtran.androidbaseproject.ui.activity.BaseAppCompatActivity;
+
 /**
  * Created by danhtran on 04/06/2017.
  */
@@ -55,6 +57,53 @@ public class ViewUtils {
                 (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
         if (inputMethodManager != null && activity.getCurrentFocus() != null) {
             inputMethodManager.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), 0);
+        }
+    }
+
+
+    /**
+     * Show soft keyboard
+     *
+     * @param context context
+     */
+    public static void showSoftKeyboard(Context context) {
+        InputMethodManager inputMethodManager = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
+        inputMethodManager.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
+    }
+
+    /**
+     * Show soft keyboad with edit text
+     *
+     * @param editText edit text
+     * @param context  context
+     */
+    public static void showSoftKeyboard(EditText editText, Context context) {
+        editText.requestFocus();
+        InputMethodManager imm = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.showSoftInput(editText, InputMethodManager.SHOW_IMPLICIT);
+    }
+
+    /**
+     * Clear focus for edit text
+     *
+     * @param editText edit text
+     * @param activity AppCompatActivity
+     */
+    public static void clearFocus(EditText editText, BaseAppCompatActivity activity) {
+        editText.clearFocus();
+        clearFocus(activity, activity.getBinding().getRoot());
+    }
+
+    public static void clearFocus(Activity activity, View layout) {
+        clearFocus(activity, layout, true);
+    }
+
+    public static void clearFocus(Activity activity, View layout, boolean hideKeyboard) {
+        layout.setFocusable(true);
+        layout.setFocusableInTouchMode(true);
+        layout.requestFocus();
+        if (hideKeyboard) {
+            hideSoftKeyboard(activity, layout);
         }
     }
 

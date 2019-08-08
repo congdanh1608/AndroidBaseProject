@@ -102,6 +102,8 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity implements
         int xml = setLayout();
         if (xml != 0 && binding == null) {
             binding = DataBindingUtil.setContentView(this, xml);
+            //hide keyboard
+            ViewUtils.addKeyboardEvents(this, binding.getRoot(), binding.getRoot());
         }
 
         //init progress dialog
@@ -110,9 +112,6 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity implements
         //init
         initFragmentManager();
         initUI();
-
-        //hide keyboard
-        ViewUtils.addKeyboardEvents(this, binding.getRoot(), binding.getRoot());
 
         //check and load intent params
         if (getIntent() != null && getIntent().getExtras() != null) {
@@ -150,7 +149,9 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity implements
 
     @Override
     protected void onDestroy() {
-        ViewUtils.removeKeyboardEvents(binding.getRoot());
+        if (binding != null) {
+            ViewUtils.removeKeyboardEvents(binding.getRoot());
+        }
 
         for (Dialog dialog : setOfDialogs) {
             dialog.dismiss();
@@ -216,7 +217,7 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity implements
     }
 
     //call on root activity
-    private void exitApp() {
+    public void exitApp() {
         //check exit app
         if (backButtonCount >= 1) {
             finish();
@@ -250,7 +251,7 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity implements
      * @param isAddBackStack does add this fragment into backstack?
      */
     public void setFragment(String tag, Object data, boolean isAddBackStack) {
-        Boolean fragmentPopped = mFragmentManager.popBackStackImmediate(tag, 0);
+        boolean fragmentPopped = mFragmentManager.popBackStackImmediate(tag, 0);
         if (!fragmentPopped) {
             BaseFragment fragment = getFragment(tag, data);
             if (fragment != null) {
@@ -316,7 +317,7 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity implements
             }
             startActivity(intent);
             if (isFinish) {
-                finish();
+                super.finish();     //don't user animation on here. because startActivity had already
             }
         }
     }
@@ -331,7 +332,7 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity implements
         Intent intent = null;
         if (!TextUtils.isEmpty(tag)) {
             if (tag.equals(MainActivity.class.getName())) {
-                intent = MainActivity.instance(this);
+                intent = MainActivity.createIntent(this);
             }
         }
         return intent;

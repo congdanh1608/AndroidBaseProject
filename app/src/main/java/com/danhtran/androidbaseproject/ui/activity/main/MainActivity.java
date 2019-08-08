@@ -1,10 +1,7 @@
 package com.danhtran.androidbaseproject.ui.activity.main;
 
-import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
-import android.databinding.DataBindingUtil;
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 
 import com.danhtran.androidbaseproject.R;
 import com.danhtran.androidbaseproject.databinding.ActivityMainBinding;
@@ -13,8 +10,9 @@ import com.danhtran.androidbaseproject.ui.activity.BaseAppCompatActivity;
 public class MainActivity extends BaseAppCompatActivity {
     ActivityMainBinding activityMainBinding;
 
-    public static Intent instance(Activity activity) {
-        return new Intent(activity, MainActivity.class);
+    public static Intent createIntent(Context context) {
+        Intent intent = new Intent(context, MainActivity.class);
+        return intent;
     }
 
     @Override
@@ -38,5 +36,15 @@ public class MainActivity extends BaseAppCompatActivity {
     @Override
     public void initListener() {
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        int count = mFragmentManager.getBackStackEntryCount();
+        if (count <= 1) {
+            exitApp();
+        } else {
+            super.onBackPressed();
+        }
     }
 }
