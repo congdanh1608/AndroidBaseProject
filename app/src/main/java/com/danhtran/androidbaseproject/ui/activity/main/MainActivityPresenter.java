@@ -17,7 +17,7 @@ public class MainActivityPresenter {
         return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                
+
             }
         };
     }

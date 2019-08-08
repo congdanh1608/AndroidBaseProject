@@ -1,5 +1,8 @@
 package com.danhtran.androidbaseproject.utils;
 
+import android.telephony.PhoneNumberUtils;
+import android.text.TextUtils;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -41,5 +44,26 @@ public class ValidateUtils {
         Pattern pattern = Pattern.compile(PASSWORD_PATTERN);
         Matcher matcher = pattern.matcher(password);
         return matcher.matches();
+    }
+
+    /**
+     * Accept:
+     * <p>
+     * 07 5555 6789
+     * +61 7 5555 6789
+     * 0011+64 7 5555 6789
+     * 0418723456
+     * +6418723456
+     * +61 418 723 456
+     *
+     * @param phoneNumber phone number
+     * @return boolean
+     */
+    public static boolean validatePhoneNumber(String phoneNumber) {
+        if (TextUtils.isEmpty(phoneNumber)) {
+            return false;
+        }
+
+        return PhoneNumberUtils.isGlobalPhoneNumber(phoneNumber);
     }
 }

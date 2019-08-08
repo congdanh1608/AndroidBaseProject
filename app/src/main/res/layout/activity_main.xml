@@ -24,15 +24,22 @@
             android:layout_width="300dp"
             android:layout_height="150dp"
             android:layout_centerHorizontal="true"
+            android:visibility="gone"
             bind:height="@{150}"
             bind:setImage="@{presenter.image}"
             bind:width="@{300}" />
 
-        <Button
-            android:text="Button"
-            android:onClick="@{presenter.onClickListener(1)}"
-            android:layout_width="wrap_content"
+        <EditText
+            android:id="@+id/edtPhoneNumber"
+            android:layout_width="200dp"
             android:layout_height="wrap_content" />
 
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/edtPhoneNumber"
+            android:layout_marginTop="12dp"
+            android:onClick="@{presenter.onClickListener(1)}"
+            android:text="Button" />
     </RelativeLayout>
 </layout>
