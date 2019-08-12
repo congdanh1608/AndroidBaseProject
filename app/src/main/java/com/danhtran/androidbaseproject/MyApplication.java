@@ -7,6 +7,7 @@ import com.danhtran.androidbaseproject.di.component.AppComponent;
 import com.danhtran.androidbaseproject.di.component.DaggerAppComponent;
 import com.danhtran.androidbaseproject.di.module.AppModule;
 import com.evernote.android.state.StateSaver;
+import com.orhanobut.hawk.Hawk;
 import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.Logger;
 
@@ -27,13 +28,9 @@ public class MyApplication extends MultiDexApplication {
         myApplication = this;
     }
 
-    public static MyApplication Instance() {
+    public static MyApplication instance() {
         return myApplication;
     }
-
-//    public static MyApplication get(Context context) {
-//        return (MyApplication) context.getApplicationContext();
-//    }
 
     public AppComponent getAppComponent() {
         return appComponent;
@@ -55,9 +52,9 @@ public class MyApplication extends MultiDexApplication {
     }
 
     private void initSDK() {
+//        initHawk();
 //        initFacebook();
 //        initFont();
-//        initFabric();
         initLogger();
 //        initEvernoteState();
     }
@@ -76,10 +73,6 @@ public class MyApplication extends MultiDexApplication {
         );
     }
 
-    /*private void initFabric() {
-        Fabric.with(this, new Crashlytics());
-    }*/
-
     private void initLogger() {
         Logger.addLogAdapter(new AndroidLogAdapter() {
             @Override
@@ -91,6 +84,10 @@ public class MyApplication extends MultiDexApplication {
 
     private void initEvernoteState() {
         StateSaver.setEnabledForAllActivitiesAndSupportFragments(this, true);
+    }
+
+    private void initHawk() {
+        Hawk.init(this).build();
     }
 
     private void initData() {

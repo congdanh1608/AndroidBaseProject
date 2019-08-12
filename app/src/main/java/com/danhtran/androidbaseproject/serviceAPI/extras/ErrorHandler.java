@@ -1,8 +1,7 @@
-package com.danhtran.androidbaseproject.serviceAPI.extras;
+package com.danhtran.mypsychicstaff.serviceAPI.extras;
 
-import android.content.Context;
 import android.text.TextUtils;
-import android.widget.Toast;
+import android.view.View;
 
 import com.danhtran.androidbaseproject.serviceAPI.model.Error;
 import com.danhtran.androidbaseproject.serviceAPI.model.ResponseModel;
@@ -26,42 +25,36 @@ public class ErrorHandler {
      * handle error and show by snack bar or toast
      *
      * @param throwable throwable
-     * @param context   prefer BaseActivity than Context
+     * @param activity  BaseAppCompatActivity
      */
-    public static void showError(Throwable throwable, Context context) {
+    public static void showActivityError(Throwable throwable, BaseAppCompatActivity activity) {
         if (throwable instanceof HttpException) {
             HttpException httpException = (HttpException) throwable;
             try {
                 String errorBody = Objects.requireNonNull(httpException.response().errorBody()).string();
                 if (!TextUtils.isEmpty(errorBody)) {
-                    int errorCode = httpException.response().code();
                     Gson gson = new Gson();
                     ResponseModel responseModel = gson.fromJson(errorBody, ResponseModel.class);
-                    if (responseModel != null) {
+                    if (responseModel != null && responseModel.getErrors() != null) {
                         List<Error> errors = responseModel.getErrors();
                         Error error = errors.get(0);
-                        switch (errorCode) {
+                        switch (error.getErrorCode()) {
                             case 401:   //un authentication
-                               /* Bundle bundle = new Bundle();
-                                bundle.putString(SecondaryActivity.KEY_FRAGMENT_TAG, SignInFragment.class.getName());
-                                if (context instanceof BaseAppCompatActivity) {
-                                    BaseAppCompatActivity activity = (BaseAppCompatActivity) context;
-                                    activity.startActivityAsRoot(SecondaryActivity.class.getName(), bundle);
-                                }*/
+//                                activity.startActivityAsRoot(AuthenActivity.class.getName(), null);
                                 break;
                             case 400:
-                                showError(context, error.getErrorMessage());
+                                showError(activity, (String) responseModel.getData());
                                 break;
                             case 500:
-                                showError(context, error.getErrorMessage());
+                                showError(activity, (String) responseModel.getData());
                                 break;
                             default:
-                                showError(context, error.getErrorMessage());
+                                showError(activity, (String) responseModel.getData());
                                 break;
                         }
                     }
                 } else {
-                    showError(context, httpException.getMessage());
+                    showError(activity, httpException.getMessage());
                 }
             } catch (IOException e) {
                 e.printStackTrace();
@@ -69,21 +62,63 @@ public class ErrorHandler {
                 jsonParseException.printStackTrace();
             }
         } else {
-            showError(context, throwable.getMessage());
+            showError(activity, throwable.getMessage());
         }
-        Logger.e(throwable, context.getClass().getSimpleName());
+        Logger.e(throwable, activity.getClass().getSimpleName());
+    }
+
+    /**
+     * handle error and show by snack bar or toast
+     *
+     * @param throwable throwable
+     * @param activity  BaseAppCompatActivity
+     * @param view      Dialog view
+     */
+    public static void showDialogError(Throwable throwable, BaseAppCompatActivity activity, View view) {
+        if (throwable instanceof HttpException) {
+            HttpException httpException = (HttpException) throwable;
+            try {
+                String errorBody = Objects.requireNonNull(httpException.response().errorBody()).string();
+                if (!TextUtils.isEmpty(errorBody)) {
+                    Gson gson = new Gson();
+                    ResponseModel responseModel = gson.fromJson(errorBody, ResponseModel.class);
+                    if (responseModel != null && responseModel.getErrors() != null) {
+                        List<Error> errors = responseModel.getErrors();
+                        Error error = errors.get(0);
+                        switch (error.getErrorCode()) {
+                            case 401:   //un authentication
+                                //activity.startActivityAsRoot(AuthenActivity.class.getName(), null);
+                                break;
+                            case 400:
+                                showError(view, (String) responseModel.getData());
+                                break;
+                            case 500:
+                                showError(view, (String) responseModel.getData());
+                                break;
+                            default:
+                                showError(view, (String) responseModel.getData());
+                                break;
+                        }
+                    }
+                } else {
+                    showError(view, httpException.getMessage());
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (JsonParseException jsonParseException) {
+                jsonParseException.printStackTrace();
+            }
+        } else {
+            showError(view, throwable.getMessage());
+        }
+        Logger.e(throwable, view.getClass().getSimpleName());
     }
 
     private static void showError(BaseAppCompatActivity activity, String message) {
-        SnackBarUtils.showGeneralError(activity, message);
+        SnackBarUtils.showGeneralError(activity.getRootView(), message);
     }
 
-    private static void showError(Context context, String message) {
-        if (context instanceof BaseAppCompatActivity) {
-            BaseAppCompatActivity activity = (BaseAppCompatActivity) context;
-            showError(activity, message);
-        } else {
-            Toast.makeText(context, message, Toast.LENGTH_LONG).show();
-        }
+    private static void showError(View view, String message) {
+        SnackBarUtils.showGeneralError(view, message);
     }
 }

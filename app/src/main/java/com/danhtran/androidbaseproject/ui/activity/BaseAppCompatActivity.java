@@ -409,6 +409,18 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity implements
     }
 
     /**
+     * get root view of this activity
+     *
+     * @return view
+     */
+    public View getRootView() {
+        if (binding != null) {
+            return binding.getRoot();
+        }
+        return null;
+    }
+
+    /**
      * Get name of previous fragment
      *
      * @return name

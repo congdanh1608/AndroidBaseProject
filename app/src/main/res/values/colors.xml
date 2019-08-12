@@ -7,4 +7,11 @@
     <color name="colorWhite">#FFFFFF</color>
 
     <color name="black_transparent_60">#1A000000</color>
+
+    <!--snack bar color-->
+    <color name="colorSuccess">#388E3C</color>
+    <color name="colorError">#D50000</color>
+    <color name="colorInfo">#3F51B5</color>
+    <color name="colorWarning">#FFA900</color>
+
 </resources>

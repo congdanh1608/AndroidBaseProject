@@ -11,8 +11,8 @@ android {
         applicationId rootProject.ext.applicationId
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode generateVersionCode()
-        versionName generateVersionName()
+        versionCode rootProject.generateVersionCode()
+        versionName rootProject.generateVersionName()
 
         //support vector drawables for android < 21
         vectorDrawables.useSupportLibrary = true
@@ -72,7 +72,7 @@ android {
         }
     }
     productFlavors {
-        dev {
+        develop {
             resValue 'string', 'domainAPI', 'https://animeloversapp.com:3000/api/'
             resValue 'string', 'facebookAppId', '641215556070654'
 
@@ -135,14 +135,6 @@ android {
     }
 }
 
-private Integer generateVersionCode() {
-    return rootProject.ext.minSdkVersion * 10000000 + rootProject.ext.versionMajor * 10000 + rootProject.ext.versionMinor * 100 + rootProject.ext.versionPatch
-}
-
-private String generateVersionName() {
-    return  "${rootProject.ext.versionMajor}.${rootProject.ext.versionMinor}.${rootProject.ext.versionPatch}"
-}
-
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
@@ -175,10 +167,15 @@ dependencies {
     //gson
     implementation "com.google.code.gson:gson:2.8.2"
 
+
+    //hawk
+    implementation "com.orhanobut:hawk:2.0.1"
+
     //retrofit
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
     implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
     implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-scalars:$retrofit_version"
 
     //okhttp
     implementation "com.squareup.okhttp3:okhttp:$okhttp_version"

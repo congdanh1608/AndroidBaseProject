@@ -14,7 +14,7 @@ public enum SharePrefs {
     OFF_NOTIFY("OFF_NOTIFY"),
     LANGUAGE("LANGUAGE");
 
-    public static final String PREFIX = MyApplication.Instance().getPackageName();
+    public static final String PREFIX = MyApplication.instance().getPackageName();
 
     private final String value;
 
