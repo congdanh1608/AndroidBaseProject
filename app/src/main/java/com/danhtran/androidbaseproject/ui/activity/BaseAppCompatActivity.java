@@ -390,7 +390,7 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity implements
 
     //region Show Background Progress
     private void createProgressDialog() {
-        progressDialog = new Dialog(this);
+        progressDialog = new Dialog(this, R.style.DialogFullScreen);
         LayoutInflater inflater = this.getLayoutInflater();
         View dialogView = inflater.inflate(R.layout.process_dialog, null);
         //show view

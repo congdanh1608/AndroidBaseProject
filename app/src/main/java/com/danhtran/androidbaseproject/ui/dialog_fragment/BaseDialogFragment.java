@@ -17,6 +17,7 @@ import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
 import androidx.fragment.app.DialogFragment;
 
+import com.danhtran.androidbaseproject.R;
 import com.danhtran.androidbaseproject.ui.activity.BaseAppCompatActivity;
 
 /**
@@ -44,7 +45,7 @@ public abstract class BaseDialogFragment extends DialogFragment {
     @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        final Dialog dialog = new Dialog(getActivity());
+        final Dialog dialog = new Dialog(getActivity(), R.style.DialogFullScreen);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         if (dialog.getWindow() != null)
             dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
