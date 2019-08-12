@@ -193,9 +193,6 @@ dependencies {
     annotationProcessor "androidx.room:room-compiler:$room_version"
     implementation "androidx.room:room-rxjava2:$room_version"
 
-    //annotation
-    implementation "org.jetbrains:annotations-java5:15.0"
-
     //logger
     implementation "com.orhanobut:logger:2.2.0"
 
