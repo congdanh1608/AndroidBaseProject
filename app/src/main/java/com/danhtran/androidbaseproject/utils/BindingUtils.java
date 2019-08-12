@@ -2,10 +2,10 @@
 package com.danhtran.androidbaseproject.utils;
 
 import android.content.Context;
-import android.databinding.BindingAdapter;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.databinding.BindingAdapter;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
@@ -181,7 +181,7 @@ public class BindingUtils {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 if (!hasFocus) {
-                    ViewUtils.hideSoftKeyboard(context, v);
+                    UIUtils.hideSoftKeyboard(context, v);
                 }
             }
         });

@@ -3,18 +3,18 @@ package com.danhtran.androidbaseproject.ui.activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
-import android.databinding.DataBindingUtil;
-import android.databinding.ViewDataBinding;
+import androidx.databinding.DataBindingUtil;
+import androidx.databinding.ViewDataBinding;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.appcompat.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -29,7 +29,7 @@ import android.widget.Toast;
 import com.danhtran.androidbaseproject.R;
 import com.danhtran.androidbaseproject.ui.activity.main.MainActivity;
 import com.danhtran.androidbaseproject.ui.fragment.BaseFragment;
-import com.danhtran.androidbaseproject.utils.ViewUtils;
+import com.danhtran.androidbaseproject.utils.UIUtils;
 import com.orhanobut.logger.Logger;
 
 import java.util.Collection;
@@ -103,7 +103,7 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity implements
         if (xml != 0 && binding == null) {
             binding = DataBindingUtil.setContentView(this, xml);
             //hide keyboard
-            ViewUtils.addKeyboardEvents(this, binding.getRoot(), binding.getRoot());
+            UIUtils.addKeyboardEvents(this, binding.getRoot(), binding.getRoot());
         }
 
         //init progress dialog
@@ -150,7 +150,7 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity implements
     @Override
     protected void onDestroy() {
         if (binding != null) {
-            ViewUtils.removeKeyboardEvents(binding.getRoot());
+            UIUtils.removeKeyboardEvents(binding.getRoot());
         }
 
         for (Dialog dialog : setOfDialogs) {
@@ -284,6 +284,27 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity implements
     }
 
     /**
+     * Start activity
+     *
+     * @param tag      tag name of activity
+     * @param bundle   bundle
+     * @param isFinish is finish previous activity?
+     */
+    public void startActivity(String tag, Bundle bundle, boolean isFinish) {
+        Intent intent = getIntentActivity(tag);
+
+        if (intent != null) {
+            if (bundle != null) {
+                intent.putExtras(bundle);
+            }
+            startActivity(intent);
+            if (isFinish) {
+                super.finish();     //don't user animation on here. because startActivity had already
+            }
+        }
+    }
+
+    /**
      * start activity and clear all others
      *
      * @param tag    tag name
@@ -301,23 +322,20 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity implements
         }
     }
 
-    /**
-     * Start activity
-     *
-     * @param tag      tag name of activity
-     * @param bundle   bundle
-     * @param isFinish is finish previous activity?
-     */
-    public void startActivity(String tag, Bundle bundle, boolean isFinish) {
+    public void startActivityForResult(String tag, Bundle bundle, int requestCode) {
+        startActivityForResult(tag, bundle, true, requestCode);
+    }
+
+    public void startActivityForResult(String tag, Bundle bundle, boolean isFinish, int requestCode) {
         Intent intent = getIntentActivity(tag);
 
         if (intent != null) {
             if (bundle != null) {
                 intent.putExtras(bundle);
             }
-            startActivity(intent);
+            startActivityForResult(intent, requestCode);
             if (isFinish) {
-                super.finish();     //don't user animation on here. because startActivity had already
+                super.finish();
             }
         }
     }

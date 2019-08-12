@@ -11,7 +11,7 @@ import com.danhtran.androidbaseproject.R;
 import com.danhtran.androidbaseproject.databinding.ActivityMainBinding;
 import com.danhtran.androidbaseproject.ui.activity.BaseAppCompatActivity;
 import com.danhtran.androidbaseproject.utils.SnackBarUtils;
-import com.danhtran.androidbaseproject.utils.ViewUtils;
+import com.danhtran.androidbaseproject.utils.UIUtils;
 
 public class MainActivity extends BaseAppCompatActivity {
     ActivityMainBinding mBinding;
@@ -88,7 +88,7 @@ public class MainActivity extends BaseAppCompatActivity {
         mBinding.rlParent.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                ViewUtils.clearFocus(mBinding.editText, MainActivity.this);
+                UIUtils.clearFocus(mBinding.editText, MainActivity.this);
                 return false;
             }
         });

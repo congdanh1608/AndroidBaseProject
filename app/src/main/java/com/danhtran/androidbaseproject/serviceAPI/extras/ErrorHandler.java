@@ -1,4 +1,4 @@
-package com.danhtran.mypsychicstaff.serviceAPI.extras;
+package com.danhtran.androidbaseproject.serviceAPI.extras;
 
 import android.text.TextUtils;
 import android.view.View;
@@ -36,8 +36,8 @@ public class ErrorHandler {
                     Gson gson = new Gson();
                     ResponseModel responseModel = gson.fromJson(errorBody, ResponseModel.class);
                     if (responseModel != null && responseModel.getErrors() != null) {
-                        List<Error> errors = responseModel.getErrors();
-                        Error error = errors.get(0);
+                        List errors = responseModel.getErrors();
+                        Error error = (Error) errors.get(0);
                         switch (error.getErrorCode()) {
                             case 401:   //un authentication
 //                                activity.startActivityAsRoot(AuthenActivity.class.getName(), null);
@@ -83,8 +83,8 @@ public class ErrorHandler {
                     Gson gson = new Gson();
                     ResponseModel responseModel = gson.fromJson(errorBody, ResponseModel.class);
                     if (responseModel != null && responseModel.getErrors() != null) {
-                        List<Error> errors = responseModel.getErrors();
-                        Error error = errors.get(0);
+                        List errors = responseModel.getErrors();
+                        Error error = (Error) errors.get(0);
                         switch (error.getErrorCode()) {
                             case 401:   //un authentication
                                 //activity.startActivityAsRoot(AuthenActivity.class.getName(), null);

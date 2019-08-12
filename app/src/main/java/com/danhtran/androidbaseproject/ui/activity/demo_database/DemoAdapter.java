@@ -1,7 +1,7 @@
 package com.danhtran.androidbaseproject.ui.activity.demo_database;
 
 import android.content.Context;
-import android.databinding.DataBindingUtil;
+import androidx.databinding.DataBindingUtil;
 import android.view.ViewGroup;
 
 import com.danhtran.androidbaseproject.R;

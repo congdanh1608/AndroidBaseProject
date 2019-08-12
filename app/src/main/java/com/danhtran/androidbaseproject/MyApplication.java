@@ -1,7 +1,7 @@
 package com.danhtran.androidbaseproject;
 
-import android.support.annotation.Nullable;
-import android.support.multidex.MultiDexApplication;
+import androidx.annotation.Nullable;
+import androidx.multidex.MultiDexApplication;
 
 import com.danhtran.androidbaseproject.di.component.AppComponent;
 import com.danhtran.androidbaseproject.di.component.DaggerAppComponent;

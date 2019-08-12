@@ -3,9 +3,9 @@ package com.danhtran.androidbaseproject.utils;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Build;
-import android.support.v4.app.DialogFragment;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
+import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
@@ -17,7 +17,7 @@ import com.danhtran.androidbaseproject.ui.activity.BaseAppCompatActivity;
  * Created by danhtran on 04/06/2017.
  */
 
-public class ViewUtils {
+public class UIUtils {
     /**
      * Show Dialog fragment
      *

@@ -2,9 +2,9 @@ package com.danhtran.androidbaseproject.ui.activity.demo_database;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.databinding.Bindable;
+import androidx.databinding.Bindable;
 import android.os.AsyncTask;
-import android.support.v4.widget.SwipeRefreshLayout;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;

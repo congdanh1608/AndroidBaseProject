@@ -45,7 +45,7 @@
             android:layout_height="wrap_content"
             android:text="btn 2" />
 
-        <android.support.v7.widget.CardView
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
@@ -55,7 +55,7 @@
             card_view:cardElevation="4dp"
             card_view:cardUseCompatPadding="true">
 
-            <android.support.design.widget.TextInputLayout
+            <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/text_input_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -69,8 +69,8 @@
                     android:layout_height="wrap_content"
                     android:inputType="text" />
 
-            </android.support.design.widget.TextInputLayout>
-        </android.support.v7.widget.CardView>
+            </com.google.android.material.textfield.TextInputLayout>
+        </androidx.cardview.widget.CardView>
 
     </RelativeLayout>
 </layout>

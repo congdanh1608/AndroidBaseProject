@@ -15,13 +15,13 @@ buildscript {
     //libraries version
     ext.gradle_version = '3.4.2'
     ext.google_service_version = '3.3.1'
-    ext.google_play_service_version = '16.0.0'
-    ext.support_version = '28.0.0'
-    ext.dagger_version = '2.15'
-    ext.retrofit_version = '2.3.0'
-    ext.room_version = '1.1.1'
-    ext.okhttp_version = '3.10.0'
-    ext.glide_version = '4.8.0'
+    ext.google_play_service_version = '17.0.0'
+    ext.appcompat_version = '1.0.2'
+    ext.dagger_version = '2.24'
+    ext.retrofit_version = '2.6.1'
+    ext.room_version = '2.1.0'
+    ext.okhttp_version = '4.0.1'
+    ext.glide_version = '4.9.0'
 
     repositories {
         google()
@@ -57,5 +57,5 @@ Integer generateVersionCode() {
 }
 
 String generateVersionName() {
-    return  "${rootProject.ext.versionMajor}.${rootProject.ext.versionMinor}.${rootProject.ext.versionPatch}"
+    return "${rootProject.ext.versionMajor}.${rootProject.ext.versionMinor}.${rootProject.ext.versionPatch}"
 }
