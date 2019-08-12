@@ -11,4 +11,10 @@
         <item name="windowNoTitle">true</item>
     </style>
 
+    <!--Alert Dialog-->
+    <style name="AlertDialogCustom" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:textColor">@color/colorBlack</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <!--<item name="fontPath">fonts/SourceSansPro-Regular.otf</item>-->
+    </style>
 </resources>
