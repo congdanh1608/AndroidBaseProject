@@ -15,7 +15,7 @@ import com.danhtran.androidbaseproject.ui.activity.main.MainActivity;
 /**
  * Created by DanhTran on 8/13/2019.
  */
-public class TourActivity extends BaseAppCompatActivity implements TourActivityContract.View {
+public class TourActivity extends BaseAppCompatActivity implements TourActivityListener {
     private ActivityTourBinding mBinding;
     private TourActivityPresenter presenter;
 

@@ -13,14 +13,14 @@ import javax.inject.Inject;
 /**
  * Created by DanhTran on 8/13/2019.
  */
-public class TourActivityPresenter extends BaseActivityPresenter implements TourActivityContract.Presenter {
+public class TourActivityPresenter extends BaseActivityPresenter {
     @Inject
     SharedPrefsHelper sharedPrefsHelper;
 
-    private TourActivityContract.View view;
+    private TourActivityListener listener;
 
-    public TourActivityPresenter(TourActivityContract.View view) {
-        this.view = view;
+    public TourActivityPresenter(TourActivityListener listener) {
+        this.listener = listener;
     }
 
     @Override
@@ -28,8 +28,7 @@ public class TourActivityPresenter extends BaseActivityPresenter implements Tour
         MyApplication.instance().getAppComponent().inject(this);
     }
 
-    @Override
-    public void saveFlag() {
+    void saveFlag() {
         //save into share preference
         sharedPrefsHelper.writeBoolean(SharePrefs.IS_NOT_FIRST_VIEW.getValue(), true);
     }
@@ -38,10 +37,10 @@ public class TourActivityPresenter extends BaseActivityPresenter implements Tour
         return v -> {
             switch (v.getId()) {
                 case R.id.btnDone:
-                    view.moveNextTour();
+                    listener.moveNextTour();
                     break;
                 case R.id.btnSkip:
-                    view.launchHomeScreen();
+                    listener.launchHomeScreen();
                     break;
             }
         };
