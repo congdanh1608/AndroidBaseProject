@@ -446,6 +446,10 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity implements
         return null;
     }
 
+    public BaseAppCompatActivity getBaseActivity(){
+        return this;
+    }
+
     /**
      * Get name of previous fragment
      *

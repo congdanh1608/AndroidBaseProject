@@ -19,6 +19,7 @@ import androidx.fragment.app.DialogFragment;
 
 import com.danhtran.androidbaseproject.R;
 import com.danhtran.androidbaseproject.ui.activity.BaseAppCompatActivity;
+import com.danhtran.androidbaseproject.ui.fragment.BaseFragment;
 
 /**
  * Created by danhtran on 5/29/15.
@@ -116,6 +117,17 @@ public abstract class BaseDialogFragment extends DialogFragment {
             return (BaseAppCompatActivity) getActivity();
         }
         return null;
+    }
+
+    public BaseFragment getBaseFragment() {
+        if (getTargetFragment() instanceof BaseFragment) {
+            return (BaseFragment) getTargetFragment();
+        }
+        return null;
+    }
+
+    public BaseDialogFragment getBaseDialogFragment() {
+        return this;
     }
 
     public enum TYPE {

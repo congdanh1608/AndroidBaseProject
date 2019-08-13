@@ -7,4 +7,6 @@ public interface BaseActivityListener {
     void showProgress();
 
     void hideProgress();
+
+    BaseAppCompatActivity getBaseActivity();
 }

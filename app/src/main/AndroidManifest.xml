@@ -36,6 +36,7 @@
         </activity>
 
         <activity android:name=".ui.activity.tour.TourActivity" />
+        <activity android:name=".ui.activity.secondary.SecondaryActivity" />
 
     </application>
 

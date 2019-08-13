@@ -2,13 +2,17 @@ package com.danhtran.androidbaseproject.ui.fragment;
 
 import android.content.Intent;
 import android.content.res.Configuration;
+
 import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
+
 import android.os.Bundle;
 import android.os.Handler;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -182,6 +186,10 @@ public abstract class BaseFragment extends Fragment {
         if (getActivity() instanceof BaseAppCompatActivity)
             return (BaseAppCompatActivity) getActivity();
         return null;
+    }
+
+    public BaseFragment getBaseFragment() {
+        return this;
     }
 
     /**
