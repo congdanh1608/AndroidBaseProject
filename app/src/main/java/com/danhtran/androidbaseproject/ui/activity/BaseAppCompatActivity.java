@@ -32,6 +32,7 @@ import android.widget.Toast;
 
 import com.danhtran.androidbaseproject.R;
 import com.danhtran.androidbaseproject.ui.activity.main.MainActivity;
+import com.danhtran.androidbaseproject.ui.activity.tour.TourActivity;
 import com.danhtran.androidbaseproject.ui.fragment.BaseFragment;
 import com.danhtran.androidbaseproject.utils.UIUtils;
 import com.orhanobut.logger.Logger;
@@ -356,6 +357,8 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity implements
         if (!TextUtils.isEmpty(tag)) {
             if (tag.equals(MainActivity.class.getName())) {
                 intent = MainActivity.createIntent(this);
+            } else if (tag.equals(TourActivity.class.getName())) {
+                intent = TourActivity.createIntent(this);
             }
         }
         return intent;

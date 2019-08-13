@@ -12,6 +12,7 @@ import com.danhtran.androidbaseproject.database.share_preferences.SharedPrefsHel
 import com.danhtran.androidbaseproject.extras.enums.SharePrefs;
 import com.danhtran.androidbaseproject.ui.activity.BaseAppCompatActivity;
 import com.danhtran.androidbaseproject.ui.activity.main.MainActivity;
+import com.danhtran.androidbaseproject.ui.activity.tour.TourActivity;
 
 import javax.inject.Inject;
 
@@ -53,7 +54,7 @@ public class SplashActivity extends BaseAppCompatActivity {
         handler = new Handler();
         handler.postDelayed(() -> {
             if (!sharedPrefsHelper.readBoolean(SharePrefs.IS_NOT_FIRST_VIEW.getValue())) {
-                startActivityAsRoot(MainActivity.class.getName(), null);
+                startActivityAsRoot(TourActivity.class.getName(), null);
             } else {
                 startActivityAsRoot(MainActivity.class.getName(), null);
             }

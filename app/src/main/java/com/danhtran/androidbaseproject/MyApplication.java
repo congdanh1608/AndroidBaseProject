@@ -54,7 +54,7 @@ public class MyApplication extends MultiDexApplication {
     private void initSDK() {
 //        initHawk();
 //        initFacebook();
-//        initFont();
+        initFont();
         initLogger();
 //        initEvernoteState();
     }
@@ -67,7 +67,7 @@ public class MyApplication extends MultiDexApplication {
     //init fonts for app
     private void initFont() {
         CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
-                .setDefaultFontPath("fonts/Roboto-RobotoRegular.ttf")
+                .setDefaultFontPath("fonts/Helvetica.ttf")
                 .setFontAttrId(R.attr.fontPath)
                 .build()
         );

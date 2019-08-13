@@ -28,6 +28,6 @@
     <style name="AlertDialogCustom" parent="Theme.AppCompat.Light.Dialog.Alert">
         <item name="android:textColor">@color/colorBlack</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <!--<item name="fontPath">fonts/SourceSansPro-Regular.otf</item>-->
+        <item name="fontPath">fonts/Helvetica.ttf</item>
     </style>
 </resources>

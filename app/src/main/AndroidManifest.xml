@@ -35,6 +35,9 @@
 
         </activity>
 
+        <activity android:name=".ui.activity.tour.TourActivity" />
+
+
         <activity android:name="com.danhtran.androidbaseproject.ui.activity.demo_database.DemoActivity" />
         <activity android:name="com.danhtran.androidbaseproject.ui.activity.demo_permission.Demo1Activity" />
     </application>
