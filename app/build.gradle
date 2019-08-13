@@ -157,11 +157,10 @@ dependencies {
     implementation "androidx.appcompat:appcompat:$appcompat_version"
     implementation 'com.google.android.material:material:1.0.0'
 
-    //Firebase
+    //google services
+    implementation "com.google.android.gms:play-services-location:$google_play_service_version"
     implementation "com.google.firebase:firebase-core:$google_play_service_version"
-    //(Recommended) Add Analytics
     implementation "com.google.firebase:firebase-analytics:$google_play_service_version"
-    // Add dependency
     implementation "com.crashlytics.sdk.android:crashlytics:2.10.1"
 
     //avi refresh layout
@@ -218,6 +217,9 @@ dependencies {
         exclude group: 'androidx.core'
     }
     annotationProcessor 'com.evernote:android-state-processor:1.4.1'
+
+    //location
+    implementation 'pl.charmas.android:android-reactive-location2:2.1@aar'
 
     //Calligraphy font
     implementation 'uk.co.chrisjenx:calligraphy:2.3.0'
