@@ -13,7 +13,7 @@ import com.danhtran.androidbaseproject.ui.activity.BaseAppCompatActivity;
 import com.danhtran.androidbaseproject.utils.SnackBarUtils;
 import com.danhtran.androidbaseproject.utils.UIUtils;
 
-public class MainActivity extends BaseAppCompatActivity {
+public class MainActivity extends BaseAppCompatActivity implements MainActivityListener{
     ActivityMainBinding mBinding;
 
     public static Intent createIntent(Context context) {
