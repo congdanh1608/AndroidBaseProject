@@ -16,6 +16,7 @@ import android.util.Log;
 import androidx.core.app.ActivityCompat;
 
 import com.danhtran.androidbaseproject.R;
+import com.danhtran.androidbaseproject.extras.Constant;
 import com.danhtran.androidbaseproject.extras.enums.EventBusKey;
 import com.danhtran.androidbaseproject.utils.DialogUtils;
 import com.google.android.gms.location.LocationRequest;
@@ -36,8 +37,6 @@ import static android.content.Context.LOCATION_SERVICE;
  */
 
 public class GPSReceiver extends BroadcastReceiver {
-    public static final int REQUEST_CODE_RESULT_LOCATION_ON_OFF = 1006;
-
     private static final int TYPE_REQUEST_LAST_KNOW = 0;
     private static final int TYPE_REQUEST_UPDATE = 1;
 
@@ -264,7 +263,7 @@ public class GPSReceiver extends BroadcastReceiver {
                         @Override
                         public void positiveClick() {
                             Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
-                            ((Activity) context).startActivityForResult(intent, REQUEST_CODE_RESULT_LOCATION_ON_OFF);
+                            ((Activity) context).startActivityForResult(intent, Constant.REQUEST_CODE_RESULT_LOCATION_ON_OFF);
                         }
 
                         @Override

@@ -10,6 +10,7 @@ import androidx.annotation.Nullable;
 
 import com.danhtran.androidbaseproject.R;
 import com.danhtran.androidbaseproject.databinding.ActivityMainBinding;
+import com.danhtran.androidbaseproject.extras.Constant;
 import com.danhtran.androidbaseproject.ui.activity.BaseAppCompatActivity;
 
 public class MainActivity extends BaseAppCompatActivity implements MainActivityListener {
@@ -33,7 +34,7 @@ public class MainActivity extends BaseAppCompatActivity implements MainActivityL
     protected void loadPassedParamsIfNeeded(@NonNull Bundle extras) {
         super.loadPassedParamsIfNeeded(extras);
         //load deep link when app is not running
-        
+
     }
 
     @Override
@@ -66,6 +67,17 @@ public class MainActivity extends BaseAppCompatActivity implements MainActivityL
             exitApp();
         } else {
             super.onBackPressed();
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (requestCode) {
+            case Constant.REQUEST_CODE_RESULT_LOCATION_ON_OFF:
+                break;
+            case Constant.REQUEST_CODE_RESULT_LOCATION_PERMISSION:
+                break;
         }
     }
 
