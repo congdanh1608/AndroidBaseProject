@@ -31,12 +31,30 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="com.danhtran.androidbaseproject.ui.activity.main.MainActivity">
+        <activity
+            android:name="com.danhtran.androidbaseproject.ui.activity.main.MainActivity"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:windowSoftInputMode="adjustPan">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
 
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <!-- Accepts URIs that begin with "com.danhtran://offers" -->
+                <data
+                    android:host="offers"
+                    android:scheme="com.danhtran" />
+                <!--<data android:scheme="http"
+                    android:host="www.example.com"
+                    android:pathPrefix="/gizmos" />-->
+            </intent-filter>
         </activity>
 
         <activity android:name=".ui.activity.tour.TourActivity" />
-        <activity android:name=".ui.activity.secondary.SecondaryActivity" />
+        <activity
+            android:name=".ui.activity.secondary.SecondaryActivity"
+            android:windowSoftInputMode="adjustPan" />
 
     </application>
 

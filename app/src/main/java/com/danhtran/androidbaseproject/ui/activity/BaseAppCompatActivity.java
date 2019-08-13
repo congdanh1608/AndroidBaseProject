@@ -3,22 +3,11 @@ package com.danhtran.androidbaseproject.ui.activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
-
-import androidx.databinding.DataBindingUtil;
-import androidx.databinding.ViewDataBinding;
-
+import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -29,6 +18,15 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
+import androidx.databinding.ViewDataBinding;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.danhtran.androidbaseproject.R;
 import com.danhtran.androidbaseproject.ui.activity.main.MainActivity;
@@ -103,6 +101,11 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity implements
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        registerReceiver();
+
+        //set portrait
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
         //binding layout
         int xml = setLayout();
         if (xml != 0 && binding == null) {
@@ -141,18 +144,6 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity implements
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
-        registerReceiver();
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        unRegisterReceiver();
-    }
-
-    @Override
     protected void onDestroy() {
         if (binding != null) {
             UIUtils.removeKeyboardEvents(binding.getRoot());
@@ -161,6 +152,8 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity implements
         for (Dialog dialog : setOfDialogs) {
             dialog.dismiss();
         }
+
+        unRegisterReceiver();
 
         super.onDestroy();
     }
@@ -446,7 +439,7 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity implements
         return null;
     }
 
-    public BaseAppCompatActivity getBaseActivity(){
+    public BaseAppCompatActivity getBaseActivity() {
         return this;
     }
 
