@@ -1,53 +1,6 @@
-package com.danhtran.androidbaseproject.ui.activity.demo_permission;
+### Example for requesting permission:
 
-import android.Manifest;
-import android.content.DialogInterface;
-import androidx.appcompat.app.AlertDialog;
-import android.view.View;
-import android.widget.Toast;
-
-import com.danhtran.androidbaseproject.utils.Utils;
-import com.karumi.dexter.Dexter;
-import com.karumi.dexter.MultiplePermissionsReport;
-import com.karumi.dexter.PermissionToken;
-import com.karumi.dexter.listener.DexterError;
-import com.karumi.dexter.listener.PermissionDeniedResponse;
-import com.karumi.dexter.listener.PermissionGrantedResponse;
-import com.karumi.dexter.listener.PermissionRequest;
-import com.karumi.dexter.listener.PermissionRequestErrorListener;
-import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
-import com.karumi.dexter.listener.single.PermissionListener;
-
-import java.util.List;
-
-/**
- * Created by danhtran on 2/28/2018.
- */
-
-public class Demo1Presenter {
-    private Demo1Activity demo1Activity;
-
-    public Demo1Presenter(Demo1Activity demo1Activity) {
-        this.demo1Activity = demo1Activity;
-    }
-
-    public View.OnClickListener onClickButtonListener(final int index) {
-        return new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                switch (index) {
-                    case 0:
-                        requestCameraPermission();
-                        break;
-                    case 1:
-                        requestStoragePermission();
-                        break;
-                }
-            }
-        };
-    }
-
-    private void requestCameraPermission() {
+private void requestCameraPermission() {
         Dexter.withActivity(demo1Activity)
                 .withPermission(Manifest.permission.CAMERA)
                 .withListener(new PermissionListener() {
@@ -121,4 +74,3 @@ public class Demo1Presenter {
         });
         builder.show();
     }
-}

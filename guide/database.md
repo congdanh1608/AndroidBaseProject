@@ -1,4 +1,10 @@
 ### How to room with Rxjava:
+First of all, inject the Room Repository
+    @Inject
+    UserAddrAddrRepository userAddrRepository;
+
+    MyApplication.instance().getAppComponent().plusRoomComponent(new RoomModule()).inject(this);
+
 # Insert database
 - Example for using RxJava if you want to return a object:
         Single.fromCallable(new Callable<Long>() {
