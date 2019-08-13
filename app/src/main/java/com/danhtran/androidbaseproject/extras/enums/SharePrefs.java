@@ -8,6 +8,8 @@ import com.danhtran.androidbaseproject.utils.EnumUtils;
  */
 
 public enum SharePrefs {
+    IS_NOT_FIRST_VIEW("is_not_first_view"),
+
     SESSION_LOGIN("SESSION_LOGIN"),
     TOKEN_FIREBASE("TOKEN_FIREBASE"),
     PUSH_ID_FIREBASE("PUSH_ID_FIREBASE"),

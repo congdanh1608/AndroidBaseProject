@@ -6,6 +6,7 @@ import com.danhtran.androidbaseproject.di.module.AppModule;
 import com.danhtran.androidbaseproject.di.module.NetworkModule;
 import com.danhtran.androidbaseproject.di.module.RoomModule;
 import com.danhtran.androidbaseproject.di.module.SharePrefsModule;
+import com.danhtran.androidbaseproject.ui.activity.splash.SplashActivity;
 
 import javax.inject.Singleton;
 
@@ -26,6 +27,7 @@ import dagger.Component;
 public interface AppComponent {
     //inject where you want to inject to get providers.
     void inject(MyApplication myApplication);
+    void inject(SplashActivity splashActivity);
 
     //for subComponent
     RoomComponent plusRoomComponent(RoomModule roomModule);

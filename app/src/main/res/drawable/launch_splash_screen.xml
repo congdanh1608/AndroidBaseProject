@@ -6,7 +6,8 @@
     <item>
         <bitmap
             android:gravity="fill"
-            android:src="@drawable/bg_splash" />
+            android:src="@drawable/bg_splash"
+            android:tint="@color/colorPrimary" />
     </item>
 
     <item
@@ -18,7 +19,7 @@
             android:antialias="true"
             android:dither="true"
             android:gravity="center"
-            android:src="@mipmap/ic_launcher" />
+            android:src="@drawable/ic_wolf" />
 
     </item>
 </layer-list>
