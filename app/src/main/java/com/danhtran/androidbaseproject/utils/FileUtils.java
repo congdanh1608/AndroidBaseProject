@@ -2,16 +2,10 @@ package com.danhtran.androidbaseproject.utils;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.graphics.Bitmap;
 
 import com.danhtran.androidbaseproject.extras.listener.SingleResultListener;
 
 import java.io.File;
-
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.functions.Consumer;
-import io.reactivex.schedulers.Schedulers;
-import me.echodev.resizer.Resizer;
 
 /**
  * Created by danhtran on 1/4/2019.
@@ -24,6 +18,8 @@ public class FileUtils {
      * Resize image file.
      * The extension will follow by the source image
      * Filename should be provided without extension
+     * <p>
+     * implementation 'com.github.hkk595:Resizer:v1.5'
      *
      * @param imageFile context
      * @param generalId generated UUID
@@ -33,7 +29,7 @@ public class FileUtils {
     public static void convertImageToSmallSize(Context context, String generalId, File imageFile, final SingleResultListener<File> listener) {
         String imageNameWithoutExt = generalId + "_small";
 
-        new Resizer(context)
+        /*new Resizer(context)
                 .setTargetLength(IMAGE_SIZE)
                 .setQuality(IMAGE_QUALITY)
                 .setOutputFormat(Bitmap.CompressFormat.JPEG)
@@ -53,6 +49,6 @@ public class FileUtils {
                     public void accept(Throwable throwable) throws Exception {
                         throwable.printStackTrace();
                     }
-                });
+                });*/
     }
 }

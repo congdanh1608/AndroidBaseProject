@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -57,7 +58,14 @@ public class MainActivity extends BaseAppCompatActivity implements MainActivityL
 
     @Override
     public void initListener() {
-
+        mBinding.btn1.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+//                        Crashlytics.getInstance().crash();
+                    }
+                }
+        );
     }
 
     @Override

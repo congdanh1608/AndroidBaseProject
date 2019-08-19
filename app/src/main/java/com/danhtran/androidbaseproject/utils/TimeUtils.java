@@ -1,7 +1,5 @@
 package com.danhtran.androidbaseproject.utils;
 
-import org.ocpsoft.prettytime.PrettyTime;
-
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -16,16 +14,18 @@ public class TimeUtils {
     /**
      * Format moment ago for time
      *
+     * implementation 'org.ocpsoft.prettytime:prettytime...'
+     *
      * @return String
      */
-    public static String getTimeInfo() {
+    /*public static String getTimeInfo() {
         PrettyTime p = new PrettyTime(Locale.getDefault());
         Calendar calendar = (Calendar) Calendar.getInstance().clone();
         calendar.add(Calendar.MINUTE, -2);
         calendar.add(Calendar.SECOND, -40);
         String ago = p.format(calendar.getTime());
         return String.valueOf(ago);
-    }
+    }*/
 
     /**
      * Get list name of monday in the past

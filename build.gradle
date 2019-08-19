@@ -4,7 +4,7 @@ buildscript {
 
     //base version
     ext.compileSdkVersion = 28
-    ext.applicationId = "com.danhtran.androidbaseproject"
+    ext.applicationId = "com.danhtran.android_base_project"
     ext.minSdkVersion = 19
     ext.targetSdkVersion = 28
 
@@ -14,7 +14,7 @@ buildscript {
 
     //libraries version
     ext.gradle_version = '3.4.2'
-    ext.google_service_version = '4.2.0'
+    ext.google_service_version = '4.3.0'
     ext.google_play_service_version = '17.0.0'
     ext.appcompat_version = '1.0.2'
     ext.dagger_version = '2.24'
@@ -37,7 +37,7 @@ buildscript {
         classpath "com.android.tools.build:gradle:$gradle_version"
         classpath "com.google.gms:google-services:$google_service_version"
         classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
-        classpath 'io.fabric.tools:gradle:1.31.0'  // Firebase crashlytics plugin
+        classpath 'io.fabric.tools:gradle:1.31.0'  // Crashlytics plugin
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -50,6 +50,7 @@ allprojects {
         jcenter()
         //for snacky
         maven { url "https://jitpack.io" }
+        maven { url 'https://maven.fabric.io/public' }
     }
 }
 

@@ -19,10 +19,8 @@ android {
 
 dependencies {
     implementation "androidx.appcompat:appcompat:$appcompat_version"
-//    implementation "com.google.firebase:firebase-core:$google_play_service_version"
-//    implementation "com.google.firebase:firebase-auth:$google_play_service_version"
     implementation "com.google.android.gms:play-services-auth:$google_play_service_version"
-    implementation 'com.facebook.android:facebook-android-sdk:5.2.0'
+    implementation 'com.facebook.android:facebook-android-sdk:5.4.0'
 }
 
 //apply plugin: 'com.google.gms.google-services'

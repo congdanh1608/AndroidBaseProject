@@ -2,10 +2,6 @@
 package com.danhtran.androidbaseproject.utils;
 
 import android.content.Context;
-import androidx.databinding.BindingAdapter;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
@@ -14,9 +10,13 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
+import androidx.databinding.BindingAdapter;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.danhtran.androidbaseproject.ui.customview.DividerItemDecoration;
 import com.danhtran.androidbaseproject.ui.customview.SpacesItemDecoration;
-
 import com.danhtran.customglide.GlideHelper;
 
 
@@ -97,9 +97,9 @@ public class BindingUtils {
     }
 
     @BindingAdapter({"setImage", "radius"})
-    public static void radiusImage(ImageView imageView, String url, int raidus) {
+    public static void radiusImage(ImageView imageView, String url, int radius) {
         if (url != null) {
-            GlideHelper.getInstance().displayImageRounder(url, imageView, raidus);
+            GlideHelper.getInstance().displayImageRounder(url, imageView, radius);
         }
     }
 

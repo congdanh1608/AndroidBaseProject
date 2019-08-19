@@ -6,7 +6,6 @@ import androidx.multidex.MultiDexApplication;
 import com.danhtran.androidbaseproject.di.component.AppComponent;
 import com.danhtran.androidbaseproject.di.component.DaggerAppComponent;
 import com.danhtran.androidbaseproject.di.module.AppModule;
-import com.evernote.android.state.StateSaver;
 import com.orhanobut.hawk.Hawk;
 import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.Logger;
@@ -83,7 +82,7 @@ public class MyApplication extends MultiDexApplication {
     }
 
     private void initEvernoteState() {
-        StateSaver.setEnabledForAllActivitiesAndSupportFragments(this, true);
+//        StateSaver.setEnabledForAllActivitiesAndSupportFragments(this, true);
     }
 
     private void initHawk() {

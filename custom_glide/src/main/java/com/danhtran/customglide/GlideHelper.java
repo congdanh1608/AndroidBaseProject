@@ -3,22 +3,22 @@ package com.danhtran.customglide;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.widget.ImageView;
+
 import androidx.core.graphics.drawable.RoundedBitmapDrawable;
 import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory;
-import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.target.BitmapImageViewTarget;
+import com.danhtran.customglide.blur.BlurBuilder;
+import com.danhtran.customglide.rounder.RoundedBitmapDrawableFormat;
 import com.danhtran.customglide.rounder.RoundedCornersTransformation;
 
 import java.io.File;
 
 import vn.danhtran.customglide.R;
-
-import com.danhtran.customglide.blur.BlurBuilder;
-import com.danhtran.customglide.rounder.RoundedBitmapDrawableFormat;
 
 /**
  * Created by danhtran on 17/02/2017.
@@ -183,13 +183,13 @@ public class GlideHelper {
 
     }
 
-    public void displayImageRounder(String url, final ImageView imageView, int raidus) {
+    public void displayImageRounder(String url, final ImageView imageView, int radius) {
         final Context context = imageView.getContext();
         Glide.with(context)
                 .asBitmap()
                 .load(url)
                 .apply(requestOptions
-                        .transform(new RoundedCornersTransformation(context, raidus, 0)))
+                        .transform(new RoundedCornersTransformation(context, radius, 0)))
                 .into(imageView);
 
     }
@@ -200,7 +200,7 @@ public class GlideHelper {
         Glide.with(context)
                 .asBitmap()
                 .load(url)
-                .apply(requestOptions)
+                .apply(requestOptions.override(width, height))
                 .into(new BitmapImageViewTarget(imageView) {
                     @Override
                     protected void setResource(Bitmap resource) {

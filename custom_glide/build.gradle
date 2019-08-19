@@ -10,7 +10,7 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
-        //for blur
+        //for image blurring
         renderscriptTargetApi rootProject.ext.minSdkVersion
         renderscriptSupportModeEnabled true
     }
