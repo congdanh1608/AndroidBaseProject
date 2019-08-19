@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 
 import androidx.annotation.NonNull;
@@ -62,7 +63,7 @@ public class MainActivity extends BaseAppCompatActivity implements MainActivityL
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-//                        Crashlytics.getInstance().crash();
+                        Log.d("Danh", null);
                     }
                 }
         );

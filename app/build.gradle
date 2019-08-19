@@ -236,6 +236,9 @@ dependencies {
 
     //Resizer for image
     //implementation 'com.github.hkk595:Resizer:v1.5'
+
+    //Image picker
+    implementation 'com.github.martin90s:ImagePicker:v1.3.2'
 }
 
 apply plugin: 'com.google.gms.google-services'

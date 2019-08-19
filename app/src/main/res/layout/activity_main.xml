@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:bind="http://schemas.android.com/apk/res-auto"
     xmlns:card_view="http://schemas.android.com/apk/res-auto">
 
@@ -20,7 +21,7 @@
             android:id="@+id/content_fragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:visibility="visible" />
+            android:visibility="gone" />
 
         <ImageView
             android:id="@+id/imv"
@@ -40,10 +41,26 @@
 
         <Button
             android:id="@+id/btn2"
-            android:layout_below="@+id/btn1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/btn1"
             android:text="btn 2" />
+
+        <ImageView
+            android:id="@+id/imvSVG"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_below="@+id/btn2"
+            app:srcCompat="@drawable/ic_dog_svg" />
+
+        <ImageView
+            android:id="@+id/imvPNG"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btn2"
+            android:layout_marginStart="12dp"
+            android:layout_toEndOf="@id/imvSVG"
+            app:srcCompat="@drawable/ic_dog_png" />
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"

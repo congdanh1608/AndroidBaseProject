@@ -50,7 +50,10 @@ allprojects {
         jcenter()
         //for snacky
         maven { url "https://jitpack.io" }
+        //firebase crashlytic
         maven { url 'https://maven.fabric.io/public' }
+        //image picker
+        maven { url "https://jitpack.io" }
     }
 }
 
