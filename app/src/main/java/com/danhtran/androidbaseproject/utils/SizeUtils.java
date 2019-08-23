@@ -13,7 +13,7 @@ public class SizeUtils {
     private static float pixelsPerOneDp;
 
     private static void initialise() {
-        pixelsPerOneDp = MyApplication.Instance().getApplicationContext()
+        pixelsPerOneDp = MyApplication.instance().getApplicationContext()
                 .getResources().getDisplayMetrics().densityDpi / 160f;
         isInitialised = true;
     }

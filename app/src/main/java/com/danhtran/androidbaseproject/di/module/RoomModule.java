@@ -1,6 +1,6 @@
 package com.danhtran.androidbaseproject.di.module;
 
-import android.arch.persistence.room.Room;
+import androidx.room.Room;
 import android.content.Context;
 
 import com.danhtran.androidbaseproject.database.dao.AddressDAO;

@@ -29,7 +29,7 @@ public class Utils {
      */
     public static void openSettings(Activity activity, int code) {
         Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
-        Uri uri = Uri.fromParts("package", MyApplication.Instance().getPackageName(), null);
+        Uri uri = Uri.fromParts("package", MyApplication.instance().getPackageName(), null);
         intent.setData(uri);
         activity.startActivityForResult(intent, code);
     }
@@ -63,7 +63,7 @@ public class Utils {
      * @param activity activity
      */
     public static void goToPlayStore(Activity activity) {
-        final String appPackageName = MyApplication.Instance().getPackageName(); // getPackageName() from Context or Activity object
+        final String appPackageName = MyApplication.instance().getPackageName(); // getPackageName() from Context or Activity object
         try {
             activity.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + appPackageName)));
         } catch (android.content.ActivityNotFoundException anfe) {
@@ -73,7 +73,7 @@ public class Utils {
 
     //get url of this app with package name
     private static String getUrlApp() {
-        final String appPackageName = MyApplication.Instance().getPackageName(); // getPackageName() from Context or Activity object
+        final String appPackageName = MyApplication.instance().getPackageName(); // getPackageName() from Context or Activity object
         return "https://play.google.com/store/apps/details?id=" + appPackageName;
     }
 

@@ -5,7 +5,7 @@ import java.text.DecimalFormat;
 /**
  * Created by danhtran on 1/4/2019.
  */
-public class TextUtils {
+public class StringUtils {
     public static String formatDecimal(double value) {
 
         String pattern = "#,###.##";

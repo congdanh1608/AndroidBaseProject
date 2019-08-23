@@ -8,13 +8,15 @@ import com.danhtran.androidbaseproject.utils.EnumUtils;
  */
 
 public enum SharePrefs {
+    IS_NOT_FIRST_VIEW("is_not_first_view"),
+
     SESSION_LOGIN("SESSION_LOGIN"),
     TOKEN_FIREBASE("TOKEN_FIREBASE"),
     PUSH_ID_FIREBASE("PUSH_ID_FIREBASE"),
     OFF_NOTIFY("OFF_NOTIFY"),
     LANGUAGE("LANGUAGE");
 
-    public static final String PREFIX = MyApplication.Instance().getPackageName();
+    public static final String PREFIX = MyApplication.instance().getPackageName();
 
     private final String value;
 

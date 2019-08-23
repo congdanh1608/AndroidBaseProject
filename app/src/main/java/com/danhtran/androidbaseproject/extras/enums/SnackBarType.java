@@ -10,8 +10,7 @@ public enum SnackBarType {
     SUCCESS(0),
     ERROR(1),
     INFO(2),
-    NORMAL(3),
-    WARNING(4);
+    WARNING(3);
 
     private static Map<Integer, SnackBarType> map = new HashMap<>();
     private int value;

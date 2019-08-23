@@ -15,7 +15,7 @@ import dagger.Provides;
  * Created by danhtran on 2/27/2018.
  */
 @Module
-public class ShareprefsModule {
+public class SharePrefsModule {
     @Singleton
     @Provides
     public SharedPrefsHelper getSharedPrefsHelper(SharedPreferences sharedPreferences) {
@@ -25,6 +25,19 @@ public class ShareprefsModule {
     @Singleton
     @Provides
     public SharedPreferences getSharedPreferences(Context context) {
-        return PreferenceManager.getDefaultSharedPreferences(context);
+        SharedPreferences sharedPreferences;
+        //encrypt for release version - min api 23
+//        if (BuildConfig.DEBUG) {
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+        /*} else {
+            sharedPreferences = EncryptedSharedPreferences.create(
+                    "secret_shared_prefs",
+                    masterKeyAlias,
+                    context,
+                    EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
+                    EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
+            );*/
+
+        return sharedPreferences;
     }
 }

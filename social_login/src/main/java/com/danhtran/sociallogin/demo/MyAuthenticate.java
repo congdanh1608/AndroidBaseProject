@@ -3,9 +3,9 @@ package com.danhtran.sociallogin.demo;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.FragmentActivity;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.FragmentActivity;
 
 import com.danhtran.sociallogin.MyAccessToken;
 import com.danhtran.sociallogin.SocialLogin;

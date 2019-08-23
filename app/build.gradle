@@ -1,4 +1,7 @@
 apply plugin: 'com.android.application'
+apply plugin: 'io.fabric'
+
+
 import com.android.build.OutputFile
 
 def keystorePropertiesFile = rootProject.file("app/keystores/keystore.properties")
@@ -11,8 +14,8 @@ android {
         applicationId rootProject.ext.applicationId
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode generateVersionCode()
-        versionName generateVersionName()
+        versionCode rootProject.generateVersionCode()
+        versionName rootProject.generateVersionName()
 
         //support vector drawables for android < 21
         vectorDrawables.useSupportLibrary = true
@@ -24,7 +27,7 @@ android {
         renderscriptTargetApi rootProject.ext.minSdkVersion
         renderscriptSupportModeEnabled true
 
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     //support data binding
@@ -35,6 +38,11 @@ android {
     dexOptions {
         maxProcessCount 4
         javaMaxHeapSize "2g"
+    }
+    //enable java 8
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
     packagingOptions {
         exclude 'META-INF/proguard/androidx-annotations.pro'
@@ -72,7 +80,7 @@ android {
         }
     }
     productFlavors {
-        dev {
+        develop {
             resValue 'string', 'domainAPI', 'https://animeloversapp.com:3000/api/'
             resValue 'string', 'facebookAppId', '641215556070654'
 
@@ -135,35 +143,29 @@ android {
     }
 }
 
-private Integer generateVersionCode() {
-    return rootProject.ext.minSdkVersion * 10000000 + rootProject.ext.versionMajor * 10000 + rootProject.ext.versionMinor * 100 + rootProject.ext.versionPatch
-}
-
-private String generateVersionName() {
-    return  "${rootProject.ext.versionMajor}.${rootProject.ext.versionMinor}.${rootProject.ext.versionPatch}"
-}
-
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    androidTestImplementation 'androidx.test:runner:1.2.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
     //social authentication
     implementation project(':social_login')
-    //Glide
+    //glide
     implementation project(':custom_glide')
-
-    //google
-    implementation "com.android.support:appcompat-v7:$support_version"
-    implementation "com.android.support:design:$support_version"
-
-    //avi refresh layout
-    implementation "com.wang.avi:library:2.1.3"
 
     //multiple dex
     implementation "androidx.multidex:multidex:2.0.1"
+
+    //google
+    implementation "androidx.appcompat:appcompat:$appcompat_version"
+    implementation 'com.google.android.material:material:1.0.0'
+
+    //google services
+    implementation "com.google.android.gms:play-services-location:$google_play_service_version"
+    implementation "com.google.firebase:firebase-core:$google_play_service_version"
+    implementation "com.google.firebase:firebase-analytics:$google_play_service_version"
 
     //dagger
     implementation "com.google.dagger:dagger:$dagger_version"
@@ -172,28 +174,26 @@ dependencies {
     implementation "com.google.dagger:dagger-android-support:$dagger_version"
     annotationProcessor "com.google.dagger:dagger-android-processor:$dagger_version"
 
-    //gson
-    implementation "com.google.code.gson:gson:2.8.2"
+    //rx
+    implementation "io.reactivex.rxjava2:rxjava:2.2.7"
+    implementation "io.reactivex.rxjava2:rxandroid:2.1.1"
 
     //retrofit
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
     implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
     implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-scalars:$retrofit_version"
 
     //okhttp
     implementation "com.squareup.okhttp3:okhttp:$okhttp_version"
 
-    //rx
-    implementation "io.reactivex.rxjava2:rxjava:2.1.12"
-    implementation "io.reactivex.rxjava2:rxandroid:2.0.2"
-
     //room
-    implementation "android.arch.persistence.room:runtime:$room_version"
-    annotationProcessor "android.arch.persistence.room:compiler:$room_version"
-    implementation "android.arch.persistence.room:rxjava2:$room_version"
+    implementation "androidx.room:room-runtime:$room_version"
+    annotationProcessor "androidx.room:room-compiler:$room_version"
+    implementation "androidx.room:room-rxjava2:$room_version"
 
-    //annotation
-    implementation "org.jetbrains:annotations-java5:15.0"
+    //gson
+    implementation "com.google.code.gson:gson:2.8.5"
 
     //logger
     implementation "com.orhanobut:logger:2.2.0"
@@ -201,24 +201,44 @@ dependencies {
     //halcyon_logger
     implementation "com.lhalcyon:okhttp-logger-interceptor:1.0.2"
 
-    //dexter
-    implementation "com.karumi:dexter:4.2.0"
+    //dexter - permission requirement
+    implementation "com.karumi:dexter:5.0.0"
 
-    //Snackbar
+    //hawk
+    implementation "com.orhanobut:hawk:2.0.1"
+
+    //location
+    implementation 'pl.charmas.android:android-reactive-location2:2.1@aar'
+
+    //avi refresh layout
+    implementation "com.wang.avi:library:2.1.3"
+
+    //snack bar
     implementation 'com.github.matecode:Snacky:1.0.3'
-
-    //A utility library for Android to save objects in a Bundle without any boilerplate
-    implementation('com.evernote:android-state:1.4.1') {
-        exclude group: 'androidx.core'
-    }
-    annotationProcessor 'com.evernote:android-state-processor:1.4.1'
 
     //Calligraphy font
     implementation 'uk.co.chrisjenx:calligraphy:2.3.0'
 
-    //time
-    implementation 'org.ocpsoft.prettytime:prettytime:4.0.1.Final'
+    //event bus
+    implementation 'org.greenrobot:eventbus:3.1.1'
+
+    //leak canary
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.0-beta-2'
+
+    //A utility library for Android to save objects in a Bundle without any boilerplate
+    /*implementation('com.evernote:android-state:1.4.1') {
+        exclude group: 'androidx.core'
+    }
+    annotationProcessor 'com.evernote:android-state-processor:1.4.1'*/
+
+    //pretty time
+    //implementation 'org.ocpsoft.prettytime:prettytime:4.0.2.Final'
 
     //Resizer for image
-    implementation 'com.github.hkk595:Resizer:v1.5'
+    //implementation 'com.github.hkk595:Resizer:v1.5'
+
+    //Image picker
+    implementation 'com.github.martin90s:ImagePicker:v1.3.2'
 }
+
+apply plugin: 'com.google.gms.google-services'

@@ -2,13 +2,17 @@ package com.danhtran.androidbaseproject.ui.fragment;
 
 import android.content.Intent;
 import android.content.res.Configuration;
-import android.databinding.DataBindingUtil;
-import android.databinding.ViewDataBinding;
+
+import androidx.databinding.DataBindingUtil;
+import androidx.databinding.ViewDataBinding;
+
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -16,7 +20,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.danhtran.androidbaseproject.utils.ViewUtils;
+import com.danhtran.androidbaseproject.utils.UIUtils;
 import com.danhtran.androidbaseproject.ui.activity.BaseAppCompatActivity;
 
 /**
@@ -64,7 +68,7 @@ public abstract class BaseFragment extends Fragment {
             //hide keyboard after click outside of edit text
             getRootView().setClickable(true);
             getRootView().setFocusableInTouchMode(true);
-            ViewUtils.addKeyboardEvents(getActivity(), binding.getRoot(), binding.getRoot());
+            UIUtils.addKeyboardEvents(getActivity(), binding.getRoot(), binding.getRoot());
 
             //enable options menu
             setHasOptionsMenu(true);
@@ -79,13 +83,13 @@ public abstract class BaseFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        initListener();
         initData();
+        initListener();
     }
 
     @Override
     public void onDestroy() {
-        ViewUtils.removeKeyboardEvents(getRootView());
+        UIUtils.removeKeyboardEvents(getRootView());
         super.onDestroy();
     }
 
@@ -182,6 +186,10 @@ public abstract class BaseFragment extends Fragment {
         if (getActivity() instanceof BaseAppCompatActivity)
             return (BaseAppCompatActivity) getActivity();
         return null;
+    }
+
+    public BaseFragment getBaseFragment() {
+        return this;
     }
 
     /**

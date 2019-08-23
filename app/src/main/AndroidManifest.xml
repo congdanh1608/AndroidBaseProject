@@ -13,14 +13,17 @@
 
     <application
         android:name="com.danhtran.androidbaseproject.MyApplication"
-        android:allowBackup="true"
+        android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name="com.danhtran.androidbaseproject.ui.activity.main.MainActivity">
+        tools:ignore="GoogleAppIndexingWarning"
+        tools:replace="android:allowBackup">
+        <activity
+            android:name=".ui.activity.splash.SplashActivity"
+            android:theme="@style/AppTheme.Launcher">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -28,9 +31,36 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name="com.danhtran.androidbaseproject.ui.activity.main.MainActivity"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:windowSoftInputMode="adjustPan">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <!-- Accepts URIs that begin with "com.danhtran://offers" -->
+                <data
+                    android:host="offers"
+                    android:scheme="com.danhtran" />
+                <!--<data android:scheme="http"
+                    android:host="www.example.com"
+                    android:pathPrefix="/gizmos" />-->
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".ui.activity.tour.TourActivity" />
+
+        <activity
+            android:name=".ui.activity.secondary.SecondaryActivity"
+            android:windowSoftInputMode="adjustPan" />
+
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebookAppId" />
+
     </application>
 
 </manifest>

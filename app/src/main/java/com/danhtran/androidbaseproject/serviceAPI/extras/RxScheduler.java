@@ -38,7 +38,27 @@ public class RxScheduler {
             public ObservableSource<T> apply(Observable<T> observable) {
                 return observable
                         .subscribeOn(Schedulers.io())
-                        .observeOn(AndroidSchedulers.mainThread());
+                        .observeOn(AndroidSchedulers.mainThread())
+                          /*.retryWhen(new Function<Observable<Throwable>, ObservableSource<?>>() {
+                            @Override
+                            public ObservableSource<?> apply(Observable<Throwable> throwableObservable) {
+                                return throwableObservable.flatMap(new Function<Throwable, ObservableSource<?>>() {
+                                    int retryCount = 0;
+                                    int delay = 5;
+                                    int maxRetries = 2; //2 times
+
+                                    @Override
+                                    public ObservableSource<?> apply(Throwable throwable) {
+                                        if (retryCount < maxRetries && throwable instanceof SocketTimeoutException) {
+                                            retryCount++;
+                                            return Observable.timer(delay, TimeUnit.MILLISECONDS);
+                                        } else {
+                                            return Observable.error(throwable);
+                                        }
+                                    }
+                                });
+                            }
+                        })*/;
             }
         };
     }

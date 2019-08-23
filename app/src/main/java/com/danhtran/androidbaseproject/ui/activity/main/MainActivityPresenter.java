@@ -7,17 +7,16 @@ import android.view.View;
  */
 
 public class MainActivityPresenter {
-    private MainActivity mainActivity;
+    private MainActivityListener listener;
 
-    public MainActivityPresenter(MainActivity mainActivity) {
-        this.mainActivity = mainActivity;
+    public MainActivityPresenter(MainActivityListener listener) {
+        this.listener = listener;
     }
 
     public View.OnClickListener onClickListener(final int index) {
         return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
             }
         };
     }

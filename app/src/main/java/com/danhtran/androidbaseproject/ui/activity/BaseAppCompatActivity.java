@@ -3,18 +3,11 @@ package com.danhtran.androidbaseproject.ui.activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
-import android.databinding.DataBindingUtil;
-import android.databinding.ViewDataBinding;
+import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -26,10 +19,20 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
+import androidx.databinding.ViewDataBinding;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+
 import com.danhtran.androidbaseproject.R;
 import com.danhtran.androidbaseproject.ui.activity.main.MainActivity;
+import com.danhtran.androidbaseproject.ui.activity.tour.TourActivity;
 import com.danhtran.androidbaseproject.ui.fragment.BaseFragment;
-import com.danhtran.androidbaseproject.utils.ViewUtils;
+import com.danhtran.androidbaseproject.utils.UIUtils;
 import com.orhanobut.logger.Logger;
 
 import java.util.Collection;
@@ -98,12 +101,17 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity implements
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        registerReceiver();
+
+        //set portrait
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
         //binding layout
         int xml = setLayout();
         if (xml != 0 && binding == null) {
             binding = DataBindingUtil.setContentView(this, xml);
             //hide keyboard
-            ViewUtils.addKeyboardEvents(this, binding.getRoot(), binding.getRoot());
+            UIUtils.addKeyboardEvents(this, binding.getRoot(), binding.getRoot());
         }
 
         //init progress dialog
@@ -136,26 +144,16 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity implements
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
-        registerReceiver();
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        unRegisterReceiver();
-    }
-
-    @Override
     protected void onDestroy() {
         if (binding != null) {
-            ViewUtils.removeKeyboardEvents(binding.getRoot());
+            UIUtils.removeKeyboardEvents(binding.getRoot());
         }
 
         for (Dialog dialog : setOfDialogs) {
             dialog.dismiss();
         }
+
+        unRegisterReceiver();
 
         super.onDestroy();
     }
@@ -284,24 +282,6 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity implements
     }
 
     /**
-     * start activity and clear all others
-     *
-     * @param tag    tag name
-     * @param bundle bundle
-     */
-    public void startActivityAsRoot(String tag, Bundle bundle) {
-        Intent intent = getIntentActivity(tag);
-
-        if (intent != null) {
-            if (bundle != null) {
-                intent.putExtras(bundle);
-            }
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            startActivity(intent);
-        }
-    }
-
-    /**
      * Start activity
      *
      * @param tag      tag name of activity
@@ -323,6 +303,43 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity implements
     }
 
     /**
+     * start activity and clear all others
+     *
+     * @param tag    tag name
+     * @param bundle bundle
+     */
+    public void startActivityAsRoot(String tag, Bundle bundle) {
+        Intent intent = getIntentActivity(tag);
+
+        if (intent != null) {
+            if (bundle != null) {
+                intent.putExtras(bundle);
+            }
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+            super.finish();
+        }
+    }
+
+    public void startActivityForResult(String tag, Bundle bundle, int requestCode) {
+        startActivityForResult(tag, bundle, true, requestCode);
+    }
+
+    public void startActivityForResult(String tag, Bundle bundle, boolean isFinish, int requestCode) {
+        Intent intent = getIntentActivity(tag);
+
+        if (intent != null) {
+            if (bundle != null) {
+                intent.putExtras(bundle);
+            }
+            startActivityForResult(intent, requestCode);
+            if (isFinish) {
+                super.finish();
+            }
+        }
+    }
+
+    /**
      * get intent of activity by tag
      *
      * @param tag tag is tag of activity contain the intent
@@ -333,6 +350,8 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity implements
         if (!TextUtils.isEmpty(tag)) {
             if (tag.equals(MainActivity.class.getName())) {
                 intent = MainActivity.createIntent(this);
+            } else if (tag.equals(TourActivity.class.getName())) {
+                intent = TourActivity.createIntent(this);
             }
         }
         return intent;
@@ -372,7 +391,7 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity implements
 
     //region Show Background Progress
     private void createProgressDialog() {
-        progressDialog = new Dialog(this);
+        progressDialog = new Dialog(this, R.style.DialogFullScreen);
         LayoutInflater inflater = this.getLayoutInflater();
         View dialogView = inflater.inflate(R.layout.process_dialog, null);
         //show view
@@ -406,6 +425,22 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity implements
     public void hideProgress() {
         if (progressDialog != null)
             progressDialog.hide();
+    }
+
+    /**
+     * get root view of this activity
+     *
+     * @return view
+     */
+    public View getRootView() {
+        if (binding != null) {
+            return binding.getRoot();
+        }
+        return null;
+    }
+
+    public BaseAppCompatActivity getBaseActivity() {
+        return this;
     }
 
     /**

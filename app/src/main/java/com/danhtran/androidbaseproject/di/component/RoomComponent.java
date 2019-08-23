@@ -12,4 +12,5 @@ import dagger.Subcomponent;
 @Subcomponent(modules = RoomModule.class)
 public interface RoomComponent {
 
+//    void inject(DemoActivityPresenter demoActivityPresenter);
 }

@@ -23,7 +23,7 @@ public class ScreenUtils {
             return;
         }
 
-        WindowManager windowManager = ((WindowManager) MyApplication.Instance().getApplicationContext().getSystemService(Context.WINDOW_SERVICE));
+        WindowManager windowManager = ((WindowManager) MyApplication.instance().getApplicationContext().getSystemService(Context.WINDOW_SERVICE));
         if (windowManager != null) {
             Display display = windowManager.getDefaultDisplay();
 

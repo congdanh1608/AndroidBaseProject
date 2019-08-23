@@ -2,19 +2,24 @@ package com.danhtran.androidbaseproject.ui.dialog_fragment;
 
 import android.app.Dialog;
 import android.content.res.Configuration;
-import android.databinding.DataBindingUtil;
-import android.databinding.ViewDataBinding;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.DialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.RelativeLayout;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.databinding.DataBindingUtil;
+import androidx.databinding.ViewDataBinding;
+import androidx.fragment.app.DialogFragment;
+
+import com.danhtran.androidbaseproject.R;
+import com.danhtran.androidbaseproject.ui.activity.BaseAppCompatActivity;
+import com.danhtran.androidbaseproject.ui.fragment.BaseFragment;
 
 /**
  * Created by danhtran on 5/29/15.
@@ -41,7 +46,7 @@ public abstract class BaseDialogFragment extends DialogFragment {
     @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        final Dialog dialog = new Dialog(getActivity());
+        final Dialog dialog = new Dialog(getActivity(), R.style.DialogFullScreen);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         if (dialog.getWindow() != null)
             dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
@@ -80,8 +85,8 @@ public abstract class BaseDialogFragment extends DialogFragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        initListener();
         initData();
+        initListener();
     }
 
     @Override
@@ -107,6 +112,23 @@ public abstract class BaseDialogFragment extends DialogFragment {
             progressLayout.setVisibility(View.GONE);
     }
 
+    public BaseAppCompatActivity getBaseActivity() {
+        if (getActivity() instanceof BaseAppCompatActivity) {
+            return (BaseAppCompatActivity) getActivity();
+        }
+        return null;
+    }
+
+    public BaseFragment getBaseFragment() {
+        if (getTargetFragment() instanceof BaseFragment) {
+            return (BaseFragment) getTargetFragment();
+        }
+        return null;
+    }
+
+    public BaseDialogFragment getBaseDialogFragment() {
+        return this;
+    }
 
     public enum TYPE {
         MATCH_PARENT(0),

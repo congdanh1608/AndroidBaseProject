@@ -5,7 +5,7 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
-import android.support.v4.content.ContextCompat;
+import androidx.core.content.ContextCompat;
 import android.text.Html;
 import android.text.Spanned;
 import android.text.TextUtils;
@@ -24,7 +24,7 @@ public class DeprecatedUtils {
     private final static int SDK_VERSION = Build.VERSION.SDK_INT;
 
     public static int getResourceColor(int resource) {
-        Context context = MyApplication.Instance().getApplicationContext();
+        Context context = MyApplication.instance().getApplicationContext();
         if (SDK_VERSION >= Build.VERSION_CODES.LOLLIPOP) {
             return ContextCompat.getColor(context, resource);
         } else {
@@ -33,7 +33,7 @@ public class DeprecatedUtils {
     }
 
     public static Drawable getResourceDrawable(int resource) {
-        Context context = MyApplication.Instance().getApplicationContext();
+        Context context = MyApplication.instance().getApplicationContext();
         if (SDK_VERSION >= Build.VERSION_CODES.LOLLIPOP) {
             return context.getResources().getDrawable(resource, context.getTheme());
         } else {

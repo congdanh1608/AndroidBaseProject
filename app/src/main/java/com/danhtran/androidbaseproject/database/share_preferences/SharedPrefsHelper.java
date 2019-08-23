@@ -4,8 +4,6 @@ import android.content.SharedPreferences;
 
 import com.google.gson.Gson;
 
-import java.io.Serializable;
-
 /**
  * Created by danhtran on 19/05/2016.
  */
@@ -56,7 +54,10 @@ public class SharedPrefsHelper {
         sharedPreferences.edit().remove(key).apply();
     }
 
-    public <T extends Serializable> void writeObject(String key, T b) {
+    public <T> void writeObject(String key, T b) {
+        if (b == null) {
+            return;
+        }
         synchronized (this) {
             Gson gson = new Gson();
             String json = gson.toJson(b, b.getClass());
@@ -64,10 +65,13 @@ public class SharedPrefsHelper {
         }
     }
 
-    public <T extends Serializable> T readObject(Class<T> aClass, String key) {
+    public <T> T readObject(String key, Class<T> aClass) {
         synchronized (this) {
             Gson gson = new Gson();
             String json = readString(key);
+            if (json == null) {
+                return null;
+            }
             return gson.fromJson(json, aClass);
         }
     }
