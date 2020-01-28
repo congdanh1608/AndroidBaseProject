@@ -3,13 +3,16 @@ package com.danhtran.androidbaseproject.utils;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Build;
-import androidx.fragment.app.DialogFragment;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.danhtran.androidbaseproject.ui.activity.BaseAppCompatActivity;
 
@@ -33,6 +36,16 @@ public class UIUtils {
         else fragmentManager = parent.getActivity().getSupportFragmentManager();
         dialogFragment.setTargetFragment(parent, requestCode);
         dialogFragment.show(fragmentManager, tag);
+    }
+
+    public static void showDialogFragment(DialogFragment dialogFragment, AppCompatActivity activity, String tag) {
+        FragmentTransaction ft = activity.getSupportFragmentManager().beginTransaction();
+        Fragment prev = activity.getSupportFragmentManager().findFragmentByTag(tag);
+        if (prev != null) {
+            ft.remove(prev);
+        }
+        ft.addToBackStack(null);
+        dialogFragment.show(ft, tag);
     }
 
     /**
@@ -81,6 +94,13 @@ public class UIUtils {
         editText.requestFocus();
         InputMethodManager imm = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.showSoftInput(editText, InputMethodManager.SHOW_IMPLICIT);
+    }
+
+    public static void clearDialogFocus(Activity activity, View dialogLayout) {
+        dialogLayout.setFocusable(true);
+        dialogLayout.setFocusableInTouchMode(true);
+        dialogLayout.requestFocus();
+        hideSoftKeyboard(activity, dialogLayout);
     }
 
     /**

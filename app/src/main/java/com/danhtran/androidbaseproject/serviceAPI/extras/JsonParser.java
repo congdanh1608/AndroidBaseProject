@@ -10,6 +10,7 @@ import com.google.gson.JsonPrimitive;
 import com.google.gson.JsonSerializationContext;
 import com.google.gson.JsonSerializer;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONTokener;
@@ -65,5 +66,21 @@ public class JsonParser {
             e.printStackTrace();
         }
         return jsonData;
+    }
+
+    public static boolean isJsonValid(String json) {
+        if (json == null || json.isEmpty()) {
+            return false;
+        }
+        try {
+            new JSONObject(json);
+        } catch (JSONException ex) {
+            try {
+                new JSONArray(json);
+            } catch (JSONException ex1) {
+                return false;
+            }
+        }
+        return true;
     }
 }

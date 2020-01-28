@@ -43,33 +43,38 @@ public abstract class BaseDialogFragment extends DialogFragment {
 
     public abstract void onConfigurationChanged();
 
+    protected boolean isRunning = false;    //flag to know is dialog fragment running.
+    protected boolean isDismiss = false;    //flag to dismiss the dialog after resume
+
     @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         final Dialog dialog = new Dialog(getActivity(), R.style.DialogFullScreen);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        if (dialog.getWindow() != null)
-            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        dialog.setCanceledOnTouchOutside(true);
+        Window window = dialog.getWindow();
+        if (window != null) {
+            window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
-        switch (setTypeScreen()) {
-            case MATCH_PARENT:
-                final RelativeLayout root = new RelativeLayout(getActivity());
-                root.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
-                dialog.getWindow().setContentView(root);
-                dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-                break;
-            case WRAP_CONTENT:
-                dialog.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-                break;
+            switch (setTypeScreen()) {
+                case MATCH_PARENT:
+                    final RelativeLayout root = new RelativeLayout(getActivity());
+                    root.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+                    window.setContentView(root);
+                    window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+                    break;
+                case WRAP_CONTENT:
+                    window.setLayout(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                    break;
+            }
         }
+        dialog.setCanceledOnTouchOutside(true);
         return dialog;
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         int xml = setLayout();
-        if (xml != 0 && binding == null) {
+        if (xml != 0) {
             binding = DataBindingUtil.inflate(inflater, xml, container, false);
             initUI();
             rootView = binding.getRoot();
@@ -100,6 +105,31 @@ public abstract class BaseDialogFragment extends DialogFragment {
      */
     protected void loadPassedParamsIfNeeded(@NonNull Bundle extras) {
 
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        isRunning = false;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        isRunning = true;
+
+        if (isDismiss) {
+            dismiss();
+        }
+    }
+
+    @Override
+    public void dismiss() {
+        if (isRunning) {
+            super.dismiss();
+        } else {
+            isDismiss = true;       //will dismiss when fragment is visible
+        }
     }
 
     public void showProgress() {

@@ -20,4 +20,8 @@
     <string name="permission_location_description">By allowing the location services feature we can quickly find the cheapest fuel in your area.</string>
     <string name="permission_location_yes_use_location_services">Yes, use location services!</string>
     <string name="permission_location_not_now">Not now</string>
+
+    <string name="notify_network_error">The internet connection appears to be offline.</string>
+    <string name="notify_could_not_resolve_host">Couldn\'t resolve host!</string>
+    <string name="notify_unknown_error">Unknown error.</string>
 </resources>
