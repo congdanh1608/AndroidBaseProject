@@ -6,11 +6,14 @@ package com.danhtran.androidbaseproject.extras.enums;
 
 public class Header {
 
-    public enum HeaderValue {
-        AUTHORIZATION("Authorization");
+    public enum HeaderKey {
+        AUTHORIZATION("Authorization"),
+        ACCEPT("Accept"),
+        CONTENT_TYPE("Content-Type"),
+        ;
         private final String value;
 
-        HeaderValue(String value) {
+        HeaderKey(String value) {
             this.value = value;
         }
 
@@ -19,12 +22,14 @@ public class Header {
         }
     }
 
-    public enum TypeHeader {
-        BEARER("Bearer ");
+    public enum HeaderValue {
+        BEARER("Bearer "),
+        APPLICATION_JSON("application/json"),
+        ;
 
         private final String value;
 
-        TypeHeader(String value) {
+        HeaderValue(String value) {
             this.value = value;
         }
 

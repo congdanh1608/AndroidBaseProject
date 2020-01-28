@@ -97,11 +97,13 @@ public class NetworkModule {
                 .addInterceptor(new Interceptor() {
                     @Override
                     public Response intercept(Chain chain) throws IOException {
-                        Request newRequest = chain.request().newBuilder()
-                                .addHeader(Header.HeaderValue.AUTHORIZATION.toString(),
-                                        Header.TypeHeader.BEARER.toString() + MyApplication.instance().getToken())
-                                .build();
-                        return chain.proceed(newRequest);
+                        Request.Builder builder = chain.request().newBuilder()
+                                .addHeader(Header.HeaderKey.CONTENT_TYPE.getValue(), Header.HeaderValue.APPLICATION_JSON.getValue());
+                        if (MyApplication.instance().getToken() != null) {
+                            builder.addHeader(Header.HeaderKey.AUTHORIZATION.getValue(),
+                                    Header.HeaderValue.BEARER.getValue() + MyApplication.instance().getToken());
+                        }
+                        return chain.proceed(builder.build());
                     }
                 })
                 .build();
@@ -119,11 +121,13 @@ public class NetworkModule {
                 .addInterceptor(new Interceptor() {
                     @Override
                     public Response intercept(Chain chain) throws IOException {
-                        Request newRequest = chain.request().newBuilder()
-                                .addHeader(Header.HeaderValue.AUTHORIZATION.toString(),
-                                        Header.TypeHeader.BEARER.toString() + MyApplication.instance().getToken())
-                                .build();
-                        return chain.proceed(newRequest);
+                        Request.Builder builder = chain.request().newBuilder()
+                                .addHeader(Header.HeaderKey.CONTENT_TYPE.getValue(), Header.HeaderValue.APPLICATION_JSON.getValue());
+                        if (MyApplication.instance().getToken() != null) {
+                            builder.addHeader(Header.HeaderKey.AUTHORIZATION.getValue(),
+                                    Header.HeaderValue.BEARER.getValue() + MyApplication.instance().getToken());
+                        }
+                        return chain.proceed(builder.build());
                     }
                 })
                 .build();
