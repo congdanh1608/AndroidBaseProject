@@ -9,7 +9,7 @@
 
         <!--module glide option-->
         <meta-data
-            android:name="com.danhtran.customglide.MyAppGlideModule"
+            android:name="com.glide.customglide.MyAppGlideModule"
             android:value="GlideModule"
             tools:node="remove" />
     </application>

@@ -9,7 +9,7 @@
 
         <variable
             name="presenter"
-            type="com.danhtran.androidbaseproject.ui.activity.main.MainActivityPresenter" />
+            type="com.glide.androidbaseproject.ui.activity.main.MainActivityPresenter" />
     </data>
 
     <RelativeLayout

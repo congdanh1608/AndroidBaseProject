@@ -6,7 +6,7 @@
 
         <variable
             name="presenter"
-            type="com.danhtran.androidbaseproject.ui.activity.tour.TourActivityPresenter" />
+            type="com.glide.androidbaseproject.ui.activity.tour.TourActivityPresenter" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

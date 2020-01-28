@@ -6,7 +6,7 @@
 
         <variable
             name="presenter"
-            type="com.danhtran.androidbaseproject.ui.activity.secondary.SecondaryActivityPresenter" />
+            type="com.glide.androidbaseproject.ui.activity.secondary.SecondaryActivityPresenter" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
