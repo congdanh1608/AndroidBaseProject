@@ -149,9 +149,7 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity implements
             UIUtils.removeKeyboardEvents(binding.getRoot());
         }
 
-        for (Dialog dialog : setOfDialogs) {
-            dialog.dismiss();
-        }
+        destroyProgressDialog();
 
         unRegisterReceiver();
 
@@ -411,20 +409,27 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity implements
         addDialog(progressDialog);
     }
 
+    private void destroyProgressDialog() {
+        for (Dialog dialog : setOfDialogs) {
+            dialog.dismiss();
+        }
+    }
+
     /**
      * Show progress layout
      */
     public void showProgress() {
-        if (progressDialog != null)
+        createProgressDialog();         //fix bug freeze after resume from intent action_view
+        if (progressDialog != null) {
             progressDialog.show();
+        }
     }
 
     /**
      * Hide progress layout
      */
     public void hideProgress() {
-        if (progressDialog != null)
-            progressDialog.hide();
+        destroyProgressDialog();
     }
 
     /**
