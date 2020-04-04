@@ -1,4 +1,5 @@
 # DEPRECATED - no longer actively maintained
+Please check this new project: [Kotlin Base Project](https://github.com/congdanh1608/KotlinBaseProject)
 
 # AndroidBaseProject
 Android Base Project
