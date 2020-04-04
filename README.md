@@ -1,3 +1,5 @@
+DEPRECATED - no longer actively maintained
+
 # AndroidBaseProject
 Android Base Project
 
